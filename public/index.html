@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ofertas Exclusivas | Viajes Cusco Perú</title>
+    
+    <!-- SEO & Meta Tags -->
+    <meta name="description" content="Descubra as melhores ofertas para sua viagem a Cusco e Machu Picchu. Atendimento personalizado para o mercado brasileiro.">
+    <meta property="og:title" content="Ofertas Exclusivas | Viajes Cusco Perú">
+    <meta property="og:description" content="Sua aventura nos Andes começa aqui. Explore nossos pacotes para Cusco e Machu Picchu.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://oferta.viajescuscoperu.com">
+    
+    <style>
+        :root {
+            --primary-bg: #0f172a;
+            --accent-color: #f97316;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            background-color: var(--primary-bg);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        #app-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Loading Spinner */
+        #loader {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+            transition: opacity 0.5s ease;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-top: 4px solid var(--accent-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loaded #loader {
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="loader">
+        <div class="spinner"></div>
+        <p>Carregando...</p>
+    </div>
+
+    <!-- The Streamlit App Iframe -->
+    <iframe 
+        id="app-container" 
+        src="https://viajes-cusco-brasil.streamlit.app/?embed=true" 
+        allow="clipboard-read; clipboard-write" 
+        title="Oferta Brasil">
+    </iframe>
+
+    <script>
+        // Data Bridge: Transfiere UTMs de Firebase a Streamlit
+        window.addEventListener('load', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const iframe = document.getElementById('app-container');
+            const loader = document.getElementById('loader');
+
+            if (urlParams.toString()) {
+                const currentSrc = iframe.src;
+                iframe.src = currentSrc + (currentSrc.includes('?') ? '&' : '?') + urlParams.toString();
+            }
+
+            // Ocultar loader cuando el iframe cargue
+            iframe.onload = function() {
+                document.body.classList.add('loaded');
+            };
+        });
+    </script>
+
+</body>
+</html>
