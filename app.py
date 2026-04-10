@@ -152,14 +152,22 @@ def register_lead(tour_name, time_spent, scroll_depth):
                 "utm_campaign": utms["utm_campaign"],
                 "utm_content": utms["utm_content"],
                 "utm_term": utms["utm_term"],
-                "time_on_page": int(time_spent) if time_spent else 0,
-                "scroll_depth": int(scroll_depth) if scroll_depth else 0,
-                "user_agent": "Meta Browser (Simulado)",
+                "user_agent": "Meta Browser",
                 "status": "nuevo"
             }
-            supabase.table("leads_raw").insert(data).execute()
+            # Intentar agregar métricas de comportamiento si las columnas existen
+            try:
+                data["time_on_page"] = int(time_spent) if time_spent else 0
+                data["scroll_depth"] = int(scroll_depth) if scroll_depth else 0
+            except:
+                pass
+            
+            result = supabase.table("leads_raw").insert(data).execute()
+            return True
         except Exception as e:
-            pass
+            st.error(f"Error al guardar: {e}")
+            return False
+    return False
 
 # --- DATOS DE LOS TOURS ---
 tours = [
