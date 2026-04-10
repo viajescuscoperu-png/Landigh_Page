@@ -214,6 +214,9 @@ with col_hidden2:
 phone = "51970909088"
 
 for tour in tours:
+    encoded_msg = urllib.parse.quote(tour['msg'])
+    wa_link = f"https://wa.me/{phone}?text={encoded_msg}"
+    
     with st.container():
         st.image(tour['img'], use_container_width=True)
         st.markdown(f"""
@@ -221,18 +224,16 @@ for tour in tours:
             <div class="tour-content">
                 <div class="tour-title">{tour['name']}</div>
                 <div class="tour-price">{tour['price']}</div>
+                <a href="{wa_link}" target="_blank" rel="noopener noreferrer"
+                   style="display:block; background:linear-gradient(90deg,#25D366,#128C7E);
+                          color:white; text-align:center; padding:1rem; border-radius:14px;
+                          font-weight:700; text-decoration:none; font-size:1.1rem;
+                          margin-top:1rem; box-shadow:0 4px 15px rgba(37,211,102,0.3);">
+                    📲 Reservar {tour['name']} Agora
+                </a>
             </div>
         </div>
         """, unsafe_allow_html=True)
-        
-        if st.button(f"Reservar {tour['name']} Agora", key=f"btn_{tour['name']}"):
-            # Capturamos los valores que el JS inyectó en los inputs (SILENCIOSO)
-            register_lead(tour['name'], time_val, scroll_val)
-            
-            # Mensaje 100% limpio para el cliente
-            encoded_msg = urllib.parse.quote(tour['msg'])
-            wa_link = f"https://wa.me/{phone}?text={encoded_msg}"
-            
-            st.markdown(f'<meta http-equiv="refresh" content="0; url={wa_link}"><div style="text-align:center; padding:10px; background:#dcfce7; border-radius:10px;">Redirecionando para WhatsApp... <br><a href="{wa_link}">Clique aqui se não abrir.</a></div>', unsafe_allow_html=True)
 
-st.markdown(f'<div style="text-align:center; font-size:0.7rem; color:#94a3b8; margin-top:2rem">Viajes Cusco Peru - Sensor Behavior Active</div>', unsafe_allow_html=True)
+# --- FOOTER ---
+st.markdown('<div style="text-align:center; font-size:0.7rem; color:#94a3b8; margin-top:2rem; padding-bottom:2rem;">Viajes Cusco Peru · Especialistas em Turismo no Peru</div>', unsafe_allow_html=True)
