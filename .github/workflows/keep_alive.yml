@@ -1,0 +1,16 @@
+name: Streamlit Keep Alive
+
+on:
+  schedule:
+    # Se ejecuta cada 3 horas (00:00, 03:00, 06:00, etc.)
+    - cron: '0 */3 * * *'
+  workflow_dispatch:
+    # Permite ejecutarlo manualmente desde la pestaña Actions de GitHub
+
+jobs:
+  ping_app:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wake up Streamlit App
+        run: |
+          curl -I -s https://viajes-cusco-brasil.streamlit.app/ | grep -E "HTTP/1.1 200|HTTP/2 200" || echo "App is waking up or already awake"

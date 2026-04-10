@@ -93,6 +93,11 @@ st.markdown("""
         box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3) !important;
     }
 
+    /* Esconder sensores de tracking (Tiempo y Scroll) */
+    div[data-testid="stTextInput"] {
+        display: none;
+    }
+
     [data-testid="stHeader"] { visibility: hidden; }
     footer { visibility: hidden; }
     
@@ -165,7 +170,7 @@ tours = [
 ]
 
 # --- UI PRINCIPAL ---
-st.markdown(f'<div style="text-align:center"><h1>Ofertas Exclusivas Cusco</h1><p>ID: {st.session_state.lead_id}</p></div>', unsafe_allow_html=True)
+st.markdown('<div style="text-align:center"><h1>Ofertas Exclusivas Cusco</h1></div>', unsafe_allow_html=True)
 
 # Inputs invisibles para capturar datos de JS (Técnica Bridge)
 # Nota: Streamlit no tiene inputs ocultos nativos, usamos widgets pequeños controlados por JS
