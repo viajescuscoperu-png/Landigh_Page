@@ -1,34 +1,68 @@
--- SCRIPT DE CONFIGURACIÓN DE BASE DE DATOS PARA CONVERSIONES OFFLINE
--- Copia y pega este código en el SQL Editor de tu proyecto en Supabase.
+-- ============================================================
+-- SCRIPT COMPLETO DE REINICIO - TABLA leads_raw
+-- Copia y pega TODO esto en el SQL Editor de Supabase
+-- ============================================================
 
-CREATE TABLE IF NOT EXISTS leads_raw (
-    id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-    
+-- PASO 1: Eliminar la tabla anterior (reinicio limpio)
+DROP TABLE IF EXISTS leads_raw;
+
+-- PASO 2: Crear la tabla completa y correcta
+CREATE TABLE leads_raw (
+    id              UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+    created_at      TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+
     -- Identificadores de Seguimiento
-    lead_id TEXT UNIQUE,               -- Generado por la App (Ej: VCP-8271)
-    tour_selected TEXT,               -- Tour que generó el clic
-    
+    lead_id         TEXT,                      -- VCP-XXXX (puede repetirse por visitas)
+    event_type      TEXT DEFAULT 'page_view',  -- 'page_view' o 'whatsapp_click'
+    tour_selected   TEXT,                      -- Tour clickeado o 'PAGE_VIEW'
+
     -- Parámetros Dinámicos de Meta Ads
-    utm_source TEXT,                  -- facebook
-    utm_medium TEXT,                  -- cpc
-    utm_campaign TEXT,                -- {{campaign.name}}
-    utm_content TEXT,                 -- {{ad.name}}
-    utm_term TEXT,                    -- {{adset.name}}
-    
-    -- Datos del Dispositivo (Match Rate)
-    user_agent TEXT,                  -- Navegador/Móvil
-    
+    utm_source      TEXT DEFAULT 'direct',     -- facebook / instagram
+    utm_medium      TEXT DEFAULT 'none',       -- cpc / organic
+    utm_campaign    TEXT DEFAULT 'none',       -- nombre de la campaña
+    utm_content     TEXT DEFAULT 'none',       -- nombre del anuncio
+    utm_term        TEXT DEFAULT 'none',       -- nombre del conjunto
+
+    -- Métricas de Comportamiento
+    time_on_page    INTEGER DEFAULT 0,         -- Segundos en la página
+    scroll_depth    INTEGER DEFAULT 0,         -- % de scroll leído
+
+    -- Datos del Dispositivo
+    user_agent      TEXT,                      -- Navegador/Móvil
+
     -- Control de Ventas Offline
-    status TEXT DEFAULT 'nuevo',      -- nuevo / vendido / perdido
-    sale_value NUMERIC DEFAULT 0,     -- Para medir ROI real
-    notes TEXT                        -- Observaciones del vendedor
+    status          TEXT DEFAULT 'visita',     -- visita / nuevo / vendido / perdido
+    sale_value      NUMERIC DEFAULT 0,         -- Para medir ROI real
+    notes           TEXT                       -- Observaciones del vendedor
 );
 
--- Habilitar inserción pública para la Landing Page
+-- PASO 3: Habilitar Row Level Security
 ALTER TABLE leads_raw ENABLE ROW LEVEL SECURITY;
-DROP POLICY IF EXISTS "Public Insert" ON leads_raw;
-CREATE POLICY "Public Insert" ON leads_raw FOR INSERT WITH CHECK (true);
 
--- Comentario para el analista
-COMMENT ON TABLE leads_raw IS 'Tabla de leads capturados desde Meta Ads para reconciliación offline.';
+-- PASO 4: Permitir inserción pública (Landing Page)
+DROP POLICY IF EXISTS "Public Insert" ON leads_raw;
+CREATE POLICY "Public Insert" ON leads_raw
+    FOR INSERT WITH CHECK (true);
+
+-- PASO 5: Permitir lectura solo al dueño (tú en el dashboard)
+DROP POLICY IF EXISTS "Owner Select" ON leads_raw;
+CREATE POLICY "Owner Select" ON leads_raw
+    FOR SELECT USING (true);
+
+-- PASO 6: Índices para consultas rápidas en el dashboard
+CREATE INDEX IF NOT EXISTS idx_leads_created   ON leads_raw (created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_leads_campaign  ON leads_raw (utm_campaign);
+CREATE INDEX IF NOT EXISTS idx_leads_status    ON leads_raw (status);
+CREATE INDEX IF NOT EXISTS idx_leads_lead_id   ON leads_raw (lead_id);
+
+-- Comentario de la tabla
+COMMENT ON TABLE leads_raw IS
+    'Tabla de leads capturados desde Meta Ads. Incluye visitas (page_view) y clics de WhatsApp.';
+
+-- ============================================================
+-- VERIFICACIÓN: Esto debe mostrar la tabla con sus columnas
+-- ============================================================
+SELECT column_name, data_type, column_default
+FROM information_schema.columns
+WHERE table_name = 'leads_raw'
+ORDER BY ordinal_position;

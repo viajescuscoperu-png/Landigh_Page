@@ -98,8 +98,13 @@ st.markdown("""
         display: none;
     }
 
-    [data-testid="stHeader"] { visibility: hidden; }
-    footer { visibility: hidden; }
+    /* Esconder elementos de marca de Streamlit */
+    [data-testid="stHeader"]          { display: none !important; }
+    [data-testid="stToolbar"]         { display: none !important; }
+    [data-testid="manage-app-button"] { display: none !important; }
+    footer                            { display: none !important; }
+    #MainMenu                         { display: none !important; }
+    .stDeployButton                   { display: none !important; }
     
     .stImage > img {
         width: 100%;
