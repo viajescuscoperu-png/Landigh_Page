@@ -180,6 +180,28 @@ tours = [
 # --- UI PRINCIPAL ---
 st.markdown('<div style="text-align:center"><h1>Ofertas Exclusivas Cusco</h1></div>', unsafe_allow_html=True)
 
+# --- REGISTRO AUTOMÁTICO DE VISITA (solo una vez por sesión) ---
+if 'visit_registered' not in st.session_state:
+    st.session_state.visit_registered = False
+
+if not st.session_state.visit_registered and supabase:
+    try:
+        visit_data = {
+            "lead_id": st.session_state.lead_id,
+            "tour_selected": "PAGE_VIEW",
+            "utm_source": utms["utm_source"],
+            "utm_medium": utms["utm_medium"],
+            "utm_campaign": utms["utm_campaign"],
+            "utm_content": utms["utm_content"],
+            "utm_term": utms["utm_term"],
+            "user_agent": "Meta Browser",
+            "status": "visita"
+        }
+        supabase.table("leads_raw").insert(visit_data).execute()
+        st.session_state.visit_registered = True
+    except:
+        pass
+
 # Inputs invisibles para capturar datos de JS (Técnica Bridge)
 # Nota: Streamlit no tiene inputs ocultos nativos, usamos widgets pequeños controlados por JS
 col_hidden1, col_hidden2 = st.columns(2)
