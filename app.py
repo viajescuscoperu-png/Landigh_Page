@@ -26,6 +26,14 @@ def get_supabase_client():
 
 supabase = get_supabase_client()
 
+# --- CREDENCIALES PARA JS TRACKING ---
+try:
+    SB_URL = st.secrets.get("SUPABASE_URL") or os.getenv("SUPABASE_URL", "")
+    SB_KEY = st.secrets.get("SUPABASE_KEY") or os.getenv("SUPABASE_KEY", "")
+except:
+    SB_URL = ""
+    SB_KEY = ""
+
 # --- GENERADOR DE LEAD ID ---
 if 'lead_id' not in st.session_state:
     short_uuid = str(uuid.uuid4())[:8].upper()
@@ -215,12 +223,58 @@ with col_hidden1:
 with col_hidden2:
     scroll_val = st.text_input("scroll_val", value="0", label_visibility="collapsed")
 
+# --- INYECTAR CREDENCIALES Y FUNCIÓN DE TRACKING EN JS ---
+lead_id = st.session_state.lead_id
+st.markdown(f"""
+<script>
+const SB_URL = "{SB_URL}";
+const SB_KEY = "{SB_KEY}";
+const LEAD_ID = "{lead_id}";
+const UTM_SOURCE = "{utms['utm_source']}";
+const UTM_MEDIUM = "{utms['utm_medium']}";
+const UTM_CAMPAIGN = "{utms['utm_campaign']}";
+const UTM_CONTENT = "{utms['utm_content']}";
+const UTM_TERM = "{utms['utm_term']}";
+
+function trackWhatsApp(tourName, waLink) {{
+    // Registrar el clic en Supabase via REST API
+    if (SB_URL && SB_KEY) {{
+        fetch(SB_URL + '/rest/v1/leads_raw', {{
+            method: 'POST',
+            headers: {{
+                'apikey': SB_KEY,
+                'Authorization': 'Bearer ' + SB_KEY,
+                'Content-Type': 'application/json',
+                'Prefer': 'return=minimal'
+            }},
+            body: JSON.stringify({{
+                lead_id: LEAD_ID + '-WA',
+                event_type: 'whatsapp_click',
+                tour_selected: tourName,
+                utm_source: UTM_SOURCE,
+                utm_medium: UTM_MEDIUM,
+                utm_campaign: UTM_CAMPAIGN,
+                utm_content: UTM_CONTENT,
+                utm_term: UTM_TERM,
+                user_agent: navigator.userAgent,
+                status: 'nuevo'
+            }})
+        }}).catch(() => {{}}); // Silencioso si falla
+    }}
+    // Abrir WhatsApp
+    window.open(waLink, '_blank');
+    return false;
+}}
+</script>
+""", unsafe_allow_html=True)
+
 # --- GRID ---
 phone = "51970909088"
 
 for tour in tours:
     encoded_msg = urllib.parse.quote(tour['msg'])
     wa_link = f"https://wa.me/{phone}?text={encoded_msg}"
+    tour_name_js = tour['name'].replace("'", "\\'")
     
     with st.container():
         st.image(tour['img'], use_container_width=True)
@@ -229,7 +283,7 @@ for tour in tours:
             <div class="tour-content">
                 <div class="tour-title">{tour['name']}</div>
                 <div class="tour-price">{tour['price']}</div>
-                <a href="{wa_link}" target="_blank" rel="noopener noreferrer"
+                <a href="#" onclick="trackWhatsApp('{tour_name_js}', '{wa_link}'); return false;"
                    style="display:block; background:linear-gradient(90deg,#25D366,#128C7E);
                           color:white; text-align:center; padding:1rem; border-radius:14px;
                           font-weight:700; text-decoration:none; font-size:1.1rem;
@@ -242,3 +296,4 @@ for tour in tours:
 
 # --- FOOTER ---
 st.markdown('<div style="text-align:center; font-size:0.7rem; color:#94a3b8; margin-top:2rem; padding-bottom:2rem;">Viajes Cusco Peru · Especialistas em Turismo no Peru</div>', unsafe_allow_html=True)
+
