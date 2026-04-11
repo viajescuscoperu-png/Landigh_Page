@@ -52,10 +52,10 @@ utms = {
 # --- ESTILOS CSS Y JS PARA TRACKING ---
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Outfit:wght@300;400;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@300;400;600;700&display=swap');
 
     html, body, [class*="css"], .stApp {
-        font-family: 'Outfit', sans-serif;
+        font-family: 'Inter', sans-serif;
         background-color: #f8fafc;
     }
 
@@ -82,7 +82,7 @@ st.markdown("""
     }
 
     .hero-title {
-        font-family: 'Playfair Display', serif;
+        font-family: 'Poppins', sans-serif;
         font-size: 2.4rem;
         font-weight: 700;
         margin-bottom: 1rem;
@@ -133,7 +133,8 @@ st.markdown("""
     
     .tour-card:hover {
         transform: translateY(-8px);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        box-shadow: 0 20px 40px rgba(8, 145, 178, 0.15); /* Sombra turquesa sutil */
+        border-color: #22d3ee; /* Borde intermedio turquesa */
     }
 
     /* Urgency Badge */
@@ -164,7 +165,7 @@ st.markdown("""
     }
 
     .tour-title {
-        font-family: 'Playfair Display', serif;
+        font-family: 'Poppins', sans-serif;
         font-size: 1.6rem;
         font-weight: 700;
         color: #0f172a;
@@ -194,8 +195,9 @@ st.markdown("""
         color: white !important;
         text-align: center;
         padding: 1.2rem;
-        border-radius: 14px;
+        border-radius: 50px; /* Redondo "Pastilla" corporativo */
         font-weight: 700;
+        font-family: 'Poppins', sans-serif;
         text-decoration: none;
         font-size: 1.15rem;
         margin-top: 1.5rem;
@@ -316,13 +318,16 @@ window.trackWhatsApp = function(tourName) {{
 
 # --- UI PRINCIPAL: HERO SECTION ---
 st.markdown("""
+<div style="text-align:center; padding: 1.5rem 0 1rem 0;">
+    <h2 style="font-family:'Poppins',sans-serif; color:#0f172a; font-weight:800; margin:0; letter-spacing:-0.5px;">VIAJES <span style="color:#22d3ee;">CUSCO</span> PERÚ</h2>
+</div>
 <div class="hero-section">
     <div class="hero-title">Aventura VIP em Cusco</div>
-    <div class="hero-subtitle">Viva a magia dos Andes com atendimento exclusivo 100% em Português</div>
+    <div class="hero-subtitle">Viva a magia dos Andes com atendimento oficial 100% em Português</div>
     <div class="trust-badges">
-        <div class="trust-badge-item">🔒 Compra Segura</div>
-        <div class="trust-badge-item">⭐ 5/5 Avaliações</div>
-        <div class="trust-badge-item">🇧🇷 Focados no Brasil</div>
+        <div class="trust-badge-item">✅ Agência Oficial MINCETUR</div>
+        <div class="trust-badge-item">🏷️ Membro APTAE</div>
+        <div class="trust-badge-item">⭐ Avaliações TripAdvisor</div>
     </div>
 </div>
 """, unsafe_allow_html=True)
