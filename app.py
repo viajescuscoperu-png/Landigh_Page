@@ -233,9 +233,9 @@ st.markdown("""
 </style>
 
 <script>
-    // Sistema de Tracking Optimizado (Debounce y LocalStorage)
-    let startTime = Date.now();
-    let maxScroll = 0;
+    // Sistema de Tracking Optimizado (Global Scope)
+    window.vcpStartTime = window.vcpStartTime || Date.now();
+    window.vcpMaxScroll = window.vcpMaxScroll || 0;
     let scrollTimeout;
 
     window.onscroll = function() {
@@ -245,14 +245,14 @@ st.markdown("""
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             let scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             let scrolled = Math.round((scrollTop / scrollHeight) * 100);
-            if (scrolled > maxScroll) maxScroll = scrolled;
+            if (scrolled > window.vcpMaxScroll) window.vcpMaxScroll = scrolled;
             
             const scrollInput = window.parent.document.querySelector('input[aria-label="scroll_val"]');
             const timeInput = window.parent.document.querySelector('input[aria-label="time_val"]');
             
             if(scrollInput && timeInput) {
-                scrollInput.value = maxScroll;
-                timeInput.value = Math.round((Date.now() - startTime) / 1000);
+                scrollInput.value = window.vcpMaxScroll;
+                timeInput.value = Math.round((Date.now() - window.vcpStartTime) / 1000);
                 // Disparar eventos para que Streamlit detecte el cambio a pesar del hidden
                 scrollInput.dispatchEvent(new Event('input', { bubbles: true }));
                 timeInput.dispatchEvent(new Event('input', { bubbles: true }));
@@ -285,8 +285,9 @@ if (!currentLeadId) {{
 window.trackWhatsApp = function(tourName) {{
     // 2. Anti-fuga de Clics: Usar Keepalive
     if (SB_URL && SB_KEY) {{
+        const timeSpentClick = Math.round((Date.now() - (window.vcpStartTime || Date.now())) / 1000);
         const payload = JSON.stringify({{
-            lead_id: currentLeadId + '-WA',
+            lead_id: currentLeadId,
             event_type: 'whatsapp_click',
             tour_selected: tourName,
             utm_source: UTM_SOURCE,
@@ -294,6 +295,8 @@ window.trackWhatsApp = function(tourName) {{
             utm_campaign: UTM_CAMPAIGN,
             utm_content: UTM_CONTENT,
             utm_term: UTM_TERM,
+            time_on_page: timeSpentClick,
+            scroll_depth: window.vcpMaxScroll || 0,
             user_agent: navigator.userAgent,
             status: 'nuevo'
         }});
@@ -307,9 +310,8 @@ window.trackWhatsApp = function(tourName) {{
                 'Content-Type': 'application/json',
                 'Prefer': 'return=minimal'
             }},
-            body: payload,
-            keepalive: true
-        }}).catch(() => {{}}); // Completamente silencioso
+            body: payload
+        }}).catch(e => console.error(e)); // Silencioso si falla
     }}
 }}
 
@@ -317,13 +319,13 @@ window.trackWhatsApp = function(tourName) {{
 document.addEventListener("visibilitychange", function() {{
     if (document.visibilityState === 'hidden') {{
         if (SB_URL && SB_KEY) {{
-            const timeSpent = Math.round((Date.now() - startTime) / 1000);
+            const timeSpent = Math.round((Date.now() - (window.vcpStartTime || Date.now())) / 1000);
             const payload = JSON.stringify({{
                 lead_id: currentLeadId,
                 event_type: 'engagement',
                 tour_selected: 'PAGE_LEAVE',
                 time_on_page: timeSpent,
-                scroll_depth: maxScroll,
+                scroll_depth: window.vcpMaxScroll || 0,
                 utm_source: UTM_SOURCE,
                 utm_medium: UTM_MEDIUM,
                 utm_campaign: UTM_CAMPAIGN,
@@ -342,8 +344,7 @@ document.addEventListener("visibilitychange", function() {{
                     'Content-Type': 'application/json',
                     'Prefer': 'return=minimal'
                 }},
-                body: payload,
-                keepalive: true
+                body: payload
             }}).catch(() => {{}}); 
         }}
     }}
