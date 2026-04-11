@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 from supabase import create_client, Client
 import os
 from datetime import datetime
@@ -231,40 +232,11 @@ st.markdown("""
         transform: scale(1.03); /* Zoom elegante a la imagen */
     }
 </style>
-
-<script>
-    // Sistema de Tracking Optimizado (Global Scope)
-    window.vcpStartTime = window.vcpStartTime || Date.now();
-    window.vcpMaxScroll = window.vcpMaxScroll || 0;
-    let scrollTimeout;
-
-    window.onscroll = function() {
-        // Debouncer: evitamos sobrecargar el CPU del celular
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            let scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            let scrolled = Math.round((scrollTop / scrollHeight) * 100);
-            if (scrolled > window.vcpMaxScroll) window.vcpMaxScroll = scrolled;
-            
-            const scrollInput = window.parent.document.querySelector('input[aria-label="scroll_val"]');
-            const timeInput = window.parent.document.querySelector('input[aria-label="time_val"]');
-            
-            if(scrollInput && timeInput) {
-                scrollInput.value = window.vcpMaxScroll;
-                timeInput.value = Math.round((Date.now() - window.vcpStartTime) / 1000);
-                // Disparar eventos para que Streamlit detecte el cambio a pesar del hidden
-                scrollInput.dispatchEvent(new Event('input', { bubbles: true }));
-                timeInput.dispatchEvent(new Event('input', { bubbles: true }));
-            }
-        }, 1000); // Actualiza máximo cada 1 segundo (Antes era instantáneo causando lag)
-    };
-</script>
 """, unsafe_allow_html=True)
 
 # --- INYECTAR CREDENCIALES Y FUNCIÓN DE WHATSAPP ---
 lead_id = st.session_state.lead_id
-st.markdown(f"""
+components.html(f"""
 <script>
 const SB_URL = "{SB_URL}";
 const SB_KEY = "{SB_KEY}";
@@ -275,20 +247,39 @@ const UTM_CAMPAIGN = "{utms['utm_campaign']}";
 const UTM_CONTENT = "{utms['utm_content']}";
 const UTM_TERM = "{utms['utm_term']}";
 
-// 1. Persistencia: Aseguramos que la Sesión no se pierda en LocalStorage
-let currentLeadId = localStorage.getItem("vcp_lead_id");
+// 1. Acceder al DOM principal de Streamlit
+const parentWindow = window.parent;
+const parentDoc = parentWindow.document;
+
+parentWindow.vcpStartTime = parentWindow.vcpStartTime || Date.now();
+parentWindow.vcpMaxScroll = parentWindow.vcpMaxScroll || 0;
+
+// 2. Persistencia en el navegador base
+let currentLeadId = parentWindow.localStorage.getItem("vcp_lead_id");
 if (!currentLeadId) {{
     currentLeadId = SERVER_LEAD_ID;
-    localStorage.setItem("vcp_lead_id", currentLeadId);
+    parentWindow.localStorage.setItem("vcp_lead_id", currentLeadId);
 }}
 
-// 2. Anti-fuga de Clics: Delegación de Eventos (Evita que Streamlit bloquee onclick)
-document.addEventListener('click', function(e) {{
+// 3. Sistema de Tracking de Scroll
+let scrollTimeout;
+parentWindow.onscroll = function() {{
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {{
+        let scrollTop = parentWindow.pageYOffset || parentDoc.documentElement.scrollTop;
+        let scrollHeight = parentDoc.documentElement.scrollHeight - parentDoc.documentElement.clientHeight;
+        let scrolled = Math.round((scrollTop / scrollHeight) * 100);
+        if (scrolled > parentWindow.vcpMaxScroll) parentWindow.vcpMaxScroll = scrolled;
+    }}, 1000);
+}};
+
+// 4. Delegación de Eventos para clics
+parentDoc.addEventListener('click', function(e) {{
     const waBtn = e.target.closest('.js-wa-btn');
     if (waBtn) {{
         const tourName = waBtn.getAttribute('data-tour');
         if (SB_URL && SB_KEY) {{
-            const timeSpentClick = Math.round((Date.now() - (window.vcpStartTime || Date.now())) / 1000);
+            const timeSpentClick = Math.round((Date.now() - parentWindow.vcpStartTime) / 1000);
             const payload = JSON.stringify({{
                 lead_id: currentLeadId,
                 event_type: 'whatsapp_click',
@@ -299,8 +290,8 @@ document.addEventListener('click', function(e) {{
                 utm_content: UTM_CONTENT,
                 utm_term: UTM_TERM,
                 time_on_page: timeSpentClick,
-                scroll_depth: window.vcpMaxScroll || 0,
-                user_agent: navigator.userAgent,
+                scroll_depth: parentWindow.vcpMaxScroll || 0,
+                user_agent: parentWindow.navigator.userAgent,
                 status: 'nuevo'
             }});
             fetch(SB_URL + '/rest/v1/leads_raw', {{
@@ -312,29 +303,29 @@ document.addEventListener('click', function(e) {{
                     'Prefer': 'return=minimal'
                 }},
                 body: payload
-            }}).catch(e => console.error(e));
+            }}).catch(err => console.error(err));
         }}
     }}
 }});
 
-// 4. Captura de "Engagement" múltiple (Abandono de página full coverage)
+// 5. Captura de Abandono (Engagement)
 function sendEngagement() {{
-    if (window.vcpEngagementSent) return;
+    if (parentWindow.vcpEngagementSent) return;
     if (SB_URL && SB_KEY) {{
-        window.vcpEngagementSent = true;
-        const timeSpent = Math.round((Date.now() - (window.vcpStartTime || Date.now())) / 1000);
+        parentWindow.vcpEngagementSent = true;
+        const timeSpent = Math.round((Date.now() - parentWindow.vcpStartTime) / 1000);
         const payload = JSON.stringify({{
             lead_id: currentLeadId,
             event_type: 'engagement',
             tour_selected: 'PAGE_LEAVE',
             time_on_page: timeSpent,
-            scroll_depth: window.vcpMaxScroll || 0,
+            scroll_depth: parentWindow.vcpMaxScroll || 0,
             utm_source: UTM_SOURCE,
             utm_medium: UTM_MEDIUM,
             utm_campaign: UTM_CAMPAIGN,
             utm_content: UTM_CONTENT,
             utm_term: UTM_TERM,
-            user_agent: navigator.userAgent,
+            user_agent: parentWindow.navigator.userAgent,
             status: 'visita_fin'
         }});
         fetch(SB_URL + '/rest/v1/leads_raw', {{
@@ -350,11 +341,11 @@ function sendEngagement() {{
     }}
 }}
 
-document.addEventListener("visibilitychange", function() {{ if (document.visibilityState === 'hidden') sendEngagement(); }});
-window.addEventListener("pagehide", sendEngagement);
-window.addEventListener("beforeunload", sendEngagement);
+parentDoc.addEventListener("visibilitychange", function() {{ if (parentDoc.visibilityState === 'hidden') sendEngagement(); }});
+parentWindow.addEventListener("pagehide", sendEngagement);
+parentWindow.addEventListener("beforeunload", sendEngagement);
 </script>
-""", unsafe_allow_html=True)
+""", height=0, width=0)
 
 
 # --- UI PRINCIPAL: HERO SECTION ---
