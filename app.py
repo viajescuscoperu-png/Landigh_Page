@@ -312,6 +312,42 @@ window.trackWhatsApp = function(tourName) {{
         }}).catch(() => {{}}); // Completamente silencioso
     }}
 }}
+
+// 4. Captura de "Engagement" (Segundos y Scroll al abandonar la página)
+document.addEventListener("visibilitychange", function() {{
+    if (document.visibilityState === 'hidden') {{
+        if (SB_URL && SB_KEY) {{
+            const timeSpent = Math.round((Date.now() - startTime) / 1000);
+            const payload = JSON.stringify({{
+                lead_id: currentLeadId,
+                event_type: 'engagement',
+                tour_selected: 'PAGE_LEAVE',
+                time_on_page: timeSpent,
+                scroll_depth: maxScroll,
+                utm_source: UTM_SOURCE,
+                utm_medium: UTM_MEDIUM,
+                utm_campaign: UTM_CAMPAIGN,
+                utm_content: UTM_CONTENT,
+                utm_term: UTM_TERM,
+                user_agent: navigator.userAgent,
+                status: 'visita_fin'
+            }});
+
+            // Enviar en silencio absoluto mientras la app se minimiza o cierra
+            fetch(SB_URL + '/rest/v1/leads_raw', {{
+                method: 'POST',
+                headers: {{
+                    'apikey': SB_KEY,
+                    'Authorization': 'Bearer ' + SB_KEY,
+                    'Content-Type': 'application/json',
+                    'Prefer': 'return=minimal'
+                }},
+                body: payload,
+                keepalive: true
+            }}).catch(() => {{}}); 
+        }}
+    }}
+}});
 </script>
 """, unsafe_allow_html=True)
 
@@ -319,7 +355,9 @@ window.trackWhatsApp = function(tourName) {{
 # --- UI PRINCIPAL: HERO SECTION ---
 st.markdown("""
 <div style="text-align:center; padding: 1.5rem 0 1rem 0;">
-    <h2 style="font-family:'Poppins',sans-serif; color:#0f172a; font-weight:800; margin:0; letter-spacing:-0.5px;">VIAJES <span style="color:#22d3ee;">CUSCO</span> PERÚ</h2>
+    <a href="https://viajescuscoperu.com/" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
+        <h2 style="font-family:'Poppins',sans-serif; color:#0f172a; font-weight:800; margin:0; letter-spacing:-0.5px;">VIAJES <span style="color:#22d3ee;">CUSCO</span> PERÚ</h2>
+    </a>
 </div>
 <div class="hero-section">
     <div class="hero-title">Aventura VIP em Cusco</div>
@@ -410,6 +448,7 @@ st.markdown("""
 <div style="text-align:center; margin-top:3rem; padding: 2rem; border-top: 1px solid #e2e8f0;">
     <div style="font-weight: 700; color: #1e293b; font-size: 1.1rem; margin-bottom: 0.5rem;">Viajes Cusco Peru</div>
     <div style="font-size:0.85rem; color:#64748b; margin-bottom: 1rem;">Especialistas em Turismo VIP no Peru 🇵🇪</div>
+    <a href="https://viajescuscoperu.com/" target="_blank" rel="noopener noreferrer" style="display:inline-block; margin-bottom:1.5rem; font-size:0.85rem; color:#0891b2; text-decoration:none; font-weight:700; border:1px solid #22d3ee; padding:6px 16px; border-radius:20px; background:rgba(34,211,238,0.1); transition:all 0.3s;">🌐 Visitar Site Oficial</a>
     <div style="font-size:0.75rem; color:#94a3b8;">© 2026 Todos os direitos reservados.</div>
 </div>
 """, unsafe_allow_html=True)
