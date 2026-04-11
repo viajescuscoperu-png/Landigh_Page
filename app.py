@@ -276,13 +276,17 @@ parentWindow.onscroll = function() {{
 // 4. Delegación de Eventos para clics
 parentDoc.addEventListener('click', function(e) {{
     const waBtn = e.target.closest('.js-wa-btn');
-    if (waBtn) {{
-        const tourName = waBtn.getAttribute('data-tour');
+    const webBtn = e.target.closest('.js-web-btn');
+    
+    if (waBtn || webBtn) {{
+        const isWa = !!waBtn;
+        const btn = waBtn || webBtn;
+        const tourName = btn.getAttribute('data-tour');
         if (SB_URL && SB_KEY) {{
             const timeSpentClick = Math.round((Date.now() - parentWindow.vcpStartTime) / 1000);
             const payload = JSON.stringify({{
                 lead_id: currentLeadId,
-                event_type: 'whatsapp_click',
+                event_type: isWa ? 'whatsapp_click' : 'web_click',
                 tour_selected: tourName,
                 utm_source: UTM_SOURCE,
                 utm_medium: UTM_MEDIUM,
@@ -351,7 +355,7 @@ parentWindow.addEventListener("beforeunload", sendEngagement);
 # --- UI PRINCIPAL: HERO SECTION ---
 st.markdown("""
 <div style="text-align:center; padding: 1.5rem 0 1rem 0;">
-    <a href="https://viajescuscoperu.com/" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
+    <a href="https://viajescuscoperu.com/" target="_blank" rel="noopener noreferrer" class="js-web-btn" data-tour="HEADER_LOGO" style="text-decoration:none;">
         <h2 style="font-family:'Poppins',sans-serif; color:#0f172a; font-weight:800; margin:0; letter-spacing:-0.5px;">VIAJES <span style="color:#22d3ee;">CUSCO</span> PERÚ</h2>
     </a>
 </div>
@@ -444,7 +448,7 @@ st.markdown("""
 <div style="text-align:center; margin-top:3rem; padding: 2rem; border-top: 1px solid #e2e8f0;">
     <div style="font-weight: 700; color: #1e293b; font-size: 1.1rem; margin-bottom: 0.5rem;">Viajes Cusco Peru</div>
     <div style="font-size:0.85rem; color:#64748b; margin-bottom: 1rem;">Especialistas em Turismo VIP no Peru 🇵🇪</div>
-    <a href="https://viajescuscoperu.com/" target="_blank" rel="noopener noreferrer" style="display:inline-block; margin-bottom:1.5rem; font-size:0.85rem; color:#0891b2; text-decoration:none; font-weight:700; border:1px solid #22d3ee; padding:6px 16px; border-radius:20px; background:rgba(34,211,238,0.1); transition:all 0.3s;">🌐 Visitar Site Oficial</a>
+    <a href="https://viajescuscoperu.com/" target="_blank" rel="noopener noreferrer" class="js-web-btn" data-tour="FOOTER_LINK" style="display:inline-block; margin-bottom:1.5rem; font-size:0.85rem; color:#0891b2; text-decoration:none; font-weight:700; border:1px solid #22d3ee; padding:6px 16px; border-radius:20px; background:rgba(34,211,238,0.1); transition:all 0.3s;">🌐 Visitar Site Oficial</a>
     <div style="font-size:0.75rem; color:#94a3b8;">© 2026 Todos os direitos reservados.</div>
 </div>
 """, unsafe_allow_html=True)
