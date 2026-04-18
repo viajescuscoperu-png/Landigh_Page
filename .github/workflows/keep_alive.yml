@@ -13,4 +13,4 @@ jobs:
     steps:
       - name: Wake up Streamlit App
         run: |
-          curl -I -s https://viajes-cusco-brasil.streamlit.app/ | grep -E "HTTP/1.1 200|HTTP/2 200" || echo "App is waking up or already awake"
+          curl -I -L -s --retry 3 https://promocion.streamlit.app/ | grep -E "HTTP/1.1 200|HTTP/2 200|HTTP/1.1 302|HTTP/2 302" || echo "App wake-up call sent"
