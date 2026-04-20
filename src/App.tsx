@@ -10,9 +10,9 @@ function App() {
   const { trackWhatsAppClick } = useTracking();
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col">
+    <div className="min-h-screen bg-white flex flex-col">
       <Header />
-      <main className="flex-grow container mx-auto px-4 py-8 max-w-4xl">
+      <main className="flex-grow container mx-auto px-4 py-10 max-w-4xl">
         <Hero />
         <OfferGrid onAction={trackWhatsAppClick} />
         <Testimonials />

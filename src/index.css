@@ -1,15 +1,17 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary-bg: #0f172a;
-  --color-accent: #f97316;
+  --color-brand-cyan: #06B6D4;
+  --color-brand-cyan-light: #22D3EE;
+  --color-brand-orange: #F97316;
+  --color-brand-dark: #020617;
   --color-whatsapp: #25D366;
   --color-whatsapp-hover: #128C7E;
 }
 
 @layer base {
   body {
-    @apply bg-slate-50 text-slate-900 antialiased;
-    font-family: 'Inter', sans-serif;
+    @apply bg-white text-slate-900 antialiased;
+    font-family: 'Poppins', sans-serif;
   }
 }
