@@ -1,6 +1,9 @@
 import { Phone, Mail, MapPin, Globe } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 export const Footer = () => {
+  const { langText } = useLanguage();
+
   return (
     <footer className="relative mt-20">
       {/* Mountain silhouette separator */}
@@ -28,7 +31,7 @@ export const Footer = () => {
                 VIAJES <span className="text-brand-orange">CUSCO</span> PERÚ
               </h3>
               <p className="text-slate-400 text-sm leading-relaxed mb-6">
-                Somos uma agência oficial de turismo certificada pelo Ministério de Turismo do Peru (MINCETUR). Especialistas em oferecer experiências inesquecíveis para brasileiros.
+                {langText('footer_desc')}
               </p>
               <div className="flex gap-3">
                 <SocialIcon href="https://www.facebook.com/viajescuscoperu">
@@ -45,30 +48,30 @@ export const Footer = () => {
 
             {/* Column 2: Quick Links */}
             <div>
-              <h4 className="text-sm font-bold uppercase tracking-wider text-brand-cyan mb-4">Links Úteis</h4>
+              <h4 className="text-sm font-bold uppercase tracking-wider text-brand-cyan mb-4">{langText('footer_title_links')}</h4>
               <ul className="space-y-3 text-sm text-slate-400">
-                <li><a href="https://viajescuscoperu.com/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">→ Site Oficial</a></li>
-                <li><a href="https://viajescuscoperu.com/destinos" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">→ Destinos</a></li>
-                <li><a href="https://viajescuscoperu.com/blog" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">→ Blog de Viagens</a></li>
-                <li><a href="https://wa.me/51970909088" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">→ Fale Conosco</a></li>
+                <li><a href="https://viajescuscoperu.com/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">→ {langText('footer_link_1')}</a></li>
+                <li><a href="https://viajescuscoperu.com/destinos" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">→ {langText('footer_link_2')}</a></li>
+                <li><a href="https://viajescuscoperu.com/blog" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">→ {langText('footer_link_3')}</a></li>
+                <li><a href="https://wa.me/51970909088" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">→ {langText('footer_link_4')}</a></li>
               </ul>
             </div>
 
             {/* Column 3: Contact */}
             <div>
-              <h4 className="text-sm font-bold uppercase tracking-wider text-brand-cyan mb-4">Contato</h4>
+              <h4 className="text-sm font-bold uppercase tracking-wider text-brand-cyan mb-4">{langText('footer_title_contact')}</h4>
               <ul className="space-y-3 text-sm text-slate-400">
                 <li className="flex items-center gap-2">
                   <Phone size={14} className="text-brand-cyan shrink-0" />
-                  <span>+51 970 909 088</span>
+                  <span>{langText('whatsapp_number')}</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Mail size={14} className="text-brand-cyan shrink-0" />
-                  <span>viajescuscoperu@gmail.com</span>
+                  <span>{langText('email')}</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <MapPin size={14} className="text-brand-cyan shrink-0 mt-0.5" />
-                  <span>Cusco, Perú 🇵🇪</span>
+                  <span>{langText('location')} 🇵🇪</span>
                 </li>
               </ul>
             </div>
@@ -77,7 +80,7 @@ export const Footer = () => {
           {/* Bottom bar */}
           <div className="border-t border-white/10 mt-10 pt-6 text-center">
             <p className="text-slate-500 text-xs">
-              © 2026 Viajes Cusco Perú. Todos os direitos reservados. Agência registrada no MINCETUR.
+              {langText('footer_copyright')}
             </p>
           </div>
         </div>

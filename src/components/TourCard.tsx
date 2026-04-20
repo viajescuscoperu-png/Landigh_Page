@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { MessageCircle, CheckCircle2 } from 'lucide-react';
 import type { Tour } from '../data/tours';
+import { useLanguage } from '../context/LanguageContext';
 
 interface TourCardProps {
   tour: Tour;
@@ -8,17 +9,24 @@ interface TourCardProps {
 }
 
 export const TourCard = ({ tour, onAction }: TourCardProps) => {
+  const { langText, language } = useLanguage();
   const phone = "51970909088";
-  const waLink = `https://wa.me/${phone}?text=${encodeURIComponent(tour.message)}`;
+  
+  // Use localized text
+  const message = tour.message[language];
+  const urgency = tour.urgency ? tour.urgency[language] : null;
+  const includes = tour.includes.map(inc => inc[language]);
+
+  const waLink = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 
   return (
     <motion.div 
       whileHover={{ y: -6 }}
       className="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 relative transition-all hover:border-brand-cyan/40 hover:shadow-brand-cyan/10 flex flex-col"
     >
-      {tour.urgency && (
+      {urgency && (
         <div className="absolute top-4 right-4 z-10 bg-brand-orange text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg animate-pulse uppercase tracking-wider">
-          🔥 {tour.urgency}
+          🔥 {urgency}
         </div>
       )}
       
@@ -41,7 +49,7 @@ export const TourCard = ({ tour, onAction }: TourCardProps) => {
         </div>
 
         <div className="space-y-2 mb-6 flex-grow">
-          {tour.includes.map((item, i) => (
+          {includes.map((item, i) => (
             <div key={i} className="flex items-center gap-2 text-slate-600 text-sm">
               <CheckCircle2 size={15} className="text-brand-cyan shrink-0" />
               <span>{item}</span>
@@ -57,7 +65,7 @@ export const TourCard = ({ tour, onAction }: TourCardProps) => {
           className="flex items-center justify-center gap-3 w-full bg-whatsapp hover:bg-whatsapp-hover text-white font-bold py-4 rounded-full shadow-lg shadow-green-500/25 transition-all hover:scale-[1.03] active:scale-[0.95] text-base mt-auto"
         >
           <MessageCircle size={22} fill="currentColor" />
-          Quero esta Oferta!
+          {langText('tour_button')}
         </a>
       </div>
     </motion.div>

@@ -1,11 +1,13 @@
 import { motion } from 'framer-motion';
 import { MessageCircle } from 'lucide-react';
 import { useTracking } from '../hooks/useTracking';
+import { useLanguage } from '../context/LanguageContext';
 
 export const FloatingWhatsApp = () => {
   const { trackWhatsAppClick } = useTracking();
+  const { langText } = useLanguage();
   const phone = "51970909088";
-  const message = "Olá! Gostaria de mais informações sobre as ofertas de Cusco.";
+  const message = langText('whatsapp_msg');
   const waLink = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 
   return (
