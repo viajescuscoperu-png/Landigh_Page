@@ -5,7 +5,7 @@ export const Footer = () => {
   const { langText } = useLanguage();
 
   return (
-    <footer className="relative mt-20">
+    <footer className="relative mt-10">
       {/* Smooth Wave Separator */}
       <div className="relative h-16 md:h-24 bg-white overflow-hidden leading-[0]">
         <svg 
@@ -21,8 +21,8 @@ export const Footer = () => {
       </div>
 
       {/* Footer content */}
-      <div className="bg-[#080d1e] text-white pt-10">
-        <div className="container mx-auto px-6 py-12 md:py-16">
+      <div className="bg-[#080d1e] text-white pt-2">
+        <div className="container mx-auto px-6 py-8 md:py-10">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8 lg:gap-12">
             
             {/* Column 1: Brand (Wider) */}
@@ -94,7 +94,7 @@ export const Footer = () => {
           </div>
 
           {/* Bottom bar */}
-          <div className="border-t border-white/10 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="border-t border-white/10 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-slate-500 text-sm">
               {langText('footer_copyright')}
             </p>
