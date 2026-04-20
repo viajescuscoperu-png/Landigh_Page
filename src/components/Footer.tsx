@@ -6,16 +6,16 @@ export const Footer = () => {
 
   return (
     <footer className="relative mt-20">
-      {/* Mountain silhouette separator */}
-      <div className="relative h-24 md:h-32 bg-white overflow-hidden">
+      {/* Smooth Wave Separator */}
+      <div className="relative h-16 md:h-24 bg-white overflow-hidden leading-[0]">
         <svg 
           viewBox="0 0 1440 120" 
-          className="absolute bottom-0 w-full text-brand-dark"
+          className="absolute bottom-0 w-full text-brand-dark h-full block"
           preserveAspectRatio="none"
         >
           <path 
             fill="currentColor" 
-            d="M0,120 L0,80 L120,40 L240,70 L360,20 L480,60 L600,10 L720,50 L840,5 L960,45 L1080,15 L1200,55 L1320,25 L1440,65 L1440,120 Z"
+            d="M0,60 C320,120 420,0 720,60 C1020,120 1120,0 1440,60 L1440,120 L0,120 Z"
           />
         </svg>
       </div>
