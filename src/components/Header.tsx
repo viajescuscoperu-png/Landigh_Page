@@ -27,7 +27,7 @@ export const Header = () => {
 
       {/* Main Nav - Dark bar with HUGE logo */}
       <div className="bg-[#0b132b] shadow-xl">
-        <div className="container mx-auto px-4 md:px-8 lg:px-16 py-3 flex items-center justify-start">
+        <div className="w-full px-4 md:px-8 lg:px-12 py-1.5 flex items-center justify-start">
           <a 
             href="https://viajescuscoperu.com/" 
             target="_blank" 
@@ -37,7 +37,7 @@ export const Header = () => {
             <img 
               src="/logo.png" 
               alt="Viajes Cusco Perú" 
-              className="w-48 md:w-80 h-auto object-contain"
+              className="w-48 md:w-72 lg:w-80 h-auto object-contain"
             />
           </a>
         </div>
