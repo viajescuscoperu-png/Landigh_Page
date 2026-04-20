@@ -155,38 +155,50 @@ export const testimonials = [
 export const faqs = [
   {
     question: {
-      pt: "Como funciona o pagamento?",
-      es: "¿Cómo funciona el pago?",
-      en: "How does the payment work?"
+      pt: "Como funciona o processo de reserva e pagamento?",
+      es: "¿Cómo es el proceso de reserva y pago?",
+      en: "How does the booking and payment process work?"
     },
     answer: {
-      pt: "Trabalhamos com reserva garantida. Você pode pagar via PIX, cartão de crédito ou transferência internacional com total segurança.",
-      es: "Trabajamos con reserva garantizada. Puedes pagar con tarjeta de crédito, PayPal o transferencia internacional de forma segura.",
-      en: "We work with guaranteed booking. You can pay via credit card, PayPal, or international transfer completely securely."
+      pt: "Para garantir sua experiência, trabalhamos com um sistema de reserva antecipada segura. O processo começa entrando em contato com nossos consultores via WhatsApp, onde confirmaremos datas e disponibilidade. Após a coordenação, você pode efetuar o pagamento através de métodos internacionais garantidos (PayPal, Cartão de Crédito, Western Union). Você receberá sua confirmação e ingressos digitais imediatamente após o pagamento.",
+      es: "Para garantizar tu experiencia, trabajamos con un sistema de reserva anticipada segura. El proceso inicia comunicándote con nuestros asesores vía WhatsApp, donde confirmaremos fechas y disponibilidad real. Una vez coordinado tu itinerario, podrás realizar tu pago a través de distintos métodos internacionales y 100% garantizados como PayPal, Tarjetas de Crédito, y transferencias Western Union. Recibirás tu confirmación y boletos digitales de inmediato una vez completado.",
+      en: "To guarantee your experience, we work with a secure advance booking system. The process begins by contacting our advisors via WhatsApp to confirm dates and availability. Once your itinerary is set, you can make your payment through guaranteed international methods such as PayPal, Credit Cards, and Western Union transfers. You will receive your confirmation and digital tickets immediately upon completion."
     }
   },
   {
     question: {
-      pt: "O atendimento é realmente em Português?",
-      es: "¿La atención es realmente en Español o Inglés?",
-      en: "Is the support really in English or Spanish?"
+      pt: "Os guias falam o meu idioma e qual é a sua qualificação?",
+      es: "¿Los guías hablan mi idioma y qué tan preparados están?",
+      en: "Do the guides speak my language and how qualified are they?"
     },
     answer: {
-      pt: "Sim! Somos especialistas no mercado brasileiro. Todos os nossos guias e suporte via WhatsApp falam português fluente.",
-      es: "¡Sí! Todos nuestros guías y el equipo de soporte de WhatsApp hablan español e inglés perfectamente.",
-      en: "Yes! All our guides and WhatsApp support staff speak fluent English and Spanish."
+      pt: "Com certeza! Para nós, a comunicação é fundamental. Contamos com guias turísticos oficiais altamente qualificados e certificados pelo MINCETUR. Todos os nossos passeios oferecem orientação fluente em português ou espanhol, para que você não perca nenhum detalhe da história inca. Além disso, a nossa assistência logística pelo WhatsApp está disponível 24 horas por dia no seu idioma preferido.",
+      es: "¡Por supuesto! Para nosotros la comunicación es fundamental para que vivas al máximo tu viaje. Contamos con un equipo de guías turísticos oficiales altamente capacitados y con aval de MINCETUR. Todos nuestros tours cuentan con la opción de ser guiados en Español fluido o Inglés, para que no te pierdas ningún detalle de la historia, las anécdotas y la magia de cada sitio arqueológico. Además, la asistencia logística vía WhatsApp está disponible 24/7.",
+      en: "Absolutely! For us, communication is fundamental. We have a team of highly trained official tour guides certified by MINCETUR. All our tours offer fluent English or Spanish guidance, so you do not miss any detail of the history, anecdotes, and magic of each archaeological site. Additionally, our WhatsApp logistics assistance is available 24/7 in your preferred language."
     }
   },
   {
     question: {
-      pt: "O mal de altitude é um problema?",
-      es: "¿El mal de altura es un problema?",
-      en: "Is altitude sickness a problem?"
+      pt: "Como vocês lidam com a doença da altitude (Soroche)?",
+      es: "¿Cómo manejan el mal de altura (Soroche) en los tours?",
+      en: "How do you handle altitude sickness (Soroche) on tours?"
     },
     answer: {
-      pt: "Nossos roteiros são planejados para aclimatação gradual. Oferecemos oxigênio em todos los tours e dicas essenciais de saúde.",
-      es: "Nuestras rutas están planificadas para aclimatación gradual. Ofrecemos oxígeno en todos los tours y consejos básicos de salud.",
-      en: "Our routes are planned for gradual acclimatization. We offer emergency oxygen on all tours and essential health tips."
+      pt: "Cusco fica a mais de 3.300 metros de altitude, então levamos sua saúde muito a sério. Em passeios de alta montanha, nosso transporte é equipado com kits de primeiros socorros e tubos de oxigênio emergencial. Além disso, nossos guias são treinados em prevenção e assistência imediata. Sempre recomendamos descansar no primeiro dia de chegada, alimentar-se de forma leve e beber bastante chá de coca.",
+      es: "Cusco se encuentra a más de 3,300 metros sobre el nivel del mar, por lo que tomamos tu bienestar físico muy en serio. Todas nuestras rutas están estratégicamente diseñadas. En caso de emergencias durante excursiones, nuestro equipo está dotado con botiquines de primeros auxilios y balones de oxígeno medicinal. Nuestros guías están entrenados en asistencia inmediata. Siempre recomendamos descansar el primer día y beber abundante mate de coca.",
+      en: "Cusco is located at over 3,300 meters above sea level, so we take your physical well-being very seriously. Our higher altitude routes are strategically designed. In case of emergencies during excursions, our team is equipped with first aid kits and emergency oxygen tanks. Our guides are trained in immediate assistance. We always recommend resting on the first day and drinking plenty of coca tea."
+    }
+  },
+  {
+    question: {
+      pt: "O que acontece se meu voo atrasar ou houver imprevistos?",
+      es: "¿Qué sucede si mi vuelo se retrasa o hay imprevistos?",
+      en: "What happens if my flight is delayed or there are unforeseen events?"
+    },
+    answer: {
+      pt: "Sabemos que viajar pode envolver mudanças repentinas, por isso nossa equipe de operações monitora constantemente a sua chegada. Se o seu voo atrasar, nossa equipe de traslado esperará por você no aeroporto sem nenhum custo adicional. Trabalhamos com flexibilidade máxima dentro do possível para remanejar o que for necessário e garantir que você tenha as melhores férias.",
+      es: "Sabemos que viajar puede implicar cambios logísticos repentinos, por lo que nuestro equipo de operaciones monitorea constantemente los estatus de vuelo de tu llegada. Si tu avión sufre un retraso, nuestro personal de traslado te esperará pacientemente en el aeropuerto sin costo adicional. Nuestro compromiso es brindarte la máxima tranquilidad desde tu arribo hasta tu despedida de Cusco.",
+      en: "We know that traveling can involve sudden logistical changes, so our operations team constantly monitors your arrival flight status. If your plane is delayed, our transfer staff will wait for you patiently at the airport at no additional cost. Our commitment is to provide you with maximum peace of mind from your arrival until your departure from Cusco."
     }
   }
 ];
