@@ -21,8 +21,8 @@ export const Header = () => {
         </div>
       </div>
 
-      {/* Main Nav - White bar with logo */}
-      <div className="bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm">
+      {/* Main Nav - Dark bar with logo */}
+      <div className="bg-brand-dark/95 backdrop-blur-md border-b border-white/10 shadow-xl">
         <div className="container mx-auto px-4 md:px-8 lg:px-16 py-4 flex items-center justify-start">
           <a 
             href="https://viajescuscoperu.com/" 
