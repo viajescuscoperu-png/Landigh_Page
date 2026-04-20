@@ -40,7 +40,7 @@ export const Header = () => {
             <img 
               src="/logo.png" 
               alt="Viajes Cusco Perú" 
-              className="w-28 md:w-40 lg:w-44 h-auto object-contain"
+              className="w-32 md:w-48 lg:w-56 h-auto object-contain"
             />
           </a>
 
@@ -48,21 +48,21 @@ export const Header = () => {
           <div className="flex items-center gap-3">
             <button 
               onClick={() => setLanguage('es')}
-              className={`flex items-center gap-1.5 text-xs transition-opacity ${language === 'es' ? 'text-white font-bold opacity-100' : 'text-white/50 hover:opacity-100'}`}
+              className={`flex items-center gap-1.5 text-sm transition-opacity ${language === 'es' ? 'text-white font-bold opacity-100' : 'text-white/50 hover:opacity-100'}`}
             >
               <span>ES</span>
             </button>
-            <span className="text-white/20 text-xs">|</span>
+            <span className="text-white/20 text-sm">|</span>
             <button 
               onClick={() => setLanguage('en')}
-              className={`flex items-center gap-1.5 text-xs transition-opacity ${language === 'en' ? 'text-white font-bold opacity-100' : 'text-white/50 hover:opacity-100'}`}
+              className={`flex items-center gap-1.5 text-sm transition-opacity ${language === 'en' ? 'text-white font-bold opacity-100' : 'text-white/50 hover:opacity-100'}`}
             >
               <span>EN</span>
             </button>
-            <span className="text-white/20 text-xs">|</span>
+            <span className="text-white/20 text-sm">|</span>
             <button 
               onClick={() => setLanguage('pt')}
-              className={`flex items-center gap-1.5 text-xs transition-opacity ${language === 'pt' ? 'text-white font-bold opacity-100' : 'text-white/50 hover:opacity-100'}`}
+              className={`flex items-center gap-1.5 text-sm transition-opacity ${language === 'pt' ? 'text-white font-bold opacity-100' : 'text-white/50 hover:opacity-100'}`}
             >
               <span>PT</span>
             </button>
