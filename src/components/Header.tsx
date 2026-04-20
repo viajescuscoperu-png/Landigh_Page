@@ -44,27 +44,28 @@ export const Header = () => {
             />
           </a>
 
-          {/* Language Switcher (Subtle) */}
-          <div className="flex items-center gap-3">
+          {/* Language Switcher (Pill Style) */}
+          <div className="flex items-center p-1 bg-white/10 rounded-full">
             <button 
               onClick={() => setLanguage('es')}
-              className={`flex items-center gap-1.5 text-sm transition-opacity ${language === 'es' ? 'text-white font-bold opacity-100' : 'text-white/50 hover:opacity-100'}`}
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-sm transition-all ${language === 'es' ? 'bg-white text-brand-dark font-bold shadow-sm' : 'text-white/70 hover:text-white font-medium'}`}
             >
-              <span>ES</span>
+              <span className="text-base leading-none">🇪🇸</span>
+              <span className="hidden sm:inline">Español</span>
             </button>
-            <span className="text-white/20 text-sm">|</span>
             <button 
               onClick={() => setLanguage('en')}
-              className={`flex items-center gap-1.5 text-sm transition-opacity ${language === 'en' ? 'text-white font-bold opacity-100' : 'text-white/50 hover:opacity-100'}`}
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-sm transition-all ${language === 'en' ? 'bg-white text-brand-dark font-bold shadow-sm' : 'text-white/70 hover:text-white font-medium'}`}
             >
-              <span>EN</span>
+              <span className="text-base leading-none">🇺🇸</span>
+              <span className="hidden sm:inline">English</span>
             </button>
-            <span className="text-white/20 text-sm">|</span>
             <button 
               onClick={() => setLanguage('pt')}
-              className={`flex items-center gap-1.5 text-sm transition-opacity ${language === 'pt' ? 'text-white font-bold opacity-100' : 'text-white/50 hover:opacity-100'}`}
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-sm transition-all ${language === 'pt' ? 'bg-white text-brand-dark font-bold shadow-sm' : 'text-white/70 hover:text-white font-medium'}`}
             >
-              <span>PT</span>
+              <span className="text-base leading-none">🇧🇷</span>
+              <span className="hidden sm:inline">Português</span>
             </button>
           </div>
         </div>
