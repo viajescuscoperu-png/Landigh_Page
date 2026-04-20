@@ -1,6 +1,5 @@
 import { Phone, Mail, MapPin } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
-import { Language } from '../data/translations';
 
 export const Header = () => {
   const { langText, language, setLanguage } = useLanguage();
