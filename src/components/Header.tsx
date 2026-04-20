@@ -29,18 +29,18 @@ export const Header = () => {
       </div>
 
       {/* Main Nav - Dark bar with HUGE logo and Language Switcher */}
-      <div className="bg-[#0b132b] shadow-xl">
-        <div className="w-full px-4 md:px-8 lg:px-12 py-0.5 flex items-center justify-between">
+      <div className="bg-[#0b132b] shadow-xl overflow-hidden">
+        <div className="w-full px-4 md:px-8 lg:px-12 py-1 flex items-center justify-between h-14 md:h-20">
           <a 
             href="https://viajescuscoperu.com/" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex items-center transition-transform hover:scale-105"
+            className="flex items-center transition-transform hover:scale-105 h-full"
           >
             <img 
               src="/logo.png" 
               alt="Viajes Cusco Perú" 
-              className="w-32 md:w-48 lg:w-56 h-auto object-contain"
+              className="h-full w-auto object-contain transform scale-[1.5] md:scale-[1.8] origin-left"
             />
           </a>
 
