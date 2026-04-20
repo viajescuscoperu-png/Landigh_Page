@@ -30,7 +30,7 @@ export const Header = () => {
 
       {/* Main Nav - Dark bar with HUGE logo and Language Switcher */}
       <div className="bg-[#0b132b] shadow-xl">
-        <div className="w-full px-4 md:px-8 lg:px-12 py-1 flex items-center justify-between">
+        <div className="w-full px-4 md:px-8 lg:px-12 py-0.5 flex items-center justify-between">
           <a 
             href="https://viajescuscoperu.com/" 
             target="_blank" 
@@ -40,7 +40,7 @@ export const Header = () => {
             <img 
               src="/logo.png" 
               alt="Viajes Cusco Perú" 
-              className="w-36 md:w-56 lg:w-64 h-auto object-contain"
+              className="w-28 md:w-40 lg:w-44 h-auto object-contain"
             />
           </a>
 
