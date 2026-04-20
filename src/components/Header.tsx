@@ -23,23 +23,18 @@ export const Header = () => {
 
       {/* Main Nav - White bar with logo */}
       <div className="bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-center">
+        <div className="container mx-auto px-4 md:px-8 lg:px-16 py-4 flex items-center justify-start">
           <a 
             href="https://viajescuscoperu.com/" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex items-center gap-3 group"
+            className="flex items-center group transition-transform hover:scale-105"
           >
-            {/* Logo icon - llama circle */}
-            <div className="w-10 h-10 rounded-full bg-brand-dark flex items-center justify-center text-white text-lg font-bold">
-              🦙
-            </div>
-            <div className="flex flex-col leading-none">
-              <span className="text-xl md:text-2xl font-extrabold tracking-tight text-brand-dark">
-                VIAJES <span className="text-brand-orange">CUSCO</span> PERÚ
-              </span>
-              <span className="text-[10px] text-slate-400 tracking-[0.2em] uppercase">Agência Oficial de Turismo</span>
-            </div>
+            <img 
+              src="/logo.png" 
+              alt="Viajes Cusco Perú" 
+              className="h-12 md:h-14 w-auto object-contain"
+            />
           </a>
         </div>
       </div>
