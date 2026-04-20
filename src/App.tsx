@@ -5,6 +5,7 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { Testimonials } from './components/Testimonials';
 import { Faq } from './components/Faq';
+import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 
 function App() {
   const { trackWhatsAppClick } = useTracking();
@@ -23,6 +24,7 @@ function App() {
         </div>
       </main>
       <Footer />
+      <FloatingWhatsApp />
     </div>
   );
 }
