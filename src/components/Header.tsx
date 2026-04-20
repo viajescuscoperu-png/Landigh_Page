@@ -5,10 +5,10 @@ export const Header = () => {
   const { langText, language, setLanguage } = useLanguage();
 
   return (
-    <header className="sticky top-0 z-50">
+    <header className="relative z-50">
       {/* Top Bar - Cyan contact strip */}
       <div className="bg-brand-cyan text-white text-xs md:text-sm shadow-md relative z-10">
-        <div className="container mx-auto px-4 py-2.5 flex flex-wrap items-center justify-between font-medium">
+        <div className="container mx-auto px-4 py-2 flex flex-wrap items-center justify-between font-medium">
           <div className="flex items-center gap-4 md:gap-8">
             <a href="https://wa.me/51970909088" className="flex items-center gap-1.5 hover:underline">
               <Phone size={14} />
@@ -30,7 +30,7 @@ export const Header = () => {
 
       {/* Main Nav - Dark bar with HUGE logo and Language Switcher */}
       <div className="bg-[#0b132b] shadow-xl">
-        <div className="w-full px-4 md:px-8 lg:px-12 py-1.5 flex items-center justify-between">
+        <div className="w-full px-4 md:px-8 lg:px-12 py-1 flex items-center justify-between">
           <a 
             href="https://viajescuscoperu.com/" 
             target="_blank" 
@@ -40,7 +40,7 @@ export const Header = () => {
             <img 
               src="/logo.png" 
               alt="Viajes Cusco Perú" 
-              className="w-48 md:w-72 lg:w-80 h-auto object-contain"
+              className="w-36 md:w-56 lg:w-64 h-auto object-contain"
             />
           </a>
 
