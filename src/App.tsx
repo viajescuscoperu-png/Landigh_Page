@@ -12,11 +12,15 @@ function App() {
   return (
     <div className="min-h-screen bg-white flex flex-col">
       <Header />
-      <main className="flex-grow container mx-auto px-4 py-10 max-w-4xl">
-        <Hero />
-        <OfferGrid onAction={trackWhatsAppClick} />
+      <main className="flex-grow">
+        <div className="container mx-auto px-4 md:px-8 lg:px-16 py-10 max-w-7xl">
+          <Hero />
+          <OfferGrid onAction={trackWhatsAppClick} />
+        </div>
         <Testimonials />
-        <Faq />
+        <div className="container mx-auto px-4 md:px-8 lg:px-16 max-w-7xl">
+          <Faq />
+        </div>
       </main>
       <Footer />
     </div>

@@ -4,8 +4,8 @@ import { motion } from 'framer-motion';
 
 export const Testimonials = () => {
   return (
-    <section className="py-16 bg-brand-dark rounded-3xl -mx-4 px-6 md:px-8 overflow-hidden my-14">
-      <div className="max-w-4xl mx-auto">
+    <section className="py-16 bg-brand-dark px-6 md:px-12 overflow-hidden">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-white mb-3">O que dizem os viajantes</h2>
           <p className="text-slate-400">Mais de 500 brasileiros já viveram essa aventura</p>

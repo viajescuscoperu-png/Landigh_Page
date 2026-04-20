@@ -7,7 +7,7 @@ export const Faq = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-16 max-w-2xl mx-auto px-4">
+    <section className="py-16 max-w-4xl mx-auto px-4">
       <div className="text-center mb-10">
         <HelpCircle className="mx-auto mb-4 text-brand-cyan" size={32} />
         <h2 className="text-3xl font-bold text-brand-dark mb-2">Tire suas dúvidas</h2>
