@@ -10,8 +10,11 @@ export const Hero = () => {
   const [timeLeft, setTimeLeft] = useState('02:45:00');
   
   // Form state
+  const [name, setName] = useState('');
   const [destination, setDestination] = useState('');
-  const [pax, setPax] = useState('');
+  const [date, setDate] = useState('');
+  const [adults, setAdults] = useState('2');
+  const [children, setChildren] = useState('0');
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -33,21 +36,25 @@ export const Hero = () => {
 
   const handleConsult = (e: React.FormEvent) => {
     e.preventDefault();
-    trackWhatsAppClick('Hero Form');
+    trackWhatsAppClick('Hero Form Expanded');
     
-    let msg = `Hola, quiero consultar disponibilidad.`;
-    if (destination) msg += ` Destino: ${destination}.`;
-    if (pax) msg += ` Pasajeros: ${pax}.`;
+    let msg = '';
     
-    // Convert logic depending on language can be added later, for now we keep it standard
     if(language === 'pt') {
-      msg = `Olá, quero verificar a disponibilidade.`;
-      if (destination) msg += ` Destino: ${destination}.`;
-      if (pax) msg += ` Passageiros: ${pax}.`;
+      msg = `Olá, meu nome é ${name}. Quero verificar a disponibilidade.`;
+      if (destination) msg += `\nDestino: ${destination}`;
+      if (date) msg += `\nData: ${date}`;
+      msg += `\nSomos ${adults} adultos e ${children} crianças.`;
     } else if (language === 'en') {
-      msg = `Hello, I want to check availability.`;
-      if (destination) msg += ` Destination: ${destination}.`;
-      if (pax) msg += ` Passengers: ${pax}.`;
+      msg = `Hello, my name is ${name}. I want to check availability.`;
+      if (destination) msg += `\nDestination: ${destination}`;
+      if (date) msg += `\nDate: ${date}`;
+      msg += `\nWe are ${adults} adults and ${children} children.`;
+    } else {
+      msg = `Hola, mi nombre es ${name}. Quiero consultar disponibilidad.`;
+      if (destination) msg += `\nDestino: ${destination}`;
+      if (date) msg += `\nFecha de llegada: ${date}`;
+      msg += `\nSomos ${adults} adultos y ${children} niños.`;
     }
 
     const waLink = `https://wa.me/51970909088?text=${encodeURIComponent(msg)}`;
@@ -114,11 +121,26 @@ export const Hero = () => {
           <div className="p-6 md:p-8">
             <h3 className="text-2xl font-bold text-center mb-6">{langText('hero_form_title')}</h3>
             
-            <form onSubmit={handleConsult} className="space-y-5">
+            <form onSubmit={handleConsult} className="space-y-4">
+              
+              {/* Name field */}
               <div>
-                <label className="block text-sm font-semibold text-slate-600 mb-2">{langText('hero_form_dest')}</label>
+                <label className="block text-sm font-semibold text-slate-600 mb-1.5">{langText('hero_form_name')}</label>
+                <input 
+                  type="text"
+                  required
+                  placeholder="Ej: Juan Pérez"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-slate-700 font-medium outline-none focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/20 transition-all"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </div>
+
+              {/* Destination */}
+              <div>
+                <label className="block text-sm font-semibold text-slate-600 mb-1.5">{langText('hero_form_dest')}</label>
                 <select 
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium outline-none focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/20 transition-all appearance-none"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-slate-700 font-medium outline-none focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/20 transition-all appearance-none"
                   value={destination}
                   onChange={(e) => setDestination(e.target.value)}
                 >
@@ -130,19 +152,40 @@ export const Hero = () => {
                 </select>
               </div>
 
+              {/* Date */}
               <div>
-                <label className="block text-sm font-semibold text-slate-600 mb-2">{langText('hero_form_pax')}</label>
-                <select 
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium outline-none focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/20 transition-all appearance-none"
-                  value={pax}
-                  onChange={(e) => setPax(e.target.value)}
-                >
-                  <option value="">-- Seleccionar --</option>
-                  <option value="1">1 persona</option>
-                  <option value="2">2 personas</option>
-                  <option value="3-4">3 a 4 personas</option>
-                  <option value="5+">5 o más (Grupo)</option>
-                </select>
+                <label className="block text-sm font-semibold text-slate-600 mb-1.5">{langText('hero_form_date')}</label>
+                <input 
+                  type="date"
+                  required
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-slate-700 font-medium outline-none focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/20 transition-all"
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
+                />
+              </div>
+
+              {/* Pax Row */}
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-semibold text-slate-600 mb-1.5">{langText('hero_form_adults')}</label>
+                  <input 
+                    type="number"
+                    min="1"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-slate-700 font-medium outline-none focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/20 transition-all"
+                    value={adults}
+                    onChange={(e) => setAdults(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-slate-600 mb-1.5">{langText('hero_form_kids')}</label>
+                  <input 
+                    type="number"
+                    min="0"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-slate-700 font-medium outline-none focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/20 transition-all"
+                    value={children}
+                    onChange={(e) => setChildren(e.target.value)}
+                  />
+                </div>
               </div>
 
               <button 

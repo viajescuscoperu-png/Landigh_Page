@@ -44,8 +44,11 @@ export const t: TranslationDictionary = {
 
   // Hero Form
   hero_form_title: { pt: "Verifique Disponibilidade", es: "Verifica Disponibilidad", en: "Check Availability" },
+  hero_form_name: { pt: "Nome*", es: "Nombre*", en: "Name*" },
   hero_form_dest: { pt: "Qual destino você procura?", es: "¿Qué destino buscas?", en: "Which destination are you looking for?" },
-  hero_form_pax: { pt: "Quantas pessoas viajam?", es: "¿Cuántas personas viajan?", en: "How many people are traveling?" },
+  hero_form_date: { pt: "Data de chegada*", es: "Fecha de llegada*", en: "Arrival date*" },
+  hero_form_adults: { pt: "Adultos", es: "Adultos", en: "Adults" },
+  hero_form_kids: { pt: "Crianças", es: "Niños", en: "Children" },
   hero_form_btn: { pt: "Cotar por WhatsApp agora", es: "Cotizar por WhatsApp ahora", en: "Quote via WhatsApp now" },
 
   // Offer Grid
