@@ -15,19 +15,38 @@ export const t: TranslationDictionary = {
   location: { pt: "Cusco, Perú", es: "Cusco, Perú", en: "Cusco, Peru" },
   
   // Hero
-  hero_timer: { pt: "Ofertas expiram em:", es: "Ofertas expiran en:", en: "Offers expire in:" },
+  hero_timer: { pt: "Oferta expira em:", es: "La oferta expira en:", en: "Offer expires in:" },
   hero_title_1: { pt: "Aventura", es: "Aventura", en: "VIP" },
   hero_title_vip: { pt: "VIP", es: "VIP", en: "Adventure" },
   hero_title_2: { pt: "em Cusco", es: "en Cusco", en: "in Cusco" },
   hero_subtitle: { 
-    pt: "Viva a magia dos Andes com atendimento oficial 100% em Português", 
-    es: "Vive la magia de los Andes con atención oficial 100% en Español", 
-    en: "Experience the magic of the Andes with official 100% English support" 
+    pt: "Viva a magia dos Andes com a agência n°1 de Cusco", 
+    es: "Vive la magia de los Andes con la agencia n°1 de Cusco", 
+    en: "Experience the magic of the Andes with Cusco's #1 agency" 
   },
-  hero_badge_1: { pt: "✅ Agência Oficial MINCETUR", es: "✅ Agencia Oficial MINCETUR", en: "✅ Official MINCETUR Agency" },
-  hero_badge_2: { pt: "🏷️ Membro APTAE", es: "🏷️ Miembro APTAE", en: "🏷️ APTAE Member" },
-  hero_badge_3: { pt: "⭐ TripAdvisor Premium", es: "⭐ TripAdvisor Premium", en: "⭐ TripAdvisor Premium" },
-  hero_social_proof: { pt: "Mais de 500 passageiros viajaram conosco este mês", es: "Más de 500 pasajeros viajaron con nosotros este mes", en: "Over 500 passengers traveled with us this month" },
+  
+  // Hero Checkmarks
+  hero_check_1: { 
+    pt: "Agência Oficial certificada pelo MINCETUR.", 
+    es: "Agencia Oficial certificada por MINCETUR.", 
+    en: "Official Agency certified by MINCETUR." 
+  },
+  hero_check_2: { 
+    pt: "Mais de 500 passageiros viajaram conosco este mês.", 
+    es: "Más de 500 pasajeros viajaron con nosotros este mes.", 
+    en: "Over 500 passengers traveled with us this month." 
+  },
+  hero_check_3: { 
+    pt: "Atendimento e frota 100% de operação direta.", 
+    es: "Atención y flota 100% de operación directa.", 
+    en: "100% direct operation service and fleet." 
+  },
+
+  // Hero Form
+  hero_form_title: { pt: "Verifique Disponibilidade", es: "Verifica Disponibilidad", en: "Check Availability" },
+  hero_form_dest: { pt: "Qual destino você procura?", es: "¿Qué destino buscas?", en: "Which destination are you looking for?" },
+  hero_form_pax: { pt: "Quantas pessoas viajam?", es: "¿Cuántas personas viajan?", en: "How many people are traveling?" },
+  hero_form_btn: { pt: "Cotar por WhatsApp agora", es: "Cotizar por WhatsApp ahora", en: "Quote via WhatsApp now" },
 
   // Offer Grid
   offer_title_1: { pt: "Ofertas", es: "Ofertas", en: "Exclusive" },
