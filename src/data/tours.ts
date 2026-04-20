@@ -96,35 +96,57 @@ export const tours: Tour[] = [
 
 export const testimonials = [
   {
-    name: "Ricardo Silva",
-    city: "São Paulo",
-    country: { pt: "Brasil", es: "Brasil", en: "Brazil" },
+    name: "Guadalupe Espadas",
+    city: "Turista",
+    country: { pt: "Verificada", es: "Verificada", en: "Verified" },
     content: {
-      pt: "Experiência incrível! O atendimento em português facilitou tudo. Machu Picchu é um sonho realizado.",
-      es: "¡Experiencia increíble! La atención en español facilitó todo. Machu Picchu es un sueño hecho realidad.",
-      en: "Amazing experience! The english support made everything easy. Machu Picchu is a dream come true."
+      pt: "Uma viagem maravilhosa graças à agência. Aproveitei ao máximo sem nenhuma preocupação. Super recomendado, o atendimento de Angel e Henry foi nota 10, sempre pendentes de tudo.",
+      es: "Un viaje maravilloso gracias a la agencia. Disfruté al máximo sin ninguna preocupación, desde que aterricé hasta mi regreso. Súper recomendado, la atención de Angel y Henry fue de 10.",
+      en: "A wonderful trip thanks to the agency. I enjoyed it to the fullest without any worries. Highly recommended, Angel and Henry's service was a 10, always attentive to every detail."
     },
     rating: 5
   },
   {
-    name: "Mariana Costa",
-    city: "Rio de Janeiro",
-    country: { pt: "Brasil", es: "Brasil", en: "Brazil" },
+    name: "Tani Calvario",
+    city: "Turista",
+    country: { pt: "Verificada", es: "Verificada", en: "Verified" },
     content: {
-      pt: "A agência é super profissional. O guia da Montanha Colorida foi muito paciente com a altitude.",
-      es: "La agencia es súper profesional. El guía de la Montaña de Siete Colores fue muy paciente con la altitud.",
-      en: "Super professional agency. The guide at Rainbow Mountain was very patient with the altitude."
+      pt: "Incrível experiência, super amáveis, cumpridores, confiáveis, prestativos, honestos, equipe com quem pode contar, mil estrelas.",
+      es: "Increíble experiencia, súper amables, cumplidos, confiables, serviciales, honestos, son equipo con el cual puedes contar, completamente recomendables, mil estrellas.",
+      en: "Incredible experience, super friendly, reliable, helpful, honest, a team you can count on, completely recommended, a thousand stars."
     },
     rating: 5
   },
   {
-    name: "João Pereira",
-    city: "Curitiba",
-    country: { pt: "Brasil", es: "Brasil", en: "Brazil" },
+    name: "Jose Luis Gomez",
+    city: "Turista",
+    country: { pt: "Verificado", es: "Verificado", en: "Verified" },
     content: {
-      pt: "Tudo pontual e organizado. O roteiro VIP superou minhas expectativas. Recomendo muito!",
-      es: "Todo puntual y organizado. El tour VIP superó mis expectativas. ¡Lo recomiendo mucho!",
-      en: "Punctual and organized. The VIP tour exceeded my expectations. Highly recommend!"
+      pt: "Excelente acompanhamento do Henry em toda a organização. Ele cuida dos mínimos detalhes. Os alojamentos são muito justos pelo preço.",
+      es: "Excelente acompañamiento de Henry en todos los aspectos organizativos. Él está en los más mínimos detalles. Los alojamentos son muy acordes al precio.",
+      en: "Excellent support from Henry in all organizational aspects. He pays attention to the smallest details. The accommodations are very reasonably priced."
+    },
+    rating: 5
+  },
+  {
+    name: "Luz Dary Fajardo",
+    city: "Turista",
+    country: { pt: "Verificada", es: "Verificada", en: "Verified" },
+    content: {
+      pt: "Viajei com minha família e fiquei muito satisfeita com os serviços. Foi um tour muito completo, o senhor Henry esteve sempre pendente. Preço justo.",
+      es: "Viaje con mi familia quedé muy satisfecha con los servicios prestados, fue un tour muy completo. El señor Henry estuvo siempre pendiente. Precio justo.",
+      en: "I traveled with my family and was very satisfied with the services. It was a very complete tour, Mr. Henry was always attentive. Fair price."
+    },
+    rating: 5
+  },
+  {
+    name: "Victoria Acosta",
+    city: "Turista",
+    country: { pt: "Verificada", es: "Verificada", en: "Verified" },
+    content: {
+      pt: "Passamos um momento agradável, foram pontuais, o guia muito atento e o preço acessível por uma boa experiência.",
+      es: "Pasamos un agradable momento, fueron puntuales, el guía muy atento y el precio accesible por una buena experiencia.",
+      en: "We had a pleasant time, they were punctual, the guide was very attentive and the price was accessible for a good experience."
     },
     rating: 5
   }
