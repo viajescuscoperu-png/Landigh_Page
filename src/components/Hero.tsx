@@ -6,12 +6,17 @@ export const Hero: React.FC = () => {
     <motion.section 
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="relative overflow-hidden bg-slate-900 rounded-3xl p-8 mb-10 text-center text-white shadow-2xl shadow-slate-900/20"
+      className="relative overflow-hidden bg-slate-900 rounded-[2rem] p-10 md:p-16 mb-12 text-center text-white shadow-2xl"
     >
       <div className="relative z-10">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-slate-50 to-slate-400 bg-clip-text text-transparent leading-tight">
+        <motion.h1 
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.2 }}
+          className="text-4xl md:text-6xl font-extrabold mb-6 bg-gradient-to-br from-white via-slate-200 to-slate-500 bg-clip-text text-transparent leading-[1.1] tracking-tight"
+        >
           Aventura VIP em Cusco
-        </h1>
+        </motion.h1>
         <p className="text-lg md:text-xl text-slate-400 font-light mb-8 max-w-2xl mx-auto">
           Viva a magia dos Andes com atendimento oficial 100% em Português
         </p>

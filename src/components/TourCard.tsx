@@ -46,10 +46,10 @@ export const TourCard: React.FC<TourCardProps> = ({ tour, onAction }) => {
           target="_blank"
           rel="noopener noreferrer"
           onClick={onAction}
-          className="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold py-4 rounded-2xl shadow-xl shadow-green-500/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
+          className="flex items-center justify-center gap-3 w-full bg-whatsapp hover:bg-whatsapp-hover text-white font-bold py-4.5 rounded-2xl shadow-xl shadow-green-500/30 transition-all hover:scale-[1.02] active:scale-[0.95] text-lg"
         >
-          <MessageCircle size={20} fill="currentColor" />
-          Reservar Tour Agora
+          <MessageCircle size={24} fill="currentColor" />
+          Reservar Agora
         </a>
       </div>
     </motion.div>
