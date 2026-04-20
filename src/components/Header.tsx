@@ -44,25 +44,27 @@ export const Header = () => {
             />
           </a>
 
-          {/* Language Switcher */}
-          <div className="flex items-center gap-2 bg-white/10 rounded-full p-1 border border-white/20">
+          {/* Language Switcher (Subtle) */}
+          <div className="flex items-center gap-3">
             <button 
               onClick={() => setLanguage('es')}
-              className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold transition-colors ${language === 'es' ? 'bg-white text-brand-dark' : 'text-white hover:bg-white/20'}`}
+              className={`flex items-center gap-1.5 text-xs transition-opacity ${language === 'es' ? 'text-white font-bold opacity-100' : 'text-white/50 hover:opacity-100'}`}
             >
-              🇪🇸 <span className="hidden sm:inline">Español</span>
+              <span>ES</span>
             </button>
+            <span className="text-white/20 text-xs">|</span>
             <button 
               onClick={() => setLanguage('en')}
-              className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold transition-colors ${language === 'en' ? 'bg-white text-brand-dark' : 'text-white hover:bg-white/20'}`}
+              className={`flex items-center gap-1.5 text-xs transition-opacity ${language === 'en' ? 'text-white font-bold opacity-100' : 'text-white/50 hover:opacity-100'}`}
             >
-              🇺🇸 <span className="hidden sm:inline">English</span>
+              <span>EN</span>
             </button>
+            <span className="text-white/20 text-xs">|</span>
             <button 
               onClick={() => setLanguage('pt')}
-              className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold transition-colors ${language === 'pt' ? 'bg-white text-brand-dark' : 'text-white hover:bg-white/20'}`}
+              className={`flex items-center gap-1.5 text-xs transition-opacity ${language === 'pt' ? 'text-white font-bold opacity-100' : 'text-white/50 hover:opacity-100'}`}
             >
-              🇧🇷 <span className="hidden sm:inline">Português</span>
+              <span>PT</span>
             </button>
           </div>
         </div>
