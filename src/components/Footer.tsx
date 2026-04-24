@@ -1,4 +1,3 @@
-import { Globe } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 export const Footer = () => {
