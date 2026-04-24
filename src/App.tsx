@@ -6,6 +6,7 @@ import { Footer } from './components/Footer';
 import { Testimonials } from './components/Testimonials';
 import { Faq } from './components/Faq';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
+import { StickyMobileCTA } from './components/StickyMobileCTA';
 
 import { LanguageProvider } from './context/LanguageContext';
 
@@ -28,6 +29,7 @@ function App() {
         </main>
         <Footer />
         <FloatingWhatsApp />
+        <StickyMobileCTA />
       </div>
     </LanguageProvider>
   );

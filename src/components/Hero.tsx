@@ -113,9 +113,33 @@ export const Hero = () => {
           className="bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden text-brand-dark"
         >
           {/* Header Card / Urgency */}
-          <div className="bg-brand-cyan/10 border-b border-brand-cyan/20 p-4 flex items-center justify-center gap-2 text-brand-dark font-bold text-sm">
-            <Timer className="text-brand-orange animate-pulse" size={18} />
-            {langText('hero_timer')} <span className="text-brand-orange font-black text-lg ml-1">{timeLeft}</span>
+          <div className="bg-brand-dark/5 border-b border-slate-100 p-6">
+            <p className="text-center text-xs font-bold text-slate-500 uppercase tracking-widest mb-4 flex items-center justify-center gap-2">
+              <Timer size={14} className="text-brand-orange" />
+              {langText('hero_timer')}
+            </p>
+            <div className="flex justify-center gap-3">
+              <div className="flex flex-col items-center">
+                <div className="bg-brand-dark text-white w-12 h-12 rounded-lg flex items-center justify-center text-xl font-black shadow-inner">
+                  {timeLeft.split(':')[0]}
+                </div>
+                <span className="text-[10px] font-bold text-slate-400 mt-1 uppercase">Hrs</span>
+              </div>
+              <div className="text-brand-dark font-black text-xl pt-2">:</div>
+              <div className="flex flex-col items-center">
+                <div className="bg-brand-dark text-white w-12 h-12 rounded-lg flex items-center justify-center text-xl font-black shadow-inner">
+                  {timeLeft.split(':')[1]}
+                </div>
+                <span className="text-[10px] font-bold text-slate-400 mt-1 uppercase">Min</span>
+              </div>
+              <div className="text-brand-dark font-black text-xl pt-2">:</div>
+              <div className="flex flex-col items-center">
+                <div className="bg-brand-dark text-white w-12 h-12 rounded-lg flex items-center justify-center text-xl font-black shadow-inner animate-pulse">
+                  {timeLeft.split(':')[2]}
+                </div>
+                <span className="text-[10px] font-bold text-slate-400 mt-1 uppercase">Seg</span>
+              </div>
+            </div>
           </div>
 
           <div className="p-6 md:p-8">
