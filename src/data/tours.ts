@@ -68,11 +68,10 @@ export const tours: Tour[] = [
     },
     urgency: { pt: "Limitado", es: "Limitado", en: "Limited" },
     includes: [
-      { pt: "Experiência em altitude", es: "Experiencia en altitud", en: "High altitude experience" },
-      { pt: "Oxigênio a bordo", es: "Oxígeno a bordo", en: "Oxygen on board" },
+      { pt: "Café da manhã e almoço", es: "Desayuno y almuerzo", en: "Breakfast and lunch" },
+      { pt: "Transporte turístico", es: "Transporte turístico", en: "Tourist transport" },
       { pt: "Guia profissional", es: "Guía profesional", en: "Professional guide" },
-      { pt: "Almoço buffet incluso", es: "Almuerzo buffet incluido", en: "Buffet lunch included" },
-      { pt: "Café da manhã e transporte", es: "Desayuno y transporte", en: "Breakfast and transport" }
+      { pt: "Oxigênio a bordo", es: "Oxígeno a bordo", en: "Oxygen on board" }
     ]
   },
   {
@@ -86,7 +85,7 @@ export const tours: Tour[] = [
       es: "¡Hola! Quiero Pallay Punchu por USD 35.",
       en: "Hello! I want Pallay Punchu for USD 35."
     },
-    urgency: { pt: "Lugar exclusivo", es: "Lugar exclusivo", en: "Exclusive spot" },
+    urgency: { pt: "Apenas fins de semana!", es: "¡Solo fines de semana!", en: "Only weekends!" },
     includes: [
       { pt: "Novo destino 2026", es: "Nuevo destino 2026", en: "New 2026 destination" },
       { pt: "Configuração VIP", es: "Configuración VIP", en: "VIP setup" },
