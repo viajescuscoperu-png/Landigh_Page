@@ -65,14 +65,14 @@ export const Hero = () => {
     <motion.section 
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="relative overflow-hidden bg-brand-dark rounded-3xl mb-10 text-white shadow-2xl"
+      className="relative overflow-hidden bg-brand-dark md:rounded-3xl mb-6 md:mb-10 text-white shadow-2xl"
     >
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" />
       </div>
 
-      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 p-6 md:p-12 lg:p-16 items-center">
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-12 p-5 md:p-12 lg:p-16 items-center">
         
         {/* Left Column: Content */}
         <div className="text-left">
@@ -80,12 +80,12 @@ export const Hero = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-5xl lg:text-6xl font-extrabold mb-4 leading-[1.1] tracking-tight"
+            className="text-2xl md:text-5xl lg:text-6xl font-extrabold mb-2 md:mb-4 leading-tight tracking-tight"
           >
             {langText('hero_title_1')} <span className="bg-brand-cyan text-brand-dark px-2 rounded-lg inline-block transform -rotate-2">{langText('hero_title_vip')}</span> <br className="hidden md:block" /> {langText('hero_title_2')}
           </motion.h1>
 
-          <p className="text-base md:text-xl text-slate-300 font-light mb-6 md:mb-10 max-w-lg leading-relaxed">
+          <p className="text-sm md:text-xl text-slate-300 font-light mb-4 md:mb-10 max-w-lg leading-relaxed">
             {langText('hero_subtitle')}
           </p>
           
@@ -110,46 +110,59 @@ export const Hero = () => {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2 }}
-          className="bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden text-brand-dark"
+          className="bg-white rounded-xl md:rounded-2xl shadow-xl border border-slate-100 overflow-hidden text-brand-dark"
         >
           {/* Header Card / Urgency */}
-          <div className="bg-brand-dark/5 border-b border-slate-100 p-4 md:p-6">
-            <p className="text-center text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-widest mb-3 md:mb-4 flex items-center justify-center gap-2">
-              <Timer size={14} className="text-brand-orange" />
-              {langText('hero_timer')}
-            </p>
-            <div className="flex justify-center gap-2 md:gap-3">
-              <div className="flex flex-col items-center">
-                <div className="bg-brand-dark text-white w-10 h-10 md:w-12 md:h-12 rounded-lg flex items-center justify-center text-lg md:text-xl font-black shadow-inner">
-                  {timeLeft.split(':')[0]}
+          <div className="bg-brand-dark/5 border-b border-slate-100 p-3 md:p-6">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4">
+              <p className="text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-widest flex items-center gap-2">
+                <Timer size={14} className="text-brand-orange" />
+                {langText('hero_timer')}
+              </p>
+              
+              {/* Desktop Boxes */}
+              <div className="hidden md:flex justify-center gap-3">
+                <div className="flex flex-col items-center">
+                  <div className="bg-brand-dark text-white w-12 h-12 rounded-lg flex items-center justify-center text-xl font-black shadow-inner">
+                    {timeLeft.split(':')[0]}
+                  </div>
+                  <span className="text-[10px] font-bold text-slate-400 mt-1 uppercase">Hrs</span>
                 </div>
-                <span className="text-[9px] md:text-[10px] font-bold text-slate-400 mt-1 uppercase">Hrs</span>
+                <div className="text-brand-dark font-black text-xl pt-2">:</div>
+                <div className="flex flex-col items-center">
+                  <div className="bg-brand-dark text-white w-12 h-12 rounded-lg flex items-center justify-center text-xl font-black shadow-inner">
+                    {timeLeft.split(':')[1]}
+                  </div>
+                  <span className="text-[10px] font-bold text-slate-400 mt-1 uppercase">Min</span>
+                </div>
+                <div className="text-brand-dark font-black text-xl pt-2">:</div>
+                <div className="flex flex-col items-center">
+                  <div className="bg-brand-dark text-white w-12 h-12 rounded-lg flex items-center justify-center text-xl font-black shadow-inner animate-pulse">
+                    {timeLeft.split(':')[2]}
+                  </div>
+                  <span className="text-[10px] font-bold text-slate-400 mt-1 uppercase">Seg</span>
+                </div>
               </div>
-              <div className="text-brand-dark font-black text-lg md:text-xl pt-1 md:pt-2">:</div>
-              <div className="flex flex-col items-center">
-                <div className="bg-brand-dark text-white w-10 h-10 md:w-12 md:h-12 rounded-lg flex items-center justify-center text-lg md:text-xl font-black shadow-inner">
-                  {timeLeft.split(':')[1]}
-                </div>
-                <span className="text-[9px] md:text-[10px] font-bold text-slate-400 mt-1 uppercase">Min</span>
-              </div>
-              <div className="text-brand-dark font-black text-lg md:text-xl pt-1 md:pt-2">:</div>
-              <div className="flex flex-col items-center">
-                <div className="bg-brand-dark text-white w-10 h-10 md:w-12 md:h-12 rounded-lg flex items-center justify-center text-lg md:text-xl font-black shadow-inner animate-pulse">
-                  {timeLeft.split(':')[2]}
-                </div>
-                <span className="text-[9px] md:text-[10px] font-bold text-slate-400 mt-1 uppercase">Seg</span>
+
+              {/* Mobile Single Line */}
+              <div className="md:hidden text-lg font-black text-brand-dark tracking-tighter flex items-center gap-1">
+                <span className="bg-brand-dark text-white px-2 py-0.5 rounded">{timeLeft.split(':')[0]}</span>
+                <span>:</span>
+                <span className="bg-brand-dark text-white px-2 py-0.5 rounded">{timeLeft.split(':')[1]}</span>
+                <span>:</span>
+                <span className="bg-brand-dark text-white px-2 py-0.5 rounded animate-pulse text-brand-orange">{timeLeft.split(':')[2]}</span>
               </div>
             </div>
           </div>
 
-          <div className="p-5 md:p-8">
-            <h3 className="text-xl md:text-2xl font-bold text-center mb-4 md:mb-6">{langText('hero_form_title')}</h3>
+          <div className="p-4 md:p-8">
+            <h3 className="text-lg md:text-2xl font-bold text-center mb-3 md:mb-6">{langText('hero_form_title')}</h3>
             
-            <form onSubmit={handleConsult} className="space-y-3 md:space-y-4">
+            <form onSubmit={handleConsult} className="space-y-2.5 md:space-y-4">
               
               {/* Name field */}
               <div>
-                <label className="block text-xs font-semibold text-slate-600 mb-1">{langText('hero_form_name')}</label>
+                <label className="block text-[10px] md:text-xs font-semibold text-slate-600 mb-1">{langText('hero_form_name')}</label>
                 <input 
                   type="text"
                   required
