@@ -32,7 +32,8 @@ export const tours: Tour[] = [
       { pt: "Bilhetes de trem inclusos", es: "Tickets de tren incluidos", en: "Train tickets included" },
       { pt: "Guia oficial em Português", es: "Guía oficial en Español", en: "Official English Guide" },
       { pt: "Entradas para a cidadela", es: "Entradas a la ciudadela", en: "Entrance to the citadel" },
-      { pt: "Traslado hotel-estação", es: "Traslado hotel-estación", en: "Hotel-station transfer" }
+      { pt: "Traslado hotel-estação", es: "Traslado hotel-estación", en: "Hotel-station transfer" },
+      { pt: "Ônibus de subida e descida", es: "Bus de subida y bajada", en: "Bus up and down" }
     ]
   },
   {
@@ -70,7 +71,8 @@ export const tours: Tour[] = [
       { pt: "Experiência em altitude", es: "Experiencia en altitud", en: "High altitude experience" },
       { pt: "Oxigênio a bordo", es: "Oxígeno a bordo", en: "Oxygen on board" },
       { pt: "Guia profissional", es: "Guía profesional", en: "Professional guide" },
-      { pt: "Almoço buffet incluso", es: "Almuerzo buffet incluido", en: "Buffet lunch included" }
+      { pt: "Almoço buffet incluso", es: "Almuerzo buffet incluido", en: "Buffet lunch included" },
+      { pt: "Café da manhã e transporte", es: "Desayuno y transporte", en: "Breakfast and transport" }
     ]
   },
   {
@@ -87,7 +89,6 @@ export const tours: Tour[] = [
     urgency: { pt: "Lugar exclusivo", es: "Lugar exclusivo", en: "Exclusive spot" },
     includes: [
       { pt: "Novo destino 2026", es: "Nuevo destino 2026", en: "New 2026 destination" },
-      { pt: "Acesso privado", es: "Acceso privado", en: "Private access" },
       { pt: "Configuração VIP", es: "Configuración VIP", en: "VIP setup" },
       { pt: "Lanche de trilha", es: "Snack de ruta", en: "Trail snack" }
     ]
