@@ -158,67 +158,57 @@ export const Hero = () => {
           <div className="p-4 md:p-8">
             <h3 className="text-lg md:text-2xl font-bold text-center mb-3 md:mb-6">{langText('hero_form_title')}</h3>
             
-            <form onSubmit={handleConsult} className="space-y-2.5 md:space-y-4">
+            <form onSubmit={handleConsult} className="space-y-2 md:space-y-3">
               
               {/* Name field */}
-              <div>
-                <label className="block text-[10px] md:text-xs font-semibold text-slate-600 mb-1">{langText('hero_form_name')}</label>
-                <input 
-                  type="text"
-                  required
-                  placeholder="Ej: Juan Pérez"
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-slate-700 font-medium outline-none focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/20 transition-all"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
-              </div>
+              <input 
+                type="text"
+                required
+                placeholder={langText('hero_form_name')}
+                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-2 text-sm text-slate-700 outline-none focus:border-brand-cyan transition-all"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
 
-              {/* Destination */}
-              <div>
-                <label className="block text-sm font-semibold text-slate-600 mb-1.5">{langText('hero_form_dest')}</label>
+              {/* Row 2: Destination and Date */}
+              <div className="grid grid-cols-2 gap-2">
                 <select 
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-slate-700 font-medium outline-none focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/20 transition-all appearance-none"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-lg px-2 py-2 text-sm text-slate-700 outline-none focus:border-brand-cyan transition-all appearance-none"
                   value={destination}
                   onChange={(e) => setDestination(e.target.value)}
                 >
-                  <option value="">-- Seleccionar --</option>
-                  <option value="Machu Picchu">Machu Picchu</option>
-                  <option value="Montaña de Colores">Montaña de Colores</option>
-                  <option value="Laguna Humantay">Laguna Humantay</option>
-                  <option value="Paquete Completo">Paquete Completo (Varios Días)</option>
+                  <option value="">{langText('hero_form_dest').split(':')[0]}</option>
+                  <option value="Machu Picchu">M. Picchu</option>
+                  <option value="Montaña de Colores">Montaña</option>
+                  <option value="Laguna Humantay">Humantay</option>
                 </select>
-              </div>
-
-              {/* Date */}
-              <div>
-                <label className="block text-sm font-semibold text-slate-600 mb-1.5">{langText('hero_form_date')}</label>
                 <input 
                   type="date"
                   required
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-slate-700 font-medium outline-none focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/20 transition-all"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-lg px-2 py-2 text-sm text-slate-700 outline-none focus:border-brand-cyan transition-all"
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
                 />
               </div>
 
-              {/* Pax Row */}
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-semibold text-slate-600 mb-1.5">{langText('hero_form_adults')}</label>
+              {/* Row 3: Pax */}
+              <div className="grid grid-cols-2 gap-2">
+                <div className="relative">
+                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[10px] font-bold text-slate-400 uppercase">Ads:</span>
                   <input 
                     type="number"
                     min="1"
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-slate-700 font-medium outline-none focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/20 transition-all"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-lg pl-10 pr-2 py-2 text-sm text-slate-700 outline-none"
                     value={adults}
                     onChange={(e) => setAdults(e.target.value)}
                   />
                 </div>
-                <div>
-                  <label className="block text-sm font-semibold text-slate-600 mb-1.5">{langText('hero_form_kids')}</label>
+                <div className="relative">
+                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[10px] font-bold text-slate-400 uppercase">Chd:</span>
                   <input 
                     type="number"
                     min="0"
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-slate-700 font-medium outline-none focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/20 transition-all"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-lg pl-10 pr-2 py-2 text-sm text-slate-700 outline-none"
                     value={children}
                     onChange={(e) => setChildren(e.target.value)}
                   />
@@ -227,14 +217,14 @@ export const Hero = () => {
 
               <button 
                 type="submit"
-                className="w-full flex items-center justify-center gap-2 bg-whatsapp hover:bg-whatsapp-hover text-white font-bold py-4 rounded-xl shadow-lg shadow-green-500/30 transition-all hover:-translate-y-1 mt-4 text-lg"
+                className="w-full flex items-center justify-center gap-2 bg-whatsapp hover:bg-whatsapp-hover text-white font-bold py-3 rounded-lg shadow-lg transition-all active:scale-95 text-base mt-2"
               >
-                <MessageCircle size={24} />
+                <MessageCircle size={20} />
                 {langText('hero_form_btn')}
               </button>
             </form>
             
-            <p className="text-center text-xs text-slate-400 mt-4 font-medium">
+            <p className="text-center text-[10px] text-slate-400 mt-3 font-medium">
               Respuestas en menos de 5 minutos ⚡
             </p>
           </div>
