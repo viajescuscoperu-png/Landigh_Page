@@ -19,13 +19,13 @@ export const tours: Tour[] = [
   {
     id: "mp-express",
     name: "Machu Picchu Express",
-    oldPrice: "$300 USD",
-    price: "SÓ $240 USD",
+    oldPrice: "300 USD",
+    price: "240 USD",
     image: "/machu.png",
     message: {
-      pt: "Olá! Quero aproveitar a oferta de Machu Picchu Express por $240 USD.",
-      es: "¡Hola! Quiero aprovechar la oferta de Machu Picchu Express por $240 USD.",
-      en: "Hello! I want to take advantage of the Machu Picchu Express offer for $240 USD."
+      pt: "Olá! Quero aproveitar a oferta de Machu Picchu Express por 240 USD.",
+      es: "¡Hola! Quiero aprovechar la oferta de Machu Picchu Express por 240 USD.",
+      en: "Hello! I want to take advantage of the Machu Picchu Express offer for 240 USD."
     },
     urgency: { pt: "Alta demanda!", es: "¡Alta demanda!", en: "High Demand!" },
     includes: [
@@ -38,8 +38,8 @@ export const tours: Tour[] = [
   {
     id: "humantay-vip",
     name: "Humantay Lake VIP",
-    oldPrice: "$35",
-    price: "SÓ $22 USD",
+    oldPrice: "35 USD",
+    price: "22 USD",
     image: "/humantay.png",
     message: {
       pt: "Olá! Quero Humantay Lake por USD 22.",
@@ -57,8 +57,8 @@ export const tours: Tour[] = [
   {
     id: "rainbow-mountain",
     name: "Rainbow Mountain",
-    oldPrice: "$35",
-    price: "SÓ $22 USD",
+    oldPrice: "35 USD",
+    price: "22 USD",
     image: "/rainbow.png",
     message: {
       pt: "Olá! Quero Rainbow Mountain por USD 22.",
@@ -76,8 +76,8 @@ export const tours: Tour[] = [
   {
     id: "pallay-punchu",
     name: "Pallay Punchu Intenso",
-    oldPrice: "$50",
-    price: "SÓ $35 USD",
+    oldPrice: "50 USD",
+    price: "35 USD",
     image: "/pallay.png",
     message: {
       pt: "Olá! Quero Pallay Punchu por USD 35.",
