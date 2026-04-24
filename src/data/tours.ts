@@ -52,6 +52,7 @@ export const tours: Tour[] = [
       { pt: "Transporte turístico VIP", es: "Transporte turístico VIP", en: "VIP tourist transport" },
       { pt: "Café da manhã e almoço", es: "Desayuno y almuerzo", en: "Breakfast and lunch" },
       { pt: "Bastões de caminhada", es: "Bastones de caminata", en: "Walking sticks" },
+      { pt: "Guia profissional", es: "Guía profesional", en: "Professional guide" },
       { pt: "Kit de primeiros socorros", es: "Kit de primeros auxilios", en: "First aid kit" }
     ]
   },
@@ -71,7 +72,8 @@ export const tours: Tour[] = [
       { pt: "Café da manhã e almoço", es: "Desayuno y almuerzo", en: "Breakfast and lunch" },
       { pt: "Transporte turístico", es: "Transporte turístico", en: "Tourist transport" },
       { pt: "Guia profissional", es: "Guía profesional", en: "Professional guide" },
-      { pt: "Oxigênio a bordo", es: "Oxígeno a bordo", en: "Oxygen on board" }
+      { pt: "Oxigênio a bordo", es: "Oxígeno a bordo", en: "Oxygen on board" },
+      { pt: "Bastões de caminhada", es: "Bastones de caminata", en: "Walking sticks" }
     ]
   },
   {
@@ -88,7 +90,9 @@ export const tours: Tour[] = [
     urgency: { pt: "Apenas fins de semana!", es: "¡Solo fines de semana!", en: "Only weekends!" },
     includes: [
       { pt: "Novo destino 2026", es: "Nuevo destino 2026", en: "New 2026 destination" },
-      { pt: "Configuração VIP", es: "Configuración VIP", en: "VIP setup" },
+      { pt: "Bastões de caminhada", es: "Bastones de caminata", en: "Walking sticks" },
+      { pt: "Guia profissional", es: "Guía profesional", en: "Professional guide" },
+      { pt: "Transporte turístico", es: "Transporte turístico", en: "Tourist transport" },
       { pt: "Lanche de trilha", es: "Snack de ruta", en: "Trail snack" }
     ]
   }
