@@ -37,11 +37,11 @@ export const Testimonials = () => {
               transition={{ duration: 0.3 }}
               className="md:bg-white/5 md:backdrop-blur-md md:border md:border-white/10 p-2 md:p-12 rounded-3xl relative text-center md:text-left"
             >
-              <Quote className="hidden md:block absolute top-6 right-8 text-brand-cyan/20" size={60} />
+              <Quote className="hidden md:block absolute top-6 right-8 text-brand-cyan/20 w-10 h-10 md:w-16 md:h-16" />
               
               <div className="flex justify-center md:justify-start gap-1 mb-2 md:mb-8">
                 {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
-                  <Star key={i} size={12} md:size={18} className="fill-brand-orange text-brand-orange" />
+                  <Star key={i} className="fill-brand-orange text-brand-orange w-3 h-3 md:w-4 md:h-4" />
                 ))}
               </div>
               
@@ -66,7 +66,7 @@ export const Testimonials = () => {
               onClick={prev}
               className="p-1 md:p-3 rounded-full bg-white/5 text-white"
             >
-              <ChevronLeft size={14} md:size={20} />
+              <ChevronLeft className="w-4 h-4 md:w-5 md:h-5" />
             </button>
             <div className="flex items-center gap-1 md:gap-2">
               {testimonials.map((_, i) => (
@@ -80,7 +80,7 @@ export const Testimonials = () => {
               onClick={next}
               className="p-1 md:p-3 rounded-full bg-white/5 text-white"
             >
-              <ChevronRight size={14} md:size={20} />
+              <ChevronRight className="w-4 h-4 md:w-5 md:h-5" />
             </button>
           </div>
         </div>

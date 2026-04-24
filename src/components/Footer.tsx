@@ -1,4 +1,4 @@
-import { Phone, Mail, MapPin, Globe } from 'lucide-react';
+import { Globe } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 export const Footer = () => {
@@ -46,17 +46,8 @@ const SocialIcon = ({ href, children, customClass }: { href: string; children: R
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className={`w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-slate-300 transition-all duration-300 hover:text-white hover:scale-110 ${customClass || 'hover:bg-brand-cyan'}`}
+    className={`w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/5 flex items-center justify-center text-slate-300 transition-all duration-300 hover:text-white hover:scale-110 ${customClass || 'hover:bg-brand-cyan'}`}
   >
     {children}
   </a>
-);
-
-const FooterLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
-  <li>
-    <a href={href} target="_blank" rel="noopener noreferrer" className="group flex items-center text-slate-400 hover:text-white transition-colors duration-300">
-      <span className="w-0 group-hover:w-3 opacity-0 group-hover:opacity-100 transition-all duration-300 overflow-hidden text-brand-cyan font-bold">▸</span>
-      <span className="group-hover:translate-x-1 transition-transform duration-300">{children}</span>
-    </a>
-  </li>
 );
