@@ -65,14 +65,14 @@ export const Hero = () => {
     <motion.section 
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="relative overflow-hidden bg-brand-dark rounded-3xl mb-14 text-white shadow-2xl"
+      className="relative overflow-hidden bg-brand-dark rounded-3xl mb-10 text-white shadow-2xl"
     >
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" />
       </div>
 
-      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 p-8 md:p-12 lg:p-16 items-center">
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 p-6 md:p-12 lg:p-16 items-center">
         
         {/* Left Column: Content */}
         <div className="text-left">
@@ -80,16 +80,16 @@ export const Hero = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-[1.1] tracking-tight"
+            className="text-3xl md:text-5xl lg:text-6xl font-extrabold mb-4 leading-[1.1] tracking-tight"
           >
-            {langText('hero_title_1')} <span className="bg-brand-cyan text-brand-dark px-2 rounded-lg inline-block transform -rotate-2">{langText('hero_title_vip')}</span> <br /> {langText('hero_title_2')}
+            {langText('hero_title_1')} <span className="bg-brand-cyan text-brand-dark px-2 rounded-lg inline-block transform -rotate-2">{langText('hero_title_vip')}</span> <br className="hidden md:block" /> {langText('hero_title_2')}
           </motion.h1>
 
-          <p className="text-lg md:text-xl text-slate-300 font-light mb-10 max-w-lg leading-relaxed">
+          <p className="text-base md:text-xl text-slate-300 font-light mb-6 md:mb-10 max-w-lg leading-relaxed">
             {langText('hero_subtitle')}
           </p>
           
-          <div className="space-y-4 mb-4">
+          <div className="space-y-3 mb-2 md:mb-4 hidden md:block">
             <div className="flex items-start gap-4">
               <CheckCircle2 className="text-brand-cyan shrink-0 mt-1" size={24} />
               <p className="text-slate-200 font-medium md:text-lg">{langText('hero_check_1')}</p>
@@ -113,43 +113,43 @@ export const Hero = () => {
           className="bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden text-brand-dark"
         >
           {/* Header Card / Urgency */}
-          <div className="bg-brand-dark/5 border-b border-slate-100 p-6">
-            <p className="text-center text-xs font-bold text-slate-500 uppercase tracking-widest mb-4 flex items-center justify-center gap-2">
+          <div className="bg-brand-dark/5 border-b border-slate-100 p-4 md:p-6">
+            <p className="text-center text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-widest mb-3 md:mb-4 flex items-center justify-center gap-2">
               <Timer size={14} className="text-brand-orange" />
               {langText('hero_timer')}
             </p>
-            <div className="flex justify-center gap-3">
+            <div className="flex justify-center gap-2 md:gap-3">
               <div className="flex flex-col items-center">
-                <div className="bg-brand-dark text-white w-12 h-12 rounded-lg flex items-center justify-center text-xl font-black shadow-inner">
+                <div className="bg-brand-dark text-white w-10 h-10 md:w-12 md:h-12 rounded-lg flex items-center justify-center text-lg md:text-xl font-black shadow-inner">
                   {timeLeft.split(':')[0]}
                 </div>
-                <span className="text-[10px] font-bold text-slate-400 mt-1 uppercase">Hrs</span>
+                <span className="text-[9px] md:text-[10px] font-bold text-slate-400 mt-1 uppercase">Hrs</span>
               </div>
-              <div className="text-brand-dark font-black text-xl pt-2">:</div>
+              <div className="text-brand-dark font-black text-lg md:text-xl pt-1 md:pt-2">:</div>
               <div className="flex flex-col items-center">
-                <div className="bg-brand-dark text-white w-12 h-12 rounded-lg flex items-center justify-center text-xl font-black shadow-inner">
+                <div className="bg-brand-dark text-white w-10 h-10 md:w-12 md:h-12 rounded-lg flex items-center justify-center text-lg md:text-xl font-black shadow-inner">
                   {timeLeft.split(':')[1]}
                 </div>
-                <span className="text-[10px] font-bold text-slate-400 mt-1 uppercase">Min</span>
+                <span className="text-[9px] md:text-[10px] font-bold text-slate-400 mt-1 uppercase">Min</span>
               </div>
-              <div className="text-brand-dark font-black text-xl pt-2">:</div>
+              <div className="text-brand-dark font-black text-lg md:text-xl pt-1 md:pt-2">:</div>
               <div className="flex flex-col items-center">
-                <div className="bg-brand-dark text-white w-12 h-12 rounded-lg flex items-center justify-center text-xl font-black shadow-inner animate-pulse">
+                <div className="bg-brand-dark text-white w-10 h-10 md:w-12 md:h-12 rounded-lg flex items-center justify-center text-lg md:text-xl font-black shadow-inner animate-pulse">
                   {timeLeft.split(':')[2]}
                 </div>
-                <span className="text-[10px] font-bold text-slate-400 mt-1 uppercase">Seg</span>
+                <span className="text-[9px] md:text-[10px] font-bold text-slate-400 mt-1 uppercase">Seg</span>
               </div>
             </div>
           </div>
 
-          <div className="p-6 md:p-8">
-            <h3 className="text-2xl font-bold text-center mb-6">{langText('hero_form_title')}</h3>
+          <div className="p-5 md:p-8">
+            <h3 className="text-xl md:text-2xl font-bold text-center mb-4 md:mb-6">{langText('hero_form_title')}</h3>
             
-            <form onSubmit={handleConsult} className="space-y-4">
+            <form onSubmit={handleConsult} className="space-y-3 md:space-y-4">
               
               {/* Name field */}
               <div>
-                <label className="block text-sm font-semibold text-slate-600 mb-1.5">{langText('hero_form_name')}</label>
+                <label className="block text-xs font-semibold text-slate-600 mb-1">{langText('hero_form_name')}</label>
                 <input 
                   type="text"
                   required
