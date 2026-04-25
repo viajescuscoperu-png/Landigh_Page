@@ -73,7 +73,7 @@ export const Hero = () => {
 
   const handleConsult = (e: React.FormEvent) => {
     e.preventDefault();
-    trackWhatsAppClick('Hero Form Expanded');
+    trackWhatsAppClick('Hero Form Submission', 'hero_main_form');
     
     let msg = '';
     

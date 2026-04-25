@@ -1,8 +1,10 @@
 import { Phone, Mail, MapPin } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import { useTracking } from '../hooks/useTracking';
 
 export const Header = () => {
   const { langText, language, setLanguage } = useLanguage();
+  const { trackContactClick, trackSocialClick } = useTracking();
 
   return (
     <header className="relative z-50">
@@ -10,11 +12,19 @@ export const Header = () => {
       <div className="bg-brand-cyan text-white text-xs md:text-sm shadow-md relative z-10">
         <div className="container mx-auto px-4 py-2 flex flex-wrap items-center justify-between font-medium">
           <div className="flex items-center gap-4 md:gap-8">
-            <a href="https://wa.me/51970909088" className="flex items-center gap-1.5 hover:underline">
+            <a 
+              href="https://wa.me/51970909088" 
+              onClick={() => trackContactClick('phone')}
+              className="flex items-center gap-1.5 hover:underline"
+            >
               <Phone size={14} />
               <span>Whatsapp: {langText('whatsapp_number')}</span>
             </a>
-            <a href="mailto:viajescuscoperu@gmail.com" className="flex items-center gap-1.5 hover:underline">
+            <a 
+              href="mailto:viajescuscoperu@gmail.com" 
+              onClick={() => trackContactClick('email')}
+              className="flex items-center gap-1.5 hover:underline"
+            >
               <Mail size={14} />
               <span className="hidden sm:inline">{langText('email')}</span>
             </a>
@@ -33,6 +43,7 @@ export const Header = () => {
         <div className="w-full px-4 md:px-8 lg:px-12 py-1 flex items-center justify-between h-14 md:h-20">
           <a 
             href="https://viajescuscoperu.com/" 
+            onClick={() => trackSocialClick('main_website_logo')}
             target="_blank" 
             rel="noopener noreferrer"
             className="flex items-center transition-transform hover:scale-105 h-full"

@@ -15,7 +15,7 @@ export const FloatingWhatsApp = () => {
       href={waLink}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={() => trackWhatsAppClick('Floating Button')}
+      onClick={() => trackWhatsAppClick('Floating Button', 'floating_bubble')}
       className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-16 h-16 md:w-20 md:h-20 bg-whatsapp hover:bg-whatsapp-hover text-white rounded-full shadow-2xl hover:shadow-green-500/50 transition-all hover:scale-110"
       initial={{ scale: 0 }}
       animate={{ scale: 1 }}

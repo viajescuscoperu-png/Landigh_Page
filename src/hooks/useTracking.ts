@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from 'react';
+import { useEffect, useCallback, useRef } from 'react';
 import { createClient } from '@supabase/supabase-js';
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || '';
@@ -6,6 +6,10 @@ const supabaseKey = import.meta.env.VITE_SUPABASE_KEY || '';
 const supabase = (supabaseUrl && supabaseKey) ? createClient(supabaseUrl, supabaseKey) : null;
 
 export const useTracking = () => {
+  const currentLeadId = useRef<string | null>(null);
+  const maxScroll = useRef(0);
+  const startTime = useRef(Date.now());
+
   const getUtms = useCallback(() => {
     const params = new URLSearchParams(window.location.search);
     return {
@@ -17,7 +21,23 @@ export const useTracking = () => {
     };
   }, []);
 
-  const logEvent = useCallback(async (eventType: string, tourSelected: string = 'NONE') => {
+  const updateLeadData = useCallback(async (isFinal: boolean = false) => {
+    if (!supabase || !currentLeadId.current) return;
+
+    const timeOnPage = Math.floor((Date.now() - startTime.current) / 1000);
+    
+    try {
+      await supabase.from('leads_raw').update({
+        time_on_page: timeOnPage,
+        scroll_depth: maxScroll.current,
+        event_type: isFinal ? 'whatsapp_click' : 'page_view'
+      }).eq('id', currentLeadId.current);
+    } catch (error) {
+      console.error('Error updating lead stats:', error);
+    }
+  }, []);
+
+  const logInitialVisit = useCallback(async () => {
     if (!supabase) return;
 
     const utms = getUtms();
@@ -25,40 +45,125 @@ export const useTracking = () => {
     localStorage.setItem('vcp_lead_id', leadId);
 
     try {
-      await supabase.from('leads_raw').insert({
+      const { data, error } = await supabase.from('leads_raw').insert({
         lead_id: leadId,
-        event_type: eventType,
-        tour_selected: tourSelected,
+        event_type: 'page_view',
+        tour_selected: 'LANDING',
         ...utms,
         user_agent: navigator.userAgent,
-        status: 'nuevo'
-      });
+        status: 'visita'
+      }).select().single();
+
+      if (data) {
+        currentLeadId.current = data.id;
+      }
+      if (error) throw error;
     } catch (error) {
-      console.error('Tracking error:', error);
+      console.error('Initial tracking error:', error);
     }
   }, [getUtms]);
 
-  const trackWhatsAppClick = useCallback((tourName: string) => {
-    logEvent('whatsapp_click', tourName);
-    
+  const trackWhatsAppClick = useCallback(async (tourName: string, location: string = 'form') => {
     // Meta Pixel Lead Event
     if ((window as any).fbq) {
       (window as any).fbq('track', 'Lead', {
         content_name: tourName,
+        content_category: location,
         currency: 'USD'
       });
     }
-  }, [logEvent]);
+
+    if (!supabase || !currentLeadId.current) return;
+
+    try {
+      // Data Layer Push
+      (window as any).dataLayer = (window as any).dataLayer || [];
+      (window as any).dataLayer.push({
+        event: 'whatsapp_conversion',
+        tour_name: tourName,
+        button_location: location,
+        lead_id: currentLeadId.current
+      });
+
+      await supabase.from('leads_raw').update({
+        event_type: 'whatsapp_click',
+        tour_selected: `${tourName} (${location})`,
+        status: 'nuevo',
+        scroll_depth: maxScroll.current,
+        time_on_page: Math.floor((Date.now() - startTime.current) / 1000)
+      }).eq('id', currentLeadId.current);
+    } catch (error) {
+      console.error('WhatsApp tracking error:', error);
+    }
+  }, []);
+
+  const trackSocialClick = useCallback(async (platform: string) => {
+    if (!supabase || !currentLeadId.current) return;
+    
+    (window as any).dataLayer = (window as any).dataLayer || [];
+    (window as any).dataLayer.push({
+      event: 'social_click',
+      platform: platform
+    });
+
+    try {
+      await supabase.from('leads_raw').update({
+        notes: `Clic en redes sociales: ${platform}`,
+        scroll_depth: maxScroll.current
+      }).eq('id', currentLeadId.current);
+    } catch (error) {
+      console.error('Social tracking error:', error);
+    }
+  }, []);
+
+  const trackContactClick = useCallback(async (type: 'phone' | 'email') => {
+    if (!supabase || !currentLeadId.current) return;
+    
+    (window as any).dataLayer = (window as any).dataLayer || [];
+    (window as any).dataLayer.push({
+      event: 'contact_click',
+      contact_type: type
+    });
+
+    try {
+      await supabase.from('leads_raw').update({
+        event_type: `contact_${type}`,
+        scroll_depth: maxScroll.current
+      }).eq('id', currentLeadId.current);
+    } catch (error) {
+      console.error('Contact tracking error:', error);
+    }
+  }, []);
 
   useEffect(() => {
-    // Initial Page View
-    logEvent('PAGE_VIEW', 'LANDING');
+    logInitialVisit();
 
+    const handleScroll = () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = Math.round((winScroll / height) * 100);
+      
+      if (scrolled > maxScroll.current) {
+        maxScroll.current = scrolled;
+      }
+    };
+
+    // Sync stats every 10 seconds
+    const syncInterval = setInterval(() => updateLeadData(), 10000);
+
+    window.addEventListener('scroll', handleScroll);
+    
     // Meta Pixel PageView
     if ((window as any).fbq) {
       (window as any).fbq('track', 'PageView');
     }
-  }, [logEvent]);
 
-  return { trackWhatsAppClick };
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearInterval(syncInterval);
+      updateLeadData(); // Final sync on unmount
+    };
+  }, [logInitialVisit, updateLeadData]);
+
+  return { trackWhatsAppClick, trackSocialClick, trackContactClick };
 };

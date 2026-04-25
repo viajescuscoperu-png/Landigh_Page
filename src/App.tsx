@@ -11,7 +11,9 @@ import { StickyMobileCTA } from './components/StickyMobileCTA';
 import { LanguageProvider } from './context/LanguageContext';
 
 function App() {
-  const { trackWhatsAppClick } = useTracking();
+  const handleOfferClick = (tourName: string) => {
+    trackWhatsAppClick(tourName, 'offer_grid');
+  };
 
   return (
     <LanguageProvider>
@@ -20,7 +22,7 @@ function App() {
         <main className="flex-grow">
           <Hero />
           <div className="container mx-auto px-4 md:px-8 lg:px-16 py-10 max-w-7xl">
-            <OfferGrid onAction={trackWhatsAppClick} />
+            <OfferGrid onAction={handleOfferClick} />
           </div>
           <Testimonials />
           <div className="container mx-auto px-4 md:px-8 lg:px-16 max-w-7xl">
