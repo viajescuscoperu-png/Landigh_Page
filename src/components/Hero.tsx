@@ -120,17 +120,17 @@ export const Hero = () => {
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" />
       </div>
 
-      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-12 p-5 md:p-12 lg:p-16 items-center w-full">
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-12 p-5 md:p-12 lg:p-20 lg:pt-32 items-center w-full">
         
         {/* Left Column: Content */}
         <div className="text-left relative">
-          {/* Sello de Confianza o Dato Curioso Dinámico (Reposicionado para evitar choques) */}
-          <div className="absolute -top-24 -right-4 md:-top-32 md:-right-12 z-30 pointer-events-none">
+          {/* Sello de Confianza o Dato Curioso Dinámico (Reposicionado con más espacio) */}
+          <div className="absolute -top-28 -right-4 md:-top-32 md:-right-12 z-30 pointer-events-none">
             {curiosity ? (
               <motion.div 
                 initial={{ scale: 0.8, opacity: 0, rotate: -10 }}
                 animate={{ scale: 1, opacity: 1, rotate: 0 }}
-                className="bg-brand-orange text-white p-4 md:p-6 rounded-2xl shadow-[0_15px_40px_rgba(255,126,0,0.4)] flex flex-col max-w-[200px] md:max-w-[320px] border-2 border-white/40 pointer-events-auto"
+                className="bg-brand-orange text-white p-4 md:p-6 rounded-2xl shadow-[0_15px_40px_rgba(255,126,0,0.4)] flex flex-col max-w-[200px] md:max-w-[350px] border-2 border-white/40 pointer-events-auto"
               >
                 <div className="flex items-center gap-2 mb-2">
                   <Info size={20} className="text-white" />
@@ -155,7 +155,7 @@ export const Hero = () => {
           <motion.h1 
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
-            className="text-5xl md:text-7xl lg:text-[10rem] font-black mb-6 md:mb-8 leading-[0.8] tracking-tighter hero-text-shadow"
+            className="text-5xl md:text-7xl lg:text-8xl xl:text-[7rem] font-black mb-6 md:mb-8 leading-[0.9] tracking-tighter hero-text-shadow"
           >
             {dynamicContent.titleKey ? (
               <span className="text-gradient-cyan block text-glow">{langText(dynamicContent.titleKey)}</span>
@@ -167,7 +167,7 @@ export const Hero = () => {
             <span className="text-white block mt-2">{langText('hero_title_2')}</span>
           </motion.h1>
 
-          <p className="text-lg md:text-4xl text-white font-bold mb-8 md:mb-14 max-w-2xl leading-none hero-text-shadow">
+          <p className="text-lg md:text-3xl text-white font-bold mb-8 md:mb-14 max-w-2xl leading-snug hero-text-shadow">
             {langText('hero_subtitle')}
           </p>
           
