@@ -52,26 +52,9 @@ export const Footer = () => {
               </div>
             </div>
 
-            {/* Right: Copyright & Trust Badges */}
-            <div className="flex flex-col items-center md:items-end gap-3">
-              <div className="flex items-center gap-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
-                <img 
-                  src="https://upload.wikimedia.org/wikipedia/commons/0/02/TripAdvisor_Logo.svg" 
-                  alt="TripAdvisor" 
-                  className="h-5 md:h-7 w-auto brightness-200" 
-                />
-                <img 
-                  src="https://seeklogo.com/images/M/mincetur-logo-D9712C1B4A-seeklogo.com.png" 
-                  alt="Mincetur" 
-                  className="h-6 md:h-10 w-auto brightness-200" 
-                />
-                <img 
-                  src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Logotipo_Marca_Per%C3%BA.svg" 
-                  alt="Marca Perú" 
-                  className="h-6 md:h-10 w-auto brightness-200" 
-                />
-              </div>
-              <p className="text-slate-500 text-[10px] md:text-sm">
+            {/* Right: Copyright Only */}
+            <div className="flex flex-col items-center md:items-end">
+              <p className="text-slate-500 text-[10px] md:text-sm text-center md:text-right">
                 {langText('footer_copyright')}
               </p>
             </div>
