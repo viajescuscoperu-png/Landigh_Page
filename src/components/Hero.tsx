@@ -124,16 +124,16 @@ export const Hero = () => {
         
         {/* Left Column: Content */}
         <div className="text-left relative">
-          {/* Sello de Confianza o Dato Curioso Dinámico (Reposicionado con más espacio) */}
-          <div className="absolute -top-28 -right-4 md:-top-32 md:-right-12 z-30 pointer-events-none">
+          {/* Sello de Confianza o Dato Curioso Dinámico (Optimizado para móvil y PC) */}
+          <div className="relative md:absolute md:-top-32 md:-right-12 z-30 mb-6 md:mb-0 flex justify-center md:justify-end pointer-events-none">
             {curiosity ? (
               <motion.div 
-                initial={{ scale: 0.8, opacity: 0, rotate: -10 }}
-                animate={{ scale: 1, opacity: 1, rotate: 0 }}
-                className="bg-brand-orange text-white p-4 md:p-6 rounded-2xl shadow-[0_15px_40px_rgba(255,126,0,0.4)] flex flex-col max-w-[200px] md:max-w-[350px] border-2 border-white/40 pointer-events-auto"
+                initial={{ scale: 0.8, opacity: 0, y: 20 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                className="bg-brand-orange text-white p-4 md:p-6 rounded-2xl shadow-[0_15px_40px_rgba(255,126,0,0.4)] flex flex-col max-w-[90%] md:max-w-[350px] border-2 border-white/40 pointer-events-auto"
               >
                 <div className="flex items-center gap-2 mb-2">
-                  <Info size={20} className="text-white" />
+                  <Info size={18} className="text-white" />
                   <span className="text-[10px] md:text-xs font-black uppercase tracking-widest">¿SABÍAS QUE?</span>
                 </div>
                 <p className="text-xs md:text-base font-bold leading-tight italic">
