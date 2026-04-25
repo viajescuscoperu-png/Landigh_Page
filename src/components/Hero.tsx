@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Timer, CheckCircle2, MessageCircle } from 'lucide-react';
+import { Timer, CheckCircle2, MessageCircle, Info } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { useTracking } from '../hooks/useTracking';
+import { tours } from '../data/tours';
 
 export const Hero = () => {
   const { langText, language } = useLanguage();
@@ -14,6 +15,7 @@ export const Hero = () => {
     image: '/hero.png',
     titleKey: ''
   });
+  const [curiosity, setCuriosity] = useState<string | null>(null);
 
   // Form state
   const [name, setName] = useState('');
@@ -24,19 +26,33 @@ export const Hero = () => {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const tour = params.get('tour')?.toLowerCase();
+    const tourParam = params.get('tour')?.toLowerCase();
     
-    if (tour === 'rainbow' || tour === 'montana') {
+    if (tourParam === 'rainbow' || tourParam === 'montana') {
       setDynamicContent({ image: '/rainbow.png', titleKey: 'hero_title_rainbow' });
       setDestination('Montaña de Colores');
-    } else if (tour === 'humantay' || tour === 'laguna') {
+    } else if (tourParam === 'humantay' || tourParam === 'laguna') {
       setDynamicContent({ image: '/humantay.png', titleKey: 'hero_title_humantay' });
       setDestination('Laguna Humantay');
-    } else if (tour === 'premium') {
+    } else if (tourParam === 'premium') {
       setDynamicContent({ image: '/mp-premium.jpg', titleKey: 'hero_title_premium' });
       setDestination('Machu Picchu');
     }
-  }, []);
+
+    // Find curiosity
+    const foundTour = tours.find(t => 
+      t.id === tourParam || 
+      (tourParam === 'montana' && t.id === 'rainbow-mountain') || 
+      (tourParam === 'laguna' && t.id === 'humantay-vip') ||
+      (tourParam === 'rainbow' && t.id === 'rainbow-mountain')
+    );
+    
+    if (foundTour?.curiosity) {
+      setCuriosity(foundTour.curiosity[language]);
+    } else {
+      setCuriosity(null);
+    }
+  }, [language]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -108,16 +124,32 @@ export const Hero = () => {
         
         {/* Left Column: Content */}
         <div className="text-left relative">
-          {/* Sello de Confianza (Estilo SUNEDU Premium) */}
+          {/* Sello de Confianza o Dato Curioso Dinámico */}
           <div className="absolute -top-16 right-0 md:-top-24 md:-right-8 z-30">
-            <motion.div 
-              whileHover={{ scale: 1.1, rotate: 5 }}
-              className="bg-gradient-to-b from-brand-orange to-orange-700 text-white p-3 md:p-5 rounded-b-2xl shadow-[0_10px_30px_rgba(255,126,0,0.5)] flex flex-col items-center border-x-2 border-b-2 border-white/30"
-            >
-               <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] mb-1">Ranking</span>
-               <span className="text-2xl md:text-5xl font-black leading-none drop-shadow-md">N°1</span>
-               <span className="text-[8px] md:text-[11px] font-bold opacity-90 mt-1">CUSCO 2025</span>
-            </motion.div>
+            {curiosity ? (
+              <motion.div 
+                initial={{ scale: 0.8, opacity: 0, rotate: -10 }}
+                animate={{ scale: 1, opacity: 1, rotate: 0 }}
+                className="bg-brand-orange text-white p-4 md:p-6 rounded-2xl shadow-[0_15px_40px_rgba(255,126,0,0.4)] flex flex-col max-w-[200px] md:max-w-[280px] border-2 border-white/40"
+              >
+                <div className="flex items-center gap-2 mb-2">
+                  <Info size={20} className="text-white" />
+                  <span className="text-[10px] md:text-xs font-black uppercase tracking-widest">¿SABÍAS QUE?</span>
+                </div>
+                <p className="text-xs md:text-base font-bold leading-tight italic">
+                  "{curiosity}"
+                </p>
+              </motion.div>
+            ) : (
+              <motion.div 
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                className="bg-gradient-to-b from-brand-orange to-orange-700 text-white p-3 md:p-5 rounded-b-2xl shadow-[0_10px_30px_rgba(255,126,0,0.5)] flex flex-col items-center border-x-2 border-b-2 border-white/30"
+              >
+                 <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] mb-1">Ranking</span>
+                 <span className="text-2xl md:text-5xl font-black leading-none drop-shadow-md">N°1</span>
+                 <span className="text-[8px] md:text-[11px] font-bold opacity-90 mt-1">CUSCO 2025</span>
+              </motion.div>
+            )}
           </div>
 
           <motion.h1 

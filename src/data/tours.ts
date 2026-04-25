@@ -24,6 +24,11 @@ export const tours: Tour[] = [
     price: "299 USD",
     image: "/mp-premium.jpg",
     isGold: true,
+    curiosity: {
+      pt: "Sabia que Machu Picchu foi construída sem usar nem uma gota de argamassa entre as pedras?",
+      es: "¿Sabías que Machu Picchu fue construida sin usar ni una sola gota de mortero entre sus piedras?",
+      en: "Did you know Machu Picchu was built without using a single drop of mortar between its stones?"
+    },
     message: {
       pt: "Olá! Quero o pacote Machu Picchu Premium com Trem Panorâmico por 299 USD.",
       es: "¡Hola! Quiero el paquete Machu Picchu Premium con Tren Panorámico por 299 USD.",
@@ -44,6 +49,11 @@ export const tours: Tour[] = [
     oldPrice: "300 USD",
     price: "239 USD",
     image: "/machu.png",
+    curiosity: {
+      pt: "Sabia que Machu Picchu foi construída sem usar nem uma gota de argamassa entre as pedras?",
+      es: "¿Sabías que Machu Picchu fue construida sin usar ni una sola gota de mortero entre sus piedras?",
+      en: "Did you know Machu Picchu was built without using a single drop of mortar between its stones?"
+    },
     message: {
       pt: "Olá! Quero aproveitar a oferta de Machu Picchu Express por 239 USD.",
       es: "¡Hola! Quiero aprovechar la oferta de Machu Picchu Express por 239 USD.",
@@ -64,6 +74,11 @@ export const tours: Tour[] = [
     oldPrice: "35 USD",
     price: "23 USD",
     image: "/humantay.png",
+    curiosity: {
+      pt: "É uma lagoa sagrada onde as comunidades ainda fazem oferendas à Pachamama.",
+      es: "Es una laguna sagrada donde las comunidades aún realizan ofrendas a la Pachamama.",
+      en: "It is a sacred lagoon where communities still make offerings to Pachamama."
+    },
     message: {
       pt: "Olá! Quero Humantay Lake por USD 23.",
       es: "¡Hola! Quiero Humantay Lake por USD 23.",
@@ -84,6 +99,11 @@ export const tours: Tour[] = [
     oldPrice: "35 USD",
     price: "23 USD",
     image: "/rainbow.png",
+    curiosity: {
+      pt: "Suas cores são resultado de minerais oxidados por milhões de anos.",
+      es: "Sus colores son producto de minerales oxidados durante millones de años.",
+      en: "Its colors are the result of minerals oxidized over millions of years."
+    },
     message: {
       pt: "Olá! Quero Rainbow Mountain por USD 23.",
       es: "¡Hola! Quiero Rainbow Mountain por USD 23.",
@@ -104,6 +124,11 @@ export const tours: Tour[] = [
     oldPrice: "50 USD",
     price: "35 USD",
     image: "/pallay.png",
+    curiosity: {
+      pt: "É o novo destino secreto de Cusco, descoberto recentemente para o turismo.",
+      es: "Es el nuevo destino secreto de Cusco, descubierto recientemente para el turismo.",
+      en: "It is Cusco's new secret destination, recently discovered for tourism."
+    },
     message: {
       pt: "Olá! Quero Pallay Punchu por USD 35.",
       es: "¡Hola! Quiero Pallay Punchu por USD 35.",
