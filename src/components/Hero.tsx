@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Timer, CheckCircle2, MessageCircle, Info, User, MapPin, Calendar, Users } from 'lucide-react';
+import { Timer, CheckCircle2, MessageCircle, Info, MapPin, Calendar, Users } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { useTracking } from '../hooks/useTracking';
 import { tours } from '../data/tours';
@@ -18,7 +18,6 @@ export const Hero = () => {
   const [curiosity, setCuriosity] = useState<string | null>(null);
 
   // Form state
-  const [name, setName] = useState('');
   const [destination, setDestination] = useState('');
   const [date, setDate] = useState('');
   const [adults, setAdults] = useState('2');
