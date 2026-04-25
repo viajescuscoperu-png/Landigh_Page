@@ -123,20 +123,20 @@ export const Hero = () => {
           <motion.h1 
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
-            className="text-5xl md:text-7xl lg:text-9xl font-black mb-6 md:mb-8 leading-[0.85] tracking-tighter"
+            className="text-5xl md:text-7xl lg:text-[10rem] font-black mb-6 md:mb-8 leading-[0.8] tracking-tighter hero-text-shadow"
           >
             {dynamicContent.titleKey ? (
-              <span className="text-gradient-cyan block drop-shadow-2xl">{langText(dynamicContent.titleKey)}</span>
+              <span className="text-gradient-cyan block text-glow">{langText(dynamicContent.titleKey)}</span>
             ) : (
-              <span className="text-gradient-cyan block drop-shadow-2xl">
+              <span className="text-gradient-cyan block text-glow">
                 {langText('hero_title_1')} {langText('hero_title_vip')}
               </span>
             )}
-            <span className="text-white block mt-2 drop-shadow-lg">{langText('hero_title_2')}</span>
+            <span className="text-white block mt-2">{langText('hero_title_2')}</span>
           </motion.h1>
 
-          <p className="text-lg md:text-3xl text-slate-200 font-light mb-8 md:mb-14 max-w-2xl leading-tight drop-shadow-lg italic">
-            "{langText('hero_subtitle')}"
+          <p className="text-lg md:text-4xl text-white font-bold mb-8 md:mb-14 max-w-2xl leading-none hero-text-shadow">
+            {langText('hero_subtitle')}
           </p>
           
           <div className="space-y-4 mb-2 md:mb-4 hidden md:block">
