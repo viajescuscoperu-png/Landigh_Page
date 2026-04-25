@@ -14,6 +14,7 @@ export interface Tour {
   urgency?: LocalizedString;
   includes: LocalizedString[];
   isGold?: boolean;
+  curiosity?: LocalizedString;
 }
 
 export const tours: Tour[] = [
