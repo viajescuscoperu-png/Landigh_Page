@@ -108,103 +108,106 @@ export const Hero = () => {
         
         {/* Left Column: Content */}
         <div className="text-left relative">
-          {/* Floating Benefit Bubbles (BRIGHTER) */}
-          <div className="hidden xl:block absolute -top-16 -left-16 z-20">
+          {/* Floating Benefit Bubbles (Premium Glass Edition) */}
+          <div className="hidden xl:block absolute -top-20 -left-20 z-20">
              <motion.div 
-               animate={{ y: [0, -15, 0], rotate: [0, 5, 0] }}
-               transition={{ duration: 4, repeat: Infinity }}
-               className="bg-white/90 backdrop-blur-md border-2 border-brand-cyan p-4 rounded-full flex flex-col items-center justify-center w-28 h-28 shadow-[0_0_20px_rgba(0,210,255,0.3)]"
+               animate={{ y: [0, -20, 0], rotate: [0, 10, 0] }}
+               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+               className="glass-card p-6 rounded-full flex flex-col items-center justify-center w-32 h-32 border-brand-cyan/50"
              >
-                <span className="text-brand-dark font-black text-[11px] text-center leading-tight">GUÍAS<br/>OFICIALES</span>
+                <CheckCircle2 className="text-brand-cyan mb-1" size={24} />
+                <span className="text-white font-black text-[10px] text-center leading-tight uppercase tracking-tighter">Guías<br/>Certificados</span>
              </motion.div>
           </div>
           
-          <div className="hidden xl:block absolute top-48 -left-24 z-20">
+          <div className="hidden xl:block absolute top-60 -left-32 z-20">
              <motion.div 
-               animate={{ y: [0, 15, 0], rotate: [0, -5, 0] }}
-               transition={{ duration: 5, repeat: Infinity, delay: 1 }}
-               className="bg-white/90 backdrop-blur-md border-2 border-brand-orange p-4 rounded-full flex flex-col items-center justify-center w-24 h-24 shadow-[0_0_20px_rgba(255,126,0,0.3)]"
+               animate={{ y: [0, 20, 0], rotate: [0, -10, 0] }}
+               transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+               className="glass-card p-6 rounded-full flex flex-col items-center justify-center w-28 h-28 border-brand-orange/50"
              >
-                <span className="text-brand-dark font-black text-[11px] text-center leading-tight">OP. DIRECTA</span>
+                <Timer className="text-brand-orange mb-1" size={20} />
+                <span className="text-white font-black text-[10px] text-center leading-tight uppercase tracking-tighter">Atención<br/>Inmediata</span>
              </motion.div>
           </div>
 
-          {/* Sello de Confianza (Estilo SUNEDU) */}
-          <div className="absolute -top-16 right-0 md:-top-20 md:-right-4 z-20">
-            <div className="bg-brand-orange text-white p-2 md:p-3 rounded-b-xl shadow-lg flex flex-col items-center border-x border-b border-white/20">
-               <span className="text-[8px] md:text-[10px] font-black uppercase tracking-tighter">Ranking</span>
-               <span className="text-lg md:text-3xl font-black leading-none">N°1</span>
-               <span className="text-[7px] md:text-[9px] font-bold opacity-80">CUSCO 2025</span>
-            </div>
+          {/* Sello de Confianza (Estilo SUNEDU Premium) */}
+          <div className="absolute -top-16 right-0 md:-top-24 md:-right-8 z-30">
+            <motion.div 
+              whileHover={{ scale: 1.1, rotate: 5 }}
+              className="bg-gradient-to-b from-brand-orange to-orange-700 text-white p-3 md:p-5 rounded-b-2xl shadow-[0_10px_30px_rgba(255,126,0,0.5)] flex flex-col items-center border-x-2 border-b-2 border-white/30"
+            >
+               <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] mb-1">Ranking</span>
+               <span className="text-2xl md:text-5xl font-black leading-none drop-shadow-md">N°1</span>
+               <span className="text-[8px] md:text-[11px] font-bold opacity-90 mt-1">CUSCO 2025</span>
+            </motion.div>
           </div>
 
           <motion.h1 
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-6xl lg:text-8xl font-black mb-4 md:mb-6 leading-[0.9] tracking-tighter drop-shadow-2xl"
+            className="text-5xl md:text-7xl lg:text-9xl font-black mb-6 md:mb-8 leading-[0.85] tracking-tighter"
           >
             {dynamicContent.titleKey ? (
-              <span className="text-brand-cyan">{langText(dynamicContent.titleKey)}</span>
+              <span className="text-gradient-cyan block drop-shadow-2xl">{langText(dynamicContent.titleKey)}</span>
             ) : (
-              <>
-                {langText('hero_title_1')} <span className="text-brand-cyan">{langText('hero_title_vip')}</span>
-              </>
+              <span className="text-gradient-cyan block drop-shadow-2xl">
+                {langText('hero_title_1')} {langText('hero_title_vip')}
+              </span>
             )}
-            <br className="hidden md:block" /> 
-            <span className="text-white">{langText('hero_title_2')}</span>
+            <span className="text-white block mt-2 drop-shadow-lg">{langText('hero_title_2')}</span>
           </motion.h1>
 
-          <p className="text-sm md:text-2xl text-white font-bold mb-6 md:mb-12 max-w-xl leading-snug drop-shadow-2xl">
-            {langText('hero_subtitle')}
+          <p className="text-lg md:text-3xl text-slate-200 font-light mb-8 md:mb-14 max-w-2xl leading-tight drop-shadow-lg italic">
+            "{langText('hero_subtitle')}"
           </p>
           
           <div className="space-y-4 mb-2 md:mb-4 hidden md:block">
-            <div className="flex items-center gap-4 bg-brand-dark/40 backdrop-blur-md p-4 rounded-2xl border border-white/20 w-fit shadow-xl">
-              <CheckCircle2 className="text-brand-cyan shrink-0" size={28} />
-              <p className="text-white font-black md:text-xl drop-shadow-md">{langText('hero_check_1')}</p>
-            </div>
+            <motion.div 
+              whileHover={{ x: 10 }}
+              className="flex items-center gap-5 bg-white/10 backdrop-blur-xl p-5 rounded-3xl border border-white/20 w-fit shadow-2xl"
+            >
+              <div className="bg-brand-cyan p-2 rounded-full shadow-[0_0_15px_rgba(0,210,255,0.5)]">
+                <CheckCircle2 className="text-brand-dark" size={24} />
+              </div>
+              <p className="text-white font-bold md:text-xl">{langText('hero_check_1')}</p>
+            </motion.div>
           </div>
         </div>
 
-        {/* Right Column: Interactive Form Card */}
+        {/* Right Column: Interactive Form Card (NEON EDITION) */}
         <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
+          initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.2 }}
-          className="bg-white rounded-xl md:rounded-2xl shadow-xl border border-slate-100 overflow-hidden text-brand-dark"
+          transition={{ delay: 0.3 }}
+          className="bg-white rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-4 border-brand-orange overflow-hidden text-brand-dark relative"
         >
+          {/* Subtle Glow behind the form */}
+          <div className="absolute inset-0 bg-brand-orange/5 pointer-events-none" />
+          
           {/* Header Card / Urgency */}
-          <div className="bg-brand-dark/5 border-b border-slate-100 p-3 md:p-6">
-            <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4">
-              <p className="text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-widest flex items-center gap-2">
-                <Timer size={14} className="text-brand-orange" />
+          <div className="bg-brand-orange text-white p-4 md:p-6 text-center">
+            <div className="flex flex-col items-center justify-center gap-2">
+              <p className="text-[11px] font-black uppercase tracking-[0.3em] flex items-center gap-2">
+                <Timer size={16} className="animate-spin-slow" />
                 {langText('hero_timer')}
               </p>
               
-              {/* Desktop Boxes */}
-              <div className="hidden md:flex justify-center gap-3">
-                <div className="flex flex-col items-center">
-                  <div className="bg-brand-dark text-white w-12 h-12 rounded-lg flex items-center justify-center text-xl font-black shadow-inner">
-                    {timeLeft.split(':')[0]}
-                  </div>
-                  <span className="text-[10px] font-bold text-slate-400 mt-1 uppercase">Hrs</span>
+              <div className="flex justify-center gap-3 mt-1">
+                <div className="bg-white text-brand-orange px-3 py-2 rounded-xl text-2xl font-black shadow-lg">
+                  {timeLeft.split(':')[0]}
                 </div>
-                <div className="text-brand-dark font-black text-xl pt-2">:</div>
-                <div className="flex flex-col items-center">
-                  <div className="bg-brand-dark text-white w-12 h-12 rounded-lg flex items-center justify-center text-xl font-black shadow-inner">
-                    {timeLeft.split(':')[1]}
-                  </div>
-                  <span className="text-[10px] font-bold text-slate-400 mt-1 uppercase">Min</span>
+                <div className="text-white font-black text-2xl pt-1">:</div>
+                <div className="bg-white text-brand-orange px-3 py-2 rounded-xl text-2xl font-black shadow-lg">
+                  {timeLeft.split(':')[1]}
                 </div>
-                <div className="text-brand-dark font-black text-xl pt-2">:</div>
-                <div className="flex flex-col items-center">
-                  <div className="bg-brand-dark text-white w-12 h-12 rounded-lg flex items-center justify-center text-xl font-black shadow-inner animate-pulse">
-                    {timeLeft.split(':')[2]}
-                  </div>
-                  <span className="text-[10px] font-bold text-slate-400 mt-1 uppercase">Seg</span>
+                <div className="text-white font-black text-2xl pt-1">:</div>
+                <div className="bg-white text-brand-orange px-3 py-2 rounded-xl text-2xl font-black shadow-lg animate-pulse">
+                  {timeLeft.split(':')[2]}
                 </div>
               </div>
+            </div>
+          </div>
 
               {/* Mobile Single Line */}
               <div className="md:hidden text-lg font-black text-brand-dark tracking-tighter flex items-center gap-1">

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;300;400;600;700;900&display=swap');
+
 @import "tailwindcss";
 
 @theme {
@@ -12,6 +14,18 @@
 @layer base {
   body {
     @apply bg-white text-slate-900 antialiased;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Outfit', sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-500;
+  }
+  .text-gradient-cyan {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-brand-cyan to-white;
+  }
+  .glass-card {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)];
   }
 }
