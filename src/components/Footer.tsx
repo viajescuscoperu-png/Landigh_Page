@@ -32,10 +32,17 @@ export const Footer = () => {
               </div>
             </div>
 
-            {/* Right: Copyright (Minimal) */}
-            <p className="text-slate-500 text-[10px] md:text-sm">
-              {langText('footer_copyright')}
-            </p>
+            {/* Right: Copyright & Trust Badges */}
+            <div className="flex flex-col items-center md:items-end gap-3">
+              <div className="flex items-center gap-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+                <img src="/trust1.png" alt="TripAdvisor" className="h-6 md:h-8 w-auto" />
+                <img src="/trust2.png" alt="Mincetur" className="h-6 md:h-8 w-auto" />
+                <img src="/trust3.png" alt="Marca Perú" className="h-6 md:h-8 w-auto" />
+              </div>
+              <p className="text-slate-500 text-[10px] md:text-sm">
+                {langText('footer_copyright')}
+              </p>
+            </div>
 
           </div>
         </div>
