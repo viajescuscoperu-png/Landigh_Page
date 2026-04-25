@@ -20,9 +20,9 @@ export const t: TranslationDictionary = {
   hero_title_vip: { pt: "VIP", es: "VIP", en: "Adventure" },
   hero_title_2: { pt: "em Cusco", es: "en Cusco", en: "in Cusco" },
   hero_subtitle: { 
-    pt: "Viva a magia dos Andes com a agência n°1 de Cusco", 
-    es: "Vive la magia de los Andes con la agencia n°1 de Cusco", 
-    en: "Experience the magic of the Andes with Cusco's #1 agency" 
+    pt: "Viva a magia dos Andes com uma agência oficial certificada em Cusco", 
+    es: "Vive la magia de los Andes con una agencia oficial certificada en Cusco", 
+    en: "Experience the magic of the Andes with a certified official agency in Cusco" 
   },
   hero_title_rainbow: { pt: "Arco-Íris", es: "Montaña 7 Colores", en: "Rainbow Mountain" },
   hero_title_humantay: { pt: "Laguna Humantay", es: "Laguna Humantay", en: "Humantay Lake" },
@@ -53,6 +53,7 @@ export const t: TranslationDictionary = {
   hero_form_adults: { pt: "Adultos", es: "Adultos", en: "Adults" },
   hero_form_kids: { pt: "Crianças", es: "Niños", en: "Children" },
   hero_form_btn: { pt: "Cotar por WhatsApp agora", es: "Cotizar por WhatsApp ahora", en: "Quote via WhatsApp now" },
+  sticky_cta_text: { pt: "Chamar no WhatsApp agora", es: "¡Consultar por WhatsApp ahora!", en: "Chat on WhatsApp now" },
 
   // Offer Grid
   offer_title_1: { pt: "Ofertas", es: "Ofertas", en: "Exclusive" },

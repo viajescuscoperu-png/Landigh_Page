@@ -29,29 +29,15 @@ export const StickyMobileCTA = () => {
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
-          className="fixed bottom-0 left-0 right-0 z-[100] p-4 md:hidden pointer-events-none"
+          className="fixed bottom-4 left-4 right-4 z-[100] md:hidden pointer-events-none"
         >
           <div className="max-w-md mx-auto pointer-events-auto">
             <button 
               onClick={handleClick}
-              className="w-full bg-whatsapp text-white flex items-center justify-between p-1 pr-4 rounded-full shadow-[0_10px_25px_-5px_rgba(34,197,94,0.4)] border-2 border-white/20 overflow-hidden group active:scale-95 transition-transform"
+              className="w-full bg-whatsapp text-white flex items-center justify-center gap-3 p-3 rounded-2xl shadow-[0_15px_35px_-5px_rgba(34,197,94,0.5)] border-2 border-white/30 active:scale-95 transition-transform"
             >
-              <div className="flex items-center gap-3">
-                <div className="bg-white/20 p-3 rounded-full">
-                  <MessageCircle size={24} fill="white" />
-                </div>
-                <div className="flex flex-col items-start leading-tight">
-                  <span className="text-[10px] uppercase font-bold opacity-80 tracking-tighter">Oferta Limitada</span>
-                  <span className="text-sm font-black uppercase">{langText('hero_form_btn')}</span>
-                </div>
-              </div>
-              <motion.div 
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ repeat: Infinity, duration: 2 }}
-                className="bg-brand-orange p-2 rounded-full"
-              >
-                <Gift size={16} />
-              </motion.div>
+              <MessageCircle size={24} fill="white" />
+              <span className="text-sm font-black uppercase tracking-tight">{langText('sticky_cta_text')}</span>
             </button>
           </div>
         </motion.div>
