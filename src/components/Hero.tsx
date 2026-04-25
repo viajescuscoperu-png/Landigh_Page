@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Timer, CheckCircle2, MessageCircle, Info } from 'lucide-react';
+import { Timer, CheckCircle2, MessageCircle, Info, User, MapPin, Calendar, Users } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { useTracking } from '../hooks/useTracking';
 import { tours } from '../data/tours';
