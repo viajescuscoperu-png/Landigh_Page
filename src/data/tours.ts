@@ -20,12 +20,12 @@ export const tours: Tour[] = [
     id: "mp-express",
     name: "Machu Picchu Express",
     oldPrice: "300 USD",
-    price: "240 USD",
+    price: "239 USD",
     image: "/machu.png",
     message: {
-      pt: "Olá! Quero aproveitar a oferta de Machu Picchu Express por 240 USD.",
-      es: "¡Hola! Quiero aprovechar la oferta de Machu Picchu Express por 240 USD.",
-      en: "Hello! I want to take advantage of the Machu Picchu Express offer for 240 USD."
+      pt: "Olá! Quero aproveitar a oferta de Machu Picchu Express por 239 USD.",
+      es: "¡Hola! Quiero aprovechar la oferta de Machu Picchu Express por 239 USD.",
+      en: "Hello! I want to take advantage of the Machu Picchu Express offer for 239 USD."
     },
     urgency: { pt: "Alta demanda!", es: "¡Alta demanda!", en: "High Demand!" },
     includes: [
@@ -38,18 +38,18 @@ export const tours: Tour[] = [
   },
   {
     id: "humantay-vip",
-    name: "Humantay Lake VIP",
+    name: "Humantay Lake",
     oldPrice: "35 USD",
-    price: "22 USD",
+    price: "23 USD",
     image: "/humantay.png",
     message: {
-      pt: "Olá! Quero Humantay Lake por USD 22.",
-      es: "¡Hola! Quiero Humantay Lake por USD 22.",
-      en: "Hello! I want Humantay Lake for USD 22."
+      pt: "Olá! Quero Humantay Lake por USD 23.",
+      es: "¡Hola! Quiero Humantay Lake por USD 23.",
+      en: "Hello! I want Humantay Lake for USD 23."
     },
     urgency: { pt: "Últimas 5 vagas", es: "Últimas 5 vacantes", en: "Last 5 spots" },
     includes: [
-      { pt: "Transporte turístico VIP", es: "Transporte turístico VIP", en: "VIP tourist transport" },
+      { pt: "Transporte turístico", es: "Transporte turístico", en: "Tourist transport" },
       { pt: "Café da manhã e almoço", es: "Desayuno y almuerzo", en: "Breakfast and lunch" },
       { pt: "Bastões de caminhada", es: "Bastones de caminata", en: "Walking sticks" },
       { pt: "Guia profissional", es: "Guía profesional", en: "Professional guide" },
@@ -60,12 +60,12 @@ export const tours: Tour[] = [
     id: "rainbow-mountain",
     name: "Rainbow Mountain",
     oldPrice: "35 USD",
-    price: "22 USD",
+    price: "23 USD",
     image: "/rainbow.png",
     message: {
-      pt: "Olá! Quero Rainbow Mountain por USD 22.",
-      es: "¡Hola! Quiero Rainbow Mountain por USD 22.",
-      en: "Hello! I want Rainbow Mountain for USD 22."
+      pt: "Olá! Quero Rainbow Mountain por USD 23.",
+      es: "¡Hola! Quiero Rainbow Mountain por USD 23.",
+      en: "Hello! I want Rainbow Mountain for USD 23."
     },
     urgency: { pt: "Limitado", es: "Limitado", en: "Limited" },
     includes: [
