@@ -87,7 +87,7 @@ export const Hero = () => {
     <motion.section 
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="relative overflow-hidden bg-brand-dark md:rounded-3xl mb-6 md:mb-10 text-white shadow-2xl min-h-[500px] flex items-center"
+      className="relative overflow-hidden bg-brand-dark text-white shadow-2xl min-h-[85vh] lg:min-h-[90vh] flex items-center w-full"
     >
       {/* Dynamic Background Image with Overlay - BRIGHTER */}
       <div className="absolute inset-0 z-0">
