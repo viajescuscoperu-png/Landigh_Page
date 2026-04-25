@@ -8,7 +8,6 @@ const supabase = (supabaseUrl && supabaseKey) ? createClient(supabaseUrl, supaba
 export const useTracking = () => {
   const currentLeadId = useRef<string | null>(null);
   const maxScroll = useRef(0);
-  const startTime = useRef(Date.now());
 
   const getUtms = useCallback(() => {
     const params = new URLSearchParams(window.location.search);
@@ -23,17 +22,14 @@ export const useTracking = () => {
 
   const updateLeadData = useCallback(async (isFinal: boolean = false) => {
     if (!supabase || !currentLeadId.current) return;
-
-    const timeOnPage = Math.floor((Date.now() - startTime.current) / 1000);
     
     try {
       await supabase.from('leads_raw').update({
-        time_on_page: timeOnPage,
         scroll_depth: maxScroll.current,
         event_type: isFinal ? 'whatsapp_click' : 'page_view'
       }).eq('id', currentLeadId.current);
     } catch (error) {
-      console.error('Error updating lead stats:', error);
+      console.error('Error updating scroll stats:', error);
     }
   }, []);
 
@@ -89,8 +85,7 @@ export const useTracking = () => {
         event_type: 'whatsapp_click',
         tour_selected: `${tourName} (${location})`,
         status: 'nuevo',
-        scroll_depth: maxScroll.current,
-        time_on_page: Math.floor((Date.now() - startTime.current) / 1000)
+        scroll_depth: maxScroll.current
       }).eq('id', currentLeadId.current);
     } catch (error) {
       console.error('WhatsApp tracking error:', error);
@@ -148,7 +143,7 @@ export const useTracking = () => {
       }
     };
 
-    // Sync stats every 10 seconds
+    // Sync scroll stats every 10 seconds
     const syncInterval = setInterval(() => updateLeadData(), 10000);
 
     window.addEventListener('scroll', handleScroll);

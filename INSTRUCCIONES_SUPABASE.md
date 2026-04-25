@@ -26,7 +26,6 @@ CREATE TABLE leads_raw (
     utm_term        TEXT DEFAULT 'none',
     
     -- Métricas de comportamiento
-    time_on_page    INTEGER DEFAULT 0,         -- Segundos totales
     scroll_depth    INTEGER DEFAULT 0,         -- % máximo leído (0-100)
     
     -- Datos técnicos

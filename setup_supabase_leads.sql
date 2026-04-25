@@ -24,7 +24,6 @@ CREATE TABLE IF NOT EXISTS leads_raw (
     utm_term        TEXT DEFAULT 'none',       -- nombre del conjunto de anuncios
     
     -- Métricas de comportamiento
-    time_on_page    INTEGER DEFAULT 0,         -- Segundos en la página
     scroll_depth    INTEGER DEFAULT 0,         -- Porcentaje máximo de scroll (0-100)
     
     -- Información técnica y de ventas
