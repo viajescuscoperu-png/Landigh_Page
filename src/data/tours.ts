@@ -13,9 +13,31 @@ export interface Tour {
   message: LocalizedString;
   urgency?: LocalizedString;
   includes: LocalizedString[];
+  isGold?: boolean;
 }
 
 export const tours: Tour[] = [
+  {
+    id: "mp-premium",
+    name: "Machu Picchu Premium",
+    oldPrice: "380 USD",
+    price: "299 USD",
+    image: "/machu.png",
+    isGold: true,
+    message: {
+      pt: "Olá! Quero o pacote Machu Picchu Premium com Trem Panorâmico por 299 USD.",
+      es: "¡Hola! Quiero el paquete Machu Picchu Premium con Tren Panorámico por 299 USD.",
+      en: "Hello! I want the Machu Picchu Premium package with Panoramic Train for 299 USD."
+    },
+    urgency: { pt: "Exclusivo!", es: "¡Exclusivo!", en: "Exclusive!" },
+    includes: [
+      { pt: "Trem Panorâmico incluso", es: "Tren Panorámico incluido", en: "Panoramic Train included" },
+      { pt: "Guia oficial em Português", es: "Guía oficial en Español", en: "Official English Guide" },
+      { pt: "Entradas para a cidadela", es: "Entradas a la ciudadela", en: "Entrance to the citadel" },
+      { pt: "Traslado hotel-estação", es: "Traslado hotel-estación", en: "Hotel-station transfer" },
+      { pt: "Ônibus de subida e descida", es: "Bus de subida y bajada", en: "Bus up and down" }
+    ]
+  },
   {
     id: "mp-express",
     name: "Machu Picchu Express",
