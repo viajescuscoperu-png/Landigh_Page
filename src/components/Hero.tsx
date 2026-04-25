@@ -124,13 +124,13 @@ export const Hero = () => {
         
         {/* Left Column: Content */}
         <div className="text-left relative">
-          {/* Sello de Confianza o Dato Curioso Dinámico */}
-          <div className="absolute -top-16 right-0 md:-top-24 md:-right-8 z-30">
+          {/* Sello de Confianza o Dato Curioso Dinámico (Reposicionado para evitar choques) */}
+          <div className="absolute -top-24 -right-4 md:-top-32 md:-right-12 z-30 pointer-events-none">
             {curiosity ? (
               <motion.div 
                 initial={{ scale: 0.8, opacity: 0, rotate: -10 }}
                 animate={{ scale: 1, opacity: 1, rotate: 0 }}
-                className="bg-brand-orange text-white p-4 md:p-6 rounded-2xl shadow-[0_15px_40px_rgba(255,126,0,0.4)] flex flex-col max-w-[200px] md:max-w-[280px] border-2 border-white/40"
+                className="bg-brand-orange text-white p-4 md:p-6 rounded-2xl shadow-[0_15px_40px_rgba(255,126,0,0.4)] flex flex-col max-w-[200px] md:max-w-[320px] border-2 border-white/40 pointer-events-auto"
               >
                 <div className="flex items-center gap-2 mb-2">
                   <Info size={20} className="text-white" />
@@ -143,7 +143,7 @@ export const Hero = () => {
             ) : (
               <motion.div 
                 whileHover={{ scale: 1.1, rotate: 5 }}
-                className="bg-gradient-to-b from-brand-orange to-orange-700 text-white p-3 md:p-5 rounded-b-2xl shadow-[0_10px_30px_rgba(255,126,0,0.5)] flex flex-col items-center border-x-2 border-b-2 border-white/30"
+                className="bg-gradient-to-b from-brand-orange to-orange-700 text-white p-3 md:p-5 rounded-b-2xl shadow-[0_10px_30px_rgba(255,126,0,0.5)] flex flex-col items-center border-x-2 border-b-2 border-white/30 pointer-events-auto"
               >
                  <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] mb-1">Ranking</span>
                  <span className="text-2xl md:text-5xl font-black leading-none drop-shadow-md">N°1</span>
