@@ -108,29 +108,6 @@ export const Hero = () => {
         
         {/* Left Column: Content */}
         <div className="text-left relative">
-          {/* Floating Benefit Bubbles (Premium Glass Edition) */}
-          <div className="hidden xl:block absolute -top-20 -left-20 z-20">
-             <motion.div 
-               animate={{ y: [0, -20, 0], rotate: [0, 10, 0] }}
-               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-               className="glass-card p-6 rounded-full flex flex-col items-center justify-center w-32 h-32 border-brand-cyan/50"
-             >
-                <CheckCircle2 className="text-brand-cyan mb-1" size={24} />
-                <span className="text-white font-black text-[10px] text-center leading-tight uppercase tracking-tighter">Guías<br/>Certificados</span>
-             </motion.div>
-          </div>
-          
-          <div className="hidden xl:block absolute top-60 -left-32 z-20">
-             <motion.div 
-               animate={{ y: [0, 20, 0], rotate: [0, -10, 0] }}
-               transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-               className="glass-card p-6 rounded-full flex flex-col items-center justify-center w-28 h-28 border-brand-orange/50"
-             >
-                <Timer className="text-brand-orange mb-1" size={20} />
-                <span className="text-white font-black text-[10px] text-center leading-tight uppercase tracking-tighter">Atención<br/>Inmediata</span>
-             </motion.div>
-          </div>
-
           {/* Sello de Confianza (Estilo SUNEDU Premium) */}
           <div className="absolute -top-16 right-0 md:-top-24 md:-right-8 z-30">
             <motion.div 
