@@ -79,17 +79,17 @@ export const Hero = () => {
     let msg = '';
     
     if(language === 'pt') {
-      msg = `Olá, meu nome é ${name}. Quero verificar a disponibilidade.`;
+      msg = `Olá! Quero verificar a disponibilidade.`;
       if (destination) msg += `\nDestino: ${destination}`;
       if (date) msg += `\nData: ${date}`;
       msg += `\nSomos ${adults} adultos e ${children} crianças.`;
     } else if (language === 'en') {
-      msg = `Hello, my name is ${name}. I want to check availability.`;
+      msg = `Hello! I want to check availability.`;
       if (destination) msg += `\nDestination: ${destination}`;
       if (date) msg += `\nDate: ${date}`;
       msg += `\nWe are ${adults} adults and ${children} children.`;
     } else {
-      msg = `Hola, mi nombre es ${name}. Quiero consultar disponibilidad.`;
+      msg = `¡Hola! Quiero consultar disponibilidad.`;
       if (destination) msg += `\nDestino: ${destination}`;
       if (date) msg += `\nFecha de llegada: ${date}`;
       msg += `\nSomos ${adults} adultos y ${children} niños.`;
@@ -223,19 +223,6 @@ export const Hero = () => {
             
             <form onSubmit={handleConsult} className="space-y-3 md:space-y-4">
               
-              {/* Name field */}
-              <div className="relative">
-                <User size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
-                <input 
-                  type="text"
-                  required
-                  placeholder={langText('hero_form_name')}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-sm text-slate-700 outline-none focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 transition-all"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
-              </div>
-
               {/* Row 2: Destination and Date */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 <div className="relative">
