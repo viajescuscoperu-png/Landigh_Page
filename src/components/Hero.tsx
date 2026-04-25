@@ -209,17 +209,6 @@ export const Hero = () => {
             </div>
           </div>
 
-              {/* Mobile Single Line */}
-              <div className="md:hidden text-lg font-black text-brand-dark tracking-tighter flex items-center gap-1">
-                <span className="bg-brand-dark text-white px-2 py-0.5 rounded">{timeLeft.split(':')[0]}</span>
-                <span>:</span>
-                <span className="bg-brand-dark text-white px-2 py-0.5 rounded">{timeLeft.split(':')[1]}</span>
-                <span>:</span>
-                <span className="bg-brand-dark text-white px-2 py-0.5 rounded animate-pulse text-brand-orange">{timeLeft.split(':')[2]}</span>
-              </div>
-            </div>
-          </div>
-
           <div className="p-4 md:p-8">
             <h3 className="text-lg md:text-2xl font-bold text-center mb-3 md:mb-6">{langText('hero_form_title')}</h3>
             
