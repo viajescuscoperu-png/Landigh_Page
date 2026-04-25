@@ -107,39 +107,62 @@ export const Hero = () => {
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-12 p-5 md:p-12 lg:p-16 items-center w-full">
         
         {/* Left Column: Content */}
-        <div className="text-left">
+        <div className="text-left relative">
+          {/* Floating Benefit Bubbles (Inspiradas en la referencia) */}
+          <div className="hidden xl:block absolute -top-10 -left-10 z-0">
+             <motion.div 
+               animate={{ y: [0, -10, 0] }}
+               transition={{ duration: 4, repeat: Infinity }}
+               className="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-full flex flex-col items-center justify-center w-24 h-24 shadow-xl"
+             >
+                <span className="text-brand-cyan font-bold text-[10px] text-center leading-tight">GUÍAS<br/>OFICIALES</span>
+             </motion.div>
+          </div>
+          
+          <div className="hidden xl:block absolute top-40 -left-20 z-0">
+             <motion.div 
+               animate={{ y: [0, 10, 0] }}
+               transition={{ duration: 5, repeat: Infinity, delay: 1 }}
+               className="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-full flex flex-col items-center justify-center w-20 h-20 shadow-xl"
+             >
+                <span className="text-brand-orange font-bold text-[10px] text-center leading-tight">OP. DIRECTA</span>
+             </motion.div>
+          </div>
+
+          {/* Sello de Confianza (Estilo SUNEDU) */}
+          <div className="absolute -top-16 right-0 md:-top-20 md:-right-4 z-20">
+            <div className="bg-brand-orange text-white p-2 md:p-3 rounded-b-xl shadow-lg flex flex-col items-center border-x border-b border-white/20">
+               <span className="text-[8px] md:text-[10px] font-black uppercase tracking-tighter">Ranking</span>
+               <span className="text-lg md:text-2xl font-black leading-none">N°1</span>
+               <span className="text-[7px] md:text-[9px] font-bold opacity-80">CUSCO 2025</span>
+            </div>
+          </div>
+
           <motion.h1 
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-5xl lg:text-7xl font-extrabold mb-2 md:mb-4 leading-tight tracking-tighter"
+            className="text-4xl md:text-6xl lg:text-8xl font-black mb-4 md:mb-6 leading-[0.9] tracking-tighter"
           >
             {dynamicContent.titleKey ? (
-              <span className="text-brand-cyan">{langText(dynamicContent.titleKey)}</span>
+              <span className="text-brand-cyan drop-shadow-xl">{langText(dynamicContent.titleKey)}</span>
             ) : (
               <>
-                {langText('hero_title_1')} <span className="bg-brand-cyan text-brand-dark px-2 rounded-lg inline-block transform -rotate-2">{langText('hero_title_vip')}</span>
+                {langText('hero_title_1')} <span className="text-brand-cyan drop-shadow-xl">{langText('hero_title_vip')}</span>
               </>
             )}
-            <br className="hidden md:block" /> {langText('hero_title_2')}
+            <br className="hidden md:block" /> 
+            <span className="text-white/90">{langText('hero_title_2')}</span>
           </motion.h1>
 
-          <p className="text-sm md:text-xl text-slate-100 font-medium mb-4 md:mb-10 max-w-lg leading-relaxed drop-shadow-md">
+          <p className="text-sm md:text-2xl text-slate-100 font-medium mb-6 md:mb-12 max-w-xl leading-snug drop-shadow-lg">
             {langText('hero_subtitle')}
           </p>
           
-          <div className="space-y-3 mb-2 md:mb-4 hidden md:block">
-            <div className="flex items-start gap-4">
-              <CheckCircle2 className="text-brand-cyan shrink-0 mt-1 drop-shadow-sm" size={24} />
+          <div className="space-y-4 mb-2 md:mb-4 hidden md:block">
+            <div className="flex items-center gap-4 bg-white/5 backdrop-blur-sm p-3 rounded-xl border border-white/10 w-fit">
+              <CheckCircle2 className="text-brand-cyan shrink-0" size={24} />
               <p className="text-white font-bold md:text-lg drop-shadow-sm">{langText('hero_check_1')}</p>
-            </div>
-            <div className="flex items-start gap-4">
-              <CheckCircle2 className="text-brand-cyan shrink-0 mt-1 drop-shadow-sm" size={24} />
-              <p className="text-white font-bold md:text-lg drop-shadow-sm">{langText('hero_check_2')}</p>
-            </div>
-            <div className="flex items-start gap-4">
-              <CheckCircle2 className="text-brand-cyan shrink-0 mt-1 drop-shadow-sm" size={24} />
-              <p className="text-white font-bold md:text-lg drop-shadow-sm">{langText('hero_check_3')}</p>
             </div>
           </div>
         </div>
