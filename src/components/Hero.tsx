@@ -15,6 +15,13 @@ export const Hero = () => {
     titleKey: ''
   });
 
+  // Form state
+  const [name, setName] = useState('');
+  const [destination, setDestination] = useState('');
+  const [date, setDate] = useState('');
+  const [adults, setAdults] = useState('2');
+  const [children, setChildren] = useState('0');
+
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const tour = params.get('tour')?.toLowerCase();
@@ -33,7 +40,15 @@ export const Hero = () => {
 
   useEffect(() => {
     const timer = setInterval(() => {
-// ... (timer logic kept)
+      const now = new Date();
+      const reset = new Date();
+      reset.setHours(23, 59, 59, 999);
+      const diff = reset.getTime() - now.getTime();
+      
+      const h = Math.floor(diff / (1000 * 60 * 60));
+      const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const s = Math.floor((diff % (1000 * 60)) / 1000);
+      
       setTimeLeft(
         `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`
       );
@@ -42,7 +57,30 @@ export const Hero = () => {
   }, []);
 
   const handleConsult = (e: React.FormEvent) => {
-// ... (handleConsult logic kept)
+    e.preventDefault();
+    trackWhatsAppClick('Hero Form Expanded');
+    
+    let msg = '';
+    
+    if(language === 'pt') {
+      msg = `Olá, meu nome é ${name}. Quero verificar a disponibilidade.`;
+      if (destination) msg += `\nDestino: ${destination}`;
+      if (date) msg += `\nData: ${date}`;
+      msg += `\nSomos ${adults} adultos e ${children} crianças.`;
+    } else if (language === 'en') {
+      msg = `Hello, my name is ${name}. I want to check availability.`;
+      if (destination) msg += `\nDestination: ${destination}`;
+      if (date) msg += `\nDate: ${date}`;
+      msg += `\nWe are ${adults} adults and ${children} children.`;
+    } else {
+      msg = `Hola, mi nombre es ${name}. Quiero consultar disponibilidad.`;
+      if (destination) msg += `\nDestino: ${destination}`;
+      if (date) msg += `\nFecha de llegada: ${date}`;
+      msg += `\nSomos ${adults} adultos y ${children} niños.`;
+    }
+
+    const waLink = `https://wa.me/51970909088?text=${encodeURIComponent(msg)}`;
+    window.open(waLink, '_blank');
   };
 
   return (
@@ -104,7 +142,7 @@ export const Hero = () => {
               <p className="text-white font-bold md:text-lg drop-shadow-sm">{langText('hero_check_3')}</p>
             </div>
           </div>
-        </div>div>
+        </div>
 
         {/* Right Column: Interactive Form Card */}
         <motion.div 
