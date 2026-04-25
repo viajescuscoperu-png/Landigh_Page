@@ -11,6 +11,8 @@ import { StickyMobileCTA } from './components/StickyMobileCTA';
 import { LanguageProvider } from './context/LanguageContext';
 
 function App() {
+  const { trackWhatsAppClick } = useTracking();
+
   const handleOfferClick = (tourName: string) => {
     trackWhatsAppClick(tourName, 'offer_grid');
   };

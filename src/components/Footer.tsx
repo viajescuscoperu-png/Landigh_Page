@@ -1,4 +1,5 @@
 import { useLanguage } from '../context/LanguageContext';
+import { useTracking } from '../hooks/useTracking';
 import { Globe } from 'lucide-react';
 
 export const Footer = () => {
@@ -81,12 +82,13 @@ export const Footer = () => {
   );
 };
 
-const SocialIcon = ({ href, children, customClass }: { href: string; children: React.ReactNode; customClass?: string }) => (
+const SocialIcon = ({ href, children, customClass, onClick }: { href: string; children: React.ReactNode; customClass?: string; onClick?: () => void }) => (
   <a
     href={href}
+    onClick={onClick}
     target="_blank"
     rel="noopener noreferrer"
-    className={`w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/5 flex items-center justify-center text-slate-300 transition-all duration-300 hover:text-white hover:scale-110 ${customClass || 'hover:bg-brand-cyan'}`}
+    className={`w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/5 flex items-center justify-center text-slate-300 transition-all duration-300 hover:text-white hover:scale-110 ${customClass || 'hover:bg-brand-orange'}`}
   >
     {children}
   </a>
