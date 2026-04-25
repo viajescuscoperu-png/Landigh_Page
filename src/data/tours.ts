@@ -22,7 +22,7 @@ export const tours: Tour[] = [
     name: "Machu Picchu Premium",
     oldPrice: "380 USD",
     price: "299 USD",
-    image: "/machu.png",
+    image: "/mp-premium.jpg",
     isGold: true,
     message: {
       pt: "Olá! Quero o pacote Machu Picchu Premium com Trem Panorâmico por 299 USD.",
