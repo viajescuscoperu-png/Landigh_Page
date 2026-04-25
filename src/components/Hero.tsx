@@ -89,14 +89,14 @@ export const Hero = () => {
       animate={{ opacity: 1, y: 0 }}
       className="relative overflow-hidden bg-brand-dark md:rounded-3xl mb-6 md:mb-10 text-white shadow-2xl min-h-[500px] flex items-center"
     >
-      {/* Dynamic Background Image with Overlay */}
+      {/* Dynamic Background Image with Overlay - BRIGHTER */}
       <div className="absolute inset-0 z-0">
         <img 
           src={dynamicContent.image} 
           alt="Cusco Background" 
-          className="w-full h-full object-cover opacity-40"
+          className="w-full h-full object-cover opacity-70"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/60 to-transparent" />
       </div>
 
       {/* Background pattern overlay */}
@@ -108,24 +108,24 @@ export const Hero = () => {
         
         {/* Left Column: Content */}
         <div className="text-left relative">
-          {/* Floating Benefit Bubbles (Inspiradas en la referencia) */}
-          <div className="hidden xl:block absolute -top-10 -left-10 z-0">
+          {/* Floating Benefit Bubbles (BRIGHTER) */}
+          <div className="hidden xl:block absolute -top-16 -left-16 z-20">
              <motion.div 
-               animate={{ y: [0, -10, 0] }}
+               animate={{ y: [0, -15, 0], rotate: [0, 5, 0] }}
                transition={{ duration: 4, repeat: Infinity }}
-               className="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-full flex flex-col items-center justify-center w-24 h-24 shadow-xl"
+               className="bg-white/90 backdrop-blur-md border-2 border-brand-cyan p-4 rounded-full flex flex-col items-center justify-center w-28 h-28 shadow-[0_0_20px_rgba(0,210,255,0.3)]"
              >
-                <span className="text-brand-cyan font-bold text-[10px] text-center leading-tight">GUÍAS<br/>OFICIALES</span>
+                <span className="text-brand-dark font-black text-[11px] text-center leading-tight">GUÍAS<br/>OFICIALES</span>
              </motion.div>
           </div>
           
-          <div className="hidden xl:block absolute top-40 -left-20 z-0">
+          <div className="hidden xl:block absolute top-48 -left-24 z-20">
              <motion.div 
-               animate={{ y: [0, 10, 0] }}
+               animate={{ y: [0, 15, 0], rotate: [0, -5, 0] }}
                transition={{ duration: 5, repeat: Infinity, delay: 1 }}
-               className="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-full flex flex-col items-center justify-center w-20 h-20 shadow-xl"
+               className="bg-white/90 backdrop-blur-md border-2 border-brand-orange p-4 rounded-full flex flex-col items-center justify-center w-24 h-24 shadow-[0_0_20px_rgba(255,126,0,0.3)]"
              >
-                <span className="text-brand-orange font-bold text-[10px] text-center leading-tight">OP. DIRECTA</span>
+                <span className="text-brand-dark font-black text-[11px] text-center leading-tight">OP. DIRECTA</span>
              </motion.div>
           </div>
 
@@ -133,7 +133,7 @@ export const Hero = () => {
           <div className="absolute -top-16 right-0 md:-top-20 md:-right-4 z-20">
             <div className="bg-brand-orange text-white p-2 md:p-3 rounded-b-xl shadow-lg flex flex-col items-center border-x border-b border-white/20">
                <span className="text-[8px] md:text-[10px] font-black uppercase tracking-tighter">Ranking</span>
-               <span className="text-lg md:text-2xl font-black leading-none">N°1</span>
+               <span className="text-lg md:text-3xl font-black leading-none">N°1</span>
                <span className="text-[7px] md:text-[9px] font-bold opacity-80">CUSCO 2025</span>
             </div>
           </div>
@@ -142,27 +142,27 @@ export const Hero = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-6xl lg:text-8xl font-black mb-4 md:mb-6 leading-[0.9] tracking-tighter"
+            className="text-4xl md:text-6xl lg:text-8xl font-black mb-4 md:mb-6 leading-[0.9] tracking-tighter drop-shadow-2xl"
           >
             {dynamicContent.titleKey ? (
-              <span className="text-brand-cyan drop-shadow-xl">{langText(dynamicContent.titleKey)}</span>
+              <span className="text-brand-cyan">{langText(dynamicContent.titleKey)}</span>
             ) : (
               <>
-                {langText('hero_title_1')} <span className="text-brand-cyan drop-shadow-xl">{langText('hero_title_vip')}</span>
+                {langText('hero_title_1')} <span className="text-brand-cyan">{langText('hero_title_vip')}</span>
               </>
             )}
             <br className="hidden md:block" /> 
-            <span className="text-white/90">{langText('hero_title_2')}</span>
+            <span className="text-white">{langText('hero_title_2')}</span>
           </motion.h1>
 
-          <p className="text-sm md:text-2xl text-slate-100 font-medium mb-6 md:mb-12 max-w-xl leading-snug drop-shadow-lg">
+          <p className="text-sm md:text-2xl text-white font-bold mb-6 md:mb-12 max-w-xl leading-snug drop-shadow-2xl">
             {langText('hero_subtitle')}
           </p>
           
           <div className="space-y-4 mb-2 md:mb-4 hidden md:block">
-            <div className="flex items-center gap-4 bg-white/5 backdrop-blur-sm p-3 rounded-xl border border-white/10 w-fit">
-              <CheckCircle2 className="text-brand-cyan shrink-0" size={24} />
-              <p className="text-white font-bold md:text-lg drop-shadow-sm">{langText('hero_check_1')}</p>
+            <div className="flex items-center gap-4 bg-brand-dark/40 backdrop-blur-md p-4 rounded-2xl border border-white/20 w-fit shadow-xl">
+              <CheckCircle2 className="text-brand-cyan shrink-0" size={28} />
+              <p className="text-white font-black md:text-xl drop-shadow-md">{langText('hero_check_1')}</p>
             </div>
           </div>
         </div>
