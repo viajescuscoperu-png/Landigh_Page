@@ -12,6 +12,14 @@ const LanguageContext = createContext<LanguageContextProps | undefined>(undefine
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [language, setLanguage] = useState<Language>('pt');
 
+  React.useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const langParam = params.get('lang') as Language;
+    if (langParam && ['pt', 'es', 'en'].includes(langParam)) {
+      setLanguage(langParam);
+    }
+  }, []);
+
   const langText = (key: string): string => {
     if (t[key] && t[key][language]) {
       return t[key][language];

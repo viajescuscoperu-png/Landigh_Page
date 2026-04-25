@@ -24,6 +24,9 @@ export const t: TranslationDictionary = {
     es: "Vive la magia de los Andes con la agencia n°1 de Cusco", 
     en: "Experience the magic of the Andes with Cusco's #1 agency" 
   },
+  hero_title_rainbow: { pt: "Arco-Íris", es: "Montaña 7 Colores", en: "Rainbow Mountain" },
+  hero_title_humantay: { pt: "Laguna Humantay", es: "Laguna Humantay", en: "Humantay Lake" },
+  hero_title_premium: { pt: "Machu Picchu Premium", es: "Machu Picchu Premium", en: "Machu Picchu Premium" },
   
   // Hero Checkmarks
   hero_check_1: { 
