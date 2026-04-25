@@ -221,73 +221,88 @@ export const Hero = () => {
           <div className="p-4 md:p-8">
             <h3 className="text-lg md:text-2xl font-bold text-center mb-3 md:mb-6">{langText('hero_form_title')}</h3>
             
-            <form onSubmit={handleConsult} className="space-y-2 md:space-y-3">
+            <form onSubmit={handleConsult} className="space-y-3 md:space-y-4">
               
               {/* Name field */}
-              <input 
-                type="text"
-                required
-                placeholder={langText('hero_form_name')}
-                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-2 text-sm text-slate-700 outline-none focus:border-brand-cyan transition-all"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-
-              {/* Row 2: Destination and Date */}
-              <div className="grid grid-cols-2 gap-2">
-                <select 
-                  className="w-full bg-slate-50 border border-slate-200 rounded-lg px-2 py-2 text-sm text-slate-700 outline-none focus:border-brand-cyan transition-all appearance-none"
-                  value={destination}
-                  onChange={(e) => setDestination(e.target.value)}
-                >
-                  <option value="">{langText('hero_form_dest').split(':')[0]}</option>
-                  <option value="Machu Picchu">M. Picchu</option>
-                  <option value="Montaña de Colores">Montaña</option>
-                  <option value="Laguna Humantay">Humantay</option>
-                </select>
+              <div className="relative">
+                <User size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
                 <input 
-                  type="date"
+                  type="text"
                   required
-                  className="w-full bg-slate-50 border border-slate-200 rounded-lg px-2 py-2 text-sm text-slate-700 outline-none focus:border-brand-cyan transition-all"
-                  value={date}
-                  onChange={(e) => setDate(e.target.value)}
+                  placeholder={langText('hero_form_name')}
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-sm text-slate-700 outline-none focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 transition-all"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                 />
               </div>
 
-              {/* Row 3: Pax */}
-              <div className="grid grid-cols-2 gap-2">
+              {/* Row 2: Destination and Date */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 <div className="relative">
-                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[10px] font-bold text-slate-400 uppercase">Ads:</span>
-                  <input 
-                    type="number"
-                    min="1"
-                    className="w-full bg-slate-50 border border-slate-200 rounded-lg pl-10 pr-2 py-2 text-sm text-slate-700 outline-none"
-                    value={adults}
-                    onChange={(e) => setAdults(e.target.value)}
-                  />
+                  <MapPin size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 z-10" />
+                  <select 
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-sm text-slate-700 outline-none focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 transition-all appearance-none"
+                    value={destination}
+                    onChange={(e) => setDestination(e.target.value)}
+                  >
+                    <option value="">{langText('hero_form_dest')}</option>
+                    <option value="Machu Picchu">Machu Picchu</option>
+                    <option value="Montaña de Colores">Montaña de Colores</option>
+                    <option value="Laguna Humantay">Laguna Humantay</option>
+                  </select>
                 </div>
                 <div className="relative">
-                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[10px] font-bold text-slate-400 uppercase">Chd:</span>
+                  <Calendar size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
                   <input 
-                    type="number"
-                    min="0"
-                    className="w-full bg-slate-50 border border-slate-200 rounded-lg pl-10 pr-2 py-2 text-sm text-slate-700 outline-none"
-                    value={children}
-                    onChange={(e) => setChildren(e.target.value)}
+                    type="date"
+                    required
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-sm text-slate-700 outline-none focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 transition-all"
+                    value={date}
+                    onChange={(e) => setDate(e.target.value)}
                   />
+                </div>
+              </div>
+
+              {/* Row 3: Pax */}
+              <div className="grid grid-cols-2 gap-3">
+                <div className="flex flex-col gap-1">
+                  <label className="text-[10px] font-black uppercase text-slate-400 ml-1">{langText('hero_form_adults')}</label>
+                  <div className="relative">
+                    <Users size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+                    <input 
+                      type="number"
+                      min="1"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-sm text-slate-700 outline-none focus:border-brand-orange transition-all"
+                      value={adults}
+                      onChange={(e) => setAdults(e.target.value)}
+                    />
+                  </div>
+                </div>
+                <div className="flex flex-col gap-1">
+                  <label className="text-[10px] font-black uppercase text-slate-400 ml-1">{langText('hero_form_kids')}</label>
+                  <div className="relative">
+                    <Users size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 opacity-50" />
+                    <input 
+                      type="number"
+                      min="0"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-sm text-slate-700 outline-none focus:border-brand-orange transition-all"
+                      value={children}
+                      onChange={(e) => setChildren(e.target.value)}
+                    />
+                  </div>
                 </div>
               </div>
 
               <button 
                 type="submit"
-                className="w-full flex items-center justify-center gap-2 bg-whatsapp hover:bg-whatsapp-hover text-white font-bold py-3 rounded-lg shadow-lg transition-all active:scale-95 text-base mt-2"
+                className="w-full flex items-center justify-center gap-3 bg-whatsapp hover:bg-whatsapp-hover text-white font-black py-4 rounded-xl shadow-[0_10px_20px_rgba(34,197,94,0.3)] transition-all active:scale-95 text-lg mt-2"
               >
-                <MessageCircle size={20} />
+                <MessageCircle size={22} fill="white" />
                 {langText('hero_form_btn')}
               </button>
             </form>
             
-            <p className="text-center text-[10px] text-slate-400 mt-3 font-medium">
+            <p className="text-center text-[11px] text-slate-400 mt-4 font-bold">
               Respuestas en menos de 5 minutos ⚡
             </p>
           </div>

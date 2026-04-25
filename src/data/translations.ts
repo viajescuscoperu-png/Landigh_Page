@@ -47,9 +47,9 @@ export const t: TranslationDictionary = {
 
   // Hero Form
   hero_form_title: { pt: "Verifique Disponibilidade", es: "Verifica Disponibilidad", en: "Check Availability" },
-  hero_form_name: { pt: "Nome*", es: "Nombre*", en: "Name*" },
-  hero_form_dest: { pt: "Qual destino você procura?", es: "¿Qué destino buscas?", en: "Which destination are you looking for?" },
-  hero_form_date: { pt: "Data de chegada*", es: "Fecha de llegada*", en: "Arrival date*" },
+  hero_form_name: { pt: "Escreva seu nome completo", es: "Escribe tu nombre completo", en: "Type your full name" },
+  hero_form_dest: { pt: "Selecione o seu destino", es: "Selecciona tu destino", en: "Select your destination" },
+  hero_form_date: { pt: "¿Qual é a data da viagem?", es: "¿Cuál es la fecha del viaje?", en: "What is the travel date?" },
   hero_form_adults: { pt: "Adultos", es: "Adultos", en: "Adults" },
   hero_form_kids: { pt: "Crianças", es: "Niños", en: "Children" },
   hero_form_btn: { pt: "Cotar por WhatsApp agora", es: "Cotizar por WhatsApp ahora", en: "Quote via WhatsApp now" },
