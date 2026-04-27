@@ -8,7 +8,7 @@ import { tours } from '../data/tours';
 export const Hero = () => {
   const { langText, language } = useLanguage();
   const { trackWhatsAppClick } = useTracking();
-  const [timeLeft, setTimeLeft] = useState('02:45:00');
+  const [timeLeft, setTimeLeft] = useState('00:00:00:00');
   
   // Dynamic state
   const [dynamicContent, setDynamicContent] = useState({
@@ -66,12 +66,13 @@ export const Hero = () => {
         return;
       }
 
-      const h = Math.floor(diff / (1000 * 60 * 60));
+      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
       const s = Math.floor((diff % (1000 * 60)) / 1000);
       
       setTimeLeft(
-        `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`
+        `${d.toString().padStart(2, '0')}:${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`
       );
     }, 1000);
     return () => clearInterval(timer);
@@ -207,17 +208,33 @@ export const Hero = () => {
                 {langText('hero_timer')}
               </p>
               
-              <div className="flex justify-center gap-3 mt-1">
-                <div className="bg-white text-brand-orange px-3 py-2 rounded-xl text-2xl font-black shadow-lg">
-                  {timeLeft.split(':')[0]}
+              <div className="flex justify-center gap-2 mt-1">
+                <div className="flex flex-col items-center">
+                  <div className="bg-white text-brand-orange px-2 py-2 rounded-xl text-xl md:text-2xl font-black shadow-lg">
+                    {timeLeft.split(':')[0]}
+                  </div>
+                  <span className="text-[8px] uppercase mt-1 font-bold">Dias</span>
                 </div>
-                <div className="text-white font-black text-2xl pt-1">:</div>
-                <div className="bg-white text-brand-orange px-3 py-2 rounded-xl text-2xl font-black shadow-lg">
-                  {timeLeft.split(':')[1]}
+                <div className="text-white font-black text-xl pt-2">:</div>
+                <div className="flex flex-col items-center">
+                  <div className="bg-white text-brand-orange px-2 py-2 rounded-xl text-xl md:text-2xl font-black shadow-lg">
+                    {timeLeft.split(':')[1]}
+                  </div>
+                  <span className="text-[8px] uppercase mt-1 font-bold">Horas</span>
                 </div>
-                <div className="text-white font-black text-2xl pt-1">:</div>
-                <div className="bg-white text-brand-orange px-3 py-2 rounded-xl text-2xl font-black shadow-lg animate-pulse">
-                  {timeLeft.split(':')[2]}
+                <div className="text-white font-black text-xl pt-2">:</div>
+                <div className="flex flex-col items-center">
+                  <div className="bg-white text-brand-orange px-2 py-2 rounded-xl text-xl md:text-2xl font-black shadow-lg">
+                    {timeLeft.split(':')[2]}
+                  </div>
+                  <span className="text-[8px] uppercase mt-1 font-bold">Min</span>
+                </div>
+                <div className="text-white font-black text-xl pt-2">:</div>
+                <div className="flex flex-col items-center">
+                  <div className="bg-white text-brand-orange px-2 py-2 rounded-xl text-xl md:text-2xl font-black shadow-lg animate-pulse">
+                    {timeLeft.split(':')[3]}
+                  </div>
+                  <span className="text-[8px] uppercase mt-1 font-bold">Seg</span>
                 </div>
               </div>
             </div>
