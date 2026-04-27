@@ -33,7 +33,7 @@ export const Hero = () => {
     } else if (tourParam === 'humantay' || tourParam === 'laguna') {
       setDynamicContent({ image: '/humantay.png', titleKey: 'hero_title_humantay' });
       setDestination('Laguna Humantay');
-    } else if (tourParam === 'premium') {
+    } else if (tourParam === 'premium' || tourParam === 'machu') {
       setDynamicContent({ image: '/mp-premium.jpg', titleKey: 'hero_title_premium' });
       setDestination('Machu Picchu');
     }
