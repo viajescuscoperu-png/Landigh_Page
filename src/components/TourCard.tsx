@@ -25,7 +25,7 @@ export const TourCard = ({ tour, onAction }: TourCardProps) => {
     <motion.div 
       id={tour.id}
       whileHover={{ y: -6 }}
-      className={`rounded-2xl overflow-hidden shadow-lg border relative transition-all flex flex-col ${
+      className={`rounded-2xl overflow-hidden shadow-lg border relative transition-all flex flex-col scroll-mt-24 ${
         isGold 
           ? 'bg-gradient-to-b from-white to-amber-50/30 border-amber-300 shadow-amber-200/40 hover:border-amber-400 hover:shadow-amber-300/50' 
           : 'bg-white border-slate-100 hover:border-brand-cyan/40 hover:shadow-brand-cyan/10'
