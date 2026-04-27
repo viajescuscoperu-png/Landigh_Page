@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useTracking } from './hooks/useTracking';
 import { Hero } from './components/Hero';
 import { OfferGrid } from './components/OfferGrid';
