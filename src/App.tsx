@@ -13,6 +13,19 @@ import { LanguageProvider } from './context/LanguageContext';
 function App() {
   const { trackWhatsAppClick } = useTracking();
 
+  // Scroll to hash on load reinforcement
+  useEffect(() => {
+    if (window.location.hash) {
+      setTimeout(() => {
+        const id = window.location.hash.substring(1);
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 800); // Wait for components to mount and images to start loading
+    }
+  }, []);
+
   const handleOfferClick = (tourName: string) => {
     trackWhatsAppClick(tourName, 'offer_grid');
   };

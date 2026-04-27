@@ -54,12 +54,18 @@ export const Hero = () => {
   }, [language]);
 
   useEffect(() => {
+    const targetDate = new Date('2026-05-05T23:59:59').getTime();
+
     const timer = setInterval(() => {
-      const now = new Date();
-      const reset = new Date();
-      reset.setHours(23, 59, 59, 999);
-      const diff = reset.getTime() - now.getTime();
+      const now = new Date().getTime();
+      const diff = targetDate - now;
       
+      if (diff <= 0) {
+        setTimeLeft('00:00:00');
+        clearInterval(timer);
+        return;
+      }
+
       const h = Math.floor(diff / (1000 * 60 * 60));
       const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
       const s = Math.floor((diff % (1000 * 60)) / 1000);
