@@ -29,6 +29,11 @@ export const Header = () => {
               <span className="hidden sm:inline">{langText('email')}</span>
             </a>
           </div>
+
+          <div className="hidden lg:block">
+            <span className="font-black tracking-widest uppercase">Viajes Cusco Perú</span>
+          </div>
+
           <div className="hidden md:flex items-center gap-6">
              <span className="flex items-center gap-1.5">
                <MapPin size={14} />
