@@ -35,6 +35,15 @@ export const Header = () => {
           </div>
 
           <div className="hidden md:flex items-center gap-6">
+             <a 
+               href="https://viajescuscoperu.com/" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               onClick={() => trackSocialClick('official_website_link')}
+               className="flex items-center gap-1.5 hover:text-white/80 transition-colors border-r border-white/20 pr-6 mr-6"
+             >
+               <span>{langText('visit_official_site')}</span>
+             </a>
              <span className="flex items-center gap-1.5">
                <MapPin size={14} />
                <span>{langText('location')}</span>

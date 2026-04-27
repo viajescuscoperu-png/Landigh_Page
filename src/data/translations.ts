@@ -13,6 +13,7 @@ export const t: TranslationDictionary = {
   whatsapp_number: { pt: "+51 970 909 088", es: "+51 970 909 088", en: "+51 970 909 088" },
   email: { pt: "viajescuscoperu@gmail.com", es: "viajescuscoperu@gmail.com", en: "viajescuscoperu@gmail.com" },
   location: { pt: "Cusco, Perú", es: "Cusco, Perú", en: "Cusco, Peru" },
+  visit_official_site: { pt: "Visite nosso site oficial", es: "Visite nuestro sitio oficial", en: "Visit our official website" },
   
   // Hero
   hero_timer: { pt: "Oferta expira em:", es: "La oferta expira en:", en: "Offer expires in:" },
