@@ -23,6 +23,7 @@ export const TourCard = ({ tour, onAction }: TourCardProps) => {
 
   return (
     <motion.div 
+      id={tour.id}
       whileHover={{ y: -6 }}
       className={`rounded-2xl overflow-hidden shadow-lg border relative transition-all flex flex-col ${
         isGold 
