@@ -84,4 +84,3 @@ Ahí verás en tiempo real:
 4. En qué botón de tour hizo clic exactamente.
 
 ¡Listo para dominar tus campañas! 📊🚀🏔️
-    

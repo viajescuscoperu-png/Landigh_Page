@@ -54,14 +54,14 @@ export const Hero = () => {
   }, [language]);
 
   useEffect(() => {
-    const targetDate = new Date('2026-05-05T23:59:59').getTime();
+    const targetDate = new Date('2026-08-15T23:59:59').getTime();
 
     const timer = setInterval(() => {
       const now = new Date().getTime();
       const diff = targetDate - now;
       
       if (diff <= 0) {
-        setTimeLeft('00:00:00');
+        setTimeLeft('00:00:00:00');
         clearInterval(timer);
         return;
       }
