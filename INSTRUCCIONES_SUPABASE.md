@@ -84,3 +84,36 @@ Ahí verás en tiempo real:
 4. En qué botón de tour hizo clic exactamente.
 
 ¡Listo para dominar tus campañas! 📊🚀🏔️
+
+---
+
+## 5. Panel de administrador (precios, subtítulo, contador y tours)
+
+La landing tiene un panel privado para cambiar, sin tocar código ni volver a desplegar:
+- El subtítulo que aparece debajo del título principal (en los 3 idiomas) y la fecha en la que expira el contador regresivo.
+- Los tours: crear uno nuevo, editar cualquier campo (precio, nombre, imagen, mensaje de WhatsApp, qué incluye, etc.) o eliminarlo.
+
+### 5.1 Crear las tablas de contenido
+Corre, en este orden, en el **SQL Editor** de Supabase:
+1. `setup_supabase_site_content.sql` → crea la tabla `site_content` (subtítulo + contador) con los valores actuales ya precargados.
+2. `setup_supabase_tours.sql` → crea la tabla `tours` con los 5 tours actuales ya precargados.
+
+### 5.2 Crear tu usuario de administrador
+El panel se protege con un login real (no una contraseña escrita en el código). Para crear tu usuario:
+1. Ve a tu proyecto en Supabase → **Authentication** → **Users**.
+2. Haz clic en **Add user** (Create new user).
+3. Ingresa tu email y una contraseña. Puedes marcar "Auto Confirm User" para no tener que verificar el email.
+
+### 5.3 Entrar al panel
+Abre `https://tu-dominio.com/?admin=1`, ingresa con el email y contraseña que creaste. Hay dos secciones:
+- **General**: contador y subtítulo.
+- **Tours**: lista de tours con botones "Editar" y "Eliminar", y "+ Nuevo tour" para crear uno.
+
+Los cambios se reflejan en la landing la próxima vez que alguien la carga.
+
+**Sobre las imágenes:** el panel no sube fotos. El campo "Imagen" del formulario de cada tour solo guarda una ruta de texto (ej. `/nuevo-tour.jpg`). Para usar una foto nueva:
+1. Copia el archivo a la carpeta `public/` del proyecto.
+2. Haz commit y sube ese cambio (Git → deploy), como ya haces con las fotos actuales.
+3. En el panel, escribe esa misma ruta en el campo "Imagen" del tour.
+
+**Nota:** el mensaje que se envía por WhatsApp al hacer clic en un tour es el texto que escribas en el campo "Mensaje de WhatsApp" del formulario — si cambias el precio, recuerda actualizar también ese texto si quieres que diga el precio nuevo.

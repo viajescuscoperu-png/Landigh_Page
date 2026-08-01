@@ -1,6 +1,6 @@
-import { tours } from '../data/tours';
 import { TourCard } from './TourCard';
 import { useLanguage } from '../context/LanguageContext';
+import { useTours } from '../hooks/useTours';
 
 interface OfferGridProps {
   onAction: (tourName: string) => void;
@@ -8,6 +8,8 @@ interface OfferGridProps {
 
 export const OfferGrid = ({ onAction }: OfferGridProps) => {
   const { langText } = useLanguage();
+  const { tours } = useTours();
+
   return (
     <section className="mb-8">
       <div className="text-center mb-10">

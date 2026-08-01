@@ -3,11 +3,14 @@ import { motion } from 'framer-motion';
 import { Timer, CheckCircle2, MessageCircle, Info, MapPin, Calendar, Users } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { useTracking } from '../hooks/useTracking';
-import { tours } from '../data/tours';
+import { useSiteContent } from '../hooks/useSiteContent';
+import { useTours } from '../hooks/useTours';
 
 export const Hero = () => {
   const { langText, language } = useLanguage();
   const { trackWhatsAppClick } = useTracking();
+  const { content } = useSiteContent();
+  const { tours } = useTours();
   const [timeLeft, setTimeLeft] = useState('00:00:00:00');
   
   // Dynamic state
@@ -51,10 +54,10 @@ export const Hero = () => {
     } else {
       setCuriosity(null);
     }
-  }, [language]);
+  }, [language, tours]);
 
   useEffect(() => {
-    const targetDate = new Date('2026-08-15T23:59:59').getTime();
+    const targetDate = new Date(content.countdownTarget).getTime();
 
     const timer = setInterval(() => {
       const now = new Date().getTime();
@@ -76,7 +79,7 @@ export const Hero = () => {
       );
     }, 1000);
     return () => clearInterval(timer);
-  }, []);
+  }, [content.countdownTarget]);
 
   const handleConsult = (e: React.FormEvent) => {
     e.preventDefault();
@@ -174,7 +177,7 @@ export const Hero = () => {
           </motion.h1>
 
           <p className="text-lg md:text-3xl text-white font-bold mb-8 md:mb-14 max-w-2xl leading-snug hero-text-shadow">
-            {langText('hero_subtitle')}
+            {content.heroSubtitle[language]}
           </p>
           
           <div className="space-y-4 mb-2 md:mb-4 hidden md:block">

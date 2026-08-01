@@ -1,7 +1,11 @@
 import { createClient } from '@supabase/supabase-js';
 
-// Reemplaza estos valores con tus credenciales de Supabase cuando las tengas
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'TU_URL_AQUI';
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'TU_KEY_AQUI';
+// Configura estas variables en tu archivo .env (ver .env.example)
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || '';
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+// null cuando aún no se configuraron las variables de entorno, para que la
+// app no se rompa en desarrollo o si falta la configuración en producción.
+export const supabase = (supabaseUrl && supabaseAnonKey)
+  ? createClient(supabaseUrl, supabaseAnonKey)
+  : null;
