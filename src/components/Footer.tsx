@@ -68,11 +68,14 @@ export const Footer = () => {
               </div>
             </div>
 
-            {/* Right: Copyright Only */}
-            <div className="flex flex-col items-center md:items-end">
+            {/* Right: Copyright + Privacy */}
+            <div className="flex flex-col items-center md:items-end gap-1">
               <p className="text-slate-500 text-[10px] md:text-sm text-center md:text-right">
                 {langText('footer_copyright')}
               </p>
+              <a href="/privacidad.html" className="text-slate-500 text-[10px] md:text-xs hover:text-white transition-colors underline">
+                Política de Privacidade
+              </a>
             </div>
 
           </div>

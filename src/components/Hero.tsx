@@ -31,10 +31,10 @@ export const Hero = () => {
     const tourParam = params.get('tour')?.toLowerCase();
     
     if (tourParam === 'rainbow' || tourParam === 'montana') {
-      setDynamicContent({ image: '/rainbow.png', titleKey: 'hero_title_rainbow' });
+      setDynamicContent({ image: '/rainbow.jpg', titleKey: 'hero_title_rainbow' });
       setDestination('Montaña de Colores');
     } else if (tourParam === 'humantay' || tourParam === 'laguna') {
-      setDynamicContent({ image: '/humantay.png', titleKey: 'hero_title_humantay' });
+      setDynamicContent({ image: '/humantay.jpg', titleKey: 'hero_title_humantay' });
       setDestination('Laguna Humantay');
     } else if (tourParam === 'premium' || tourParam === 'machu') {
       setDynamicContent({ image: '/mp-premium.jpg', titleKey: 'hero_title_premium' });

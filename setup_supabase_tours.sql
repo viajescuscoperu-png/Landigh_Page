@@ -35,7 +35,7 @@ VALUES
     true, 1
 ),
 (
-    'mp-express', 'Machu Picchu Express', '239 USD', '300 USD', '/machu.png',
+    'mp-express', 'Machu Picchu Express', '239 USD', '300 USD', '/machu.jpg',
     '{"pt":"Olá! Quero aproveitar a oferta de Machu Picchu Express por 239 USD.","es":"¡Hola! Quiero aprovechar la oferta de Machu Picchu Express por 239 USD.","en":"Hello! I want to take advantage of the Machu Picchu Express offer for 239 USD."}'::jsonb,
     '[{"pt":"Bilhetes de trem inclusos","es":"Tickets de tren incluidos","en":"Train tickets included"},{"pt":"Guia oficial em Português","es":"Guía oficial en Español","en":"Official English Guide"},{"pt":"Entradas para a cidadela","es":"Entradas a la ciudadela","en":"Entrance to the citadel"},{"pt":"Traslado hotel-estação","es":"Traslado hotel-estación","en":"Hotel-station transfer"},{"pt":"Ônibus de subida e descida","es":"Bus de subida y bajada","en":"Bus up and down"}]'::jsonb,
     '{"pt":"Alta demanda!","es":"¡Alta demanda!","en":"High Demand!"}'::jsonb,
@@ -43,7 +43,7 @@ VALUES
     false, 2
 ),
 (
-    'humantay-vip', 'Humantay Lake', '23 USD', '35 USD', '/humantay.png',
+    'humantay-vip', 'Humantay Lake', '23 USD', '35 USD', '/humantay.jpg',
     '{"pt":"Olá! Quero Humantay Lake por USD 23.","es":"¡Hola! Quiero Humantay Lake por USD 23.","en":"Hello! I want Humantay Lake for USD 23."}'::jsonb,
     '[{"pt":"Transporte turístico","es":"Transporte turístico","en":"Tourist transport"},{"pt":"Café da manhã e almoço","es":"Desayuno y almuerzo","en":"Breakfast and lunch"},{"pt":"Bastões de caminhada","es":"Bastones de caminata","en":"Walking sticks"},{"pt":"Guia profissional","es":"Guía profesional","en":"Professional guide"},{"pt":"Kit de primeiros socorros","es":"Kit de primeros auxilios","en":"First aid kit"}]'::jsonb,
     '{"pt":"Últimas 5 vagas","es":"Últimas 5 vacantes","en":"Last 5 spots"}'::jsonb,
@@ -51,7 +51,7 @@ VALUES
     false, 3
 ),
 (
-    'rainbow-mountain', 'Rainbow Mountain', '23 USD', '35 USD', '/rainbow.png',
+    'rainbow-mountain', 'Rainbow Mountain', '23 USD', '35 USD', '/rainbow.jpg',
     '{"pt":"Olá! Quero Rainbow Mountain por USD 23.","es":"¡Hola! Quiero Rainbow Mountain por USD 23.","en":"Hello! I want Rainbow Mountain for USD 23."}'::jsonb,
     '[{"pt":"Café da manhã e almoço","es":"Desayuno y almuerzo","en":"Breakfast and lunch"},{"pt":"Transporte turístico","es":"Transporte turístico","en":"Tourist transport"},{"pt":"Guia profissional","es":"Guía profesional","en":"Professional guide"},{"pt":"Oxigênio a bordo","es":"Oxígeno a bordo","en":"Oxygen on board"},{"pt":"Bastões de caminhada","es":"Bastones de caminata","en":"Walking sticks"}]'::jsonb,
     '{"pt":"Limitado","es":"Limitado","en":"Limited"}'::jsonb,
@@ -59,7 +59,7 @@ VALUES
     false, 4
 ),
 (
-    'pallay-punchu', 'Pallay Punchu Intenso', '35 USD', '50 USD', '/pallay.png',
+    'pallay-punchu', 'Pallay Punchu Intenso', '35 USD', '50 USD', '/pallay.jpg',
     '{"pt":"Olá! Quero Pallay Punchu por USD 35.","es":"¡Hola! Quiero Pallay Punchu por USD 35.","en":"Hello! I want Pallay Punchu for USD 35."}'::jsonb,
     '[{"pt":"Novo destino 2026","es":"Nuevo destino 2026","en":"New 2026 destination"},{"pt":"Bastões de caminhada","es":"Bastones de caminata","en":"Walking sticks"},{"pt":"Guia profissional","es":"Guía profesional","en":"Professional guide"},{"pt":"Transporte turístico","es":"Transporte turístico","en":"Tourist transport"},{"pt":"Lanche de trilha","es":"Snack de ruta","en":"Trail snack"}]'::jsonb,
     '{"pt":"Apenas fins de semana!","es":"¡Solo fines de semana!","en":"Only weekends!"}'::jsonb,

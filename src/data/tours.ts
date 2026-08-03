@@ -49,7 +49,7 @@ export const tours: Tour[] = [
     name: "Machu Picchu Express",
     oldPrice: "300 USD",
     price: "239 USD",
-    image: "/machu.png",
+    image: "/machu.jpg",
     curiosity: {
       pt: "Sabia que Machu Picchu foi construída sem usar nem uma gota de argamassa entre as pedras?",
       es: "¿Sabías que Machu Picchu fue construida sin usar ni una sola gota de mortero entre sus piedras?",
@@ -74,7 +74,7 @@ export const tours: Tour[] = [
     name: "Humantay Lake",
     oldPrice: "35 USD",
     price: "23 USD",
-    image: "/humantay.png",
+    image: "/humantay.jpg",
     curiosity: {
       pt: "É uma lagoa sagrada onde as comunidades ainda fazem oferendas à Pachamama.",
       es: "Es una laguna sagrada donde las comunidades aún realizan ofrendas a la Pachamama.",
@@ -99,7 +99,7 @@ export const tours: Tour[] = [
     name: "Rainbow Mountain",
     oldPrice: "35 USD",
     price: "23 USD",
-    image: "/rainbow.png",
+    image: "/rainbow.jpg",
     curiosity: {
       pt: "Suas cores são resultado de minerais oxidados por milhões de anos.",
       es: "Sus colores son producto de minerales oxidados durante millones de años.",
@@ -124,7 +124,7 @@ export const tours: Tour[] = [
     name: "Pallay Punchu Intenso",
     oldPrice: "50 USD",
     price: "35 USD",
-    image: "/pallay.png",
+    image: "/pallay.jpg",
     curiosity: {
       pt: "É o novo destino secreto de Cusco, descoberto recentemente para o turismo.",
       es: "Es el nuevo destino secreto de Cusco, descubierto recientemente para el turismo.",
