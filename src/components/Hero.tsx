@@ -154,9 +154,9 @@ export const Hero = () => {
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 className="bg-gradient-to-b from-brand-orange to-orange-700 text-white p-3 md:p-5 rounded-b-2xl shadow-[0_10px_30px_rgba(255,126,0,0.5)] flex flex-col items-center border-x-2 border-b-2 border-white/30 pointer-events-auto"
               >
-                 <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] mb-1">Ranking</span>
-                 <span className="text-2xl md:text-5xl font-black leading-none drop-shadow-md">N°1</span>
-                 <span className="text-[8px] md:text-[11px] font-bold opacity-90 mt-1">CUSCO 2025</span>
+                 <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] mb-1">{langText('hero_badge_line1')}</span>
+                 <span className="text-2xl md:text-4xl font-black leading-none drop-shadow-md">{langText('hero_badge_line2')}</span>
+                 <span className="text-[8px] md:text-[11px] font-bold opacity-90 mt-1">{langText('hero_badge_line3')}</span>
               </motion.div>
             )}
           </div>

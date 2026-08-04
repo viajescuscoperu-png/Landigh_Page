@@ -29,8 +29,13 @@ export const t: TranslationDictionary = {
   hero_title_humantay: { pt: "Laguna Humantay", es: "Laguna Humantay", en: "Humantay Lake" },
   hero_title_premium: { pt: "Machu Picchu Premium", es: "Machu Picchu Premium", en: "Machu Picchu Premium" },
   
+  // Hero Trust Badge (reemplaza un antiguo "N°1 Ranking" no verificable)
+  hero_badge_line1: { pt: "Agência", es: "Agencia", en: "Official" },
+  hero_badge_line2: { pt: "Oficial", es: "Oficial", en: "Agency" },
+  hero_badge_line3: { pt: "MINCETUR", es: "MINCETUR", en: "MINCETUR" },
+
   // Hero Checkmarks
-  hero_check_1: { 
+  hero_check_1: {
     pt: "Agência Oficial certificada pelo MINCETUR.", 
     es: "Agencia Oficial certificada por MINCETUR.", 
     en: "Official Agency certified by MINCETUR." 
