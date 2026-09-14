@@ -2,6 +2,8 @@ import { motion } from 'framer-motion';
 import { MessageCircle, CheckCircle2, Crown } from 'lucide-react';
 import type { Tour } from '../data/tours';
 import { useLanguage } from '../context/LanguageContext';
+import { useAudience } from '../context/AudienceContext';
+import { getWhatsAppUrl } from '../lib/whatsappTracking';
 
 interface TourCardProps {
   tour: Tour;
@@ -10,14 +12,20 @@ interface TourCardProps {
 
 export const TourCard = ({ tour, onAction }: TourCardProps) => {
   const { langText, language } = useLanguage();
-  const phone = "51970909088";
-  
+  const { audience } = useAudience();
+
+  // Precio/mensaje según el público activo (nacional/extranjero); si el tour
+  // no tiene bloque para ese público (no debería pasar, OfferGrid ya filtra),
+  // cae al que sí tenga para no romper el render.
+  const pricing = tour[audience] ?? tour.foreign ?? tour.national;
+  if (!pricing) return null;
+
   // Use localized text
-  const message = tour.message[language];
+  const message = pricing.message[language];
   const urgency = tour.urgency ? tour.urgency[language] : null;
   const includes = tour.includes.map(inc => inc[language]);
 
-  const waLink = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+  const waLink = getWhatsAppUrl(message);
 
   const isGold = tour.isGold;
 
@@ -60,8 +68,8 @@ export const TourCard = ({ tour, onAction }: TourCardProps) => {
         </h3>
         
         <div className="flex items-baseline gap-2 mb-4">
-          <span className="text-slate-400 line-through text-sm">{tour.oldPrice}</span>
-          <span className={`font-black text-2xl md:text-3xl ${isGold ? 'text-amber-600' : 'text-brand-orange'}`}>{tour.price}</span>
+          <span className="text-slate-400 line-through text-sm">{pricing.oldPrice}</span>
+          <span className={`font-black text-2xl md:text-3xl ${isGold ? 'text-amber-600' : 'text-brand-orange'}`}>{pricing.price}</span>
         </div>
 
         <div className="space-y-2 mb-6 flex-grow">

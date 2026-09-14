@@ -5,6 +5,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { useTracking } from '../hooks/useTracking';
 import { useSiteContent } from '../hooks/useSiteContent';
 import { useTours } from '../hooks/useTours';
+import { getWhatsAppUrl } from '../lib/whatsappTracking';
 
 export const Hero = () => {
   const { langText, language } = useLanguage();
@@ -104,7 +105,7 @@ export const Hero = () => {
       msg += `\nSomos ${adults} adultos y ${children} niños.`;
     }
 
-    const waLink = `https://wa.me/51970909088?text=${encodeURIComponent(msg)}`;
+    const waLink = getWhatsAppUrl(msg);
     window.open(waLink, '_blank');
   };
 

@@ -1,10 +1,12 @@
 import { Phone, Mail, MapPin } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { useTracking } from '../hooks/useTracking';
+import { getWhatsAppUrl } from '../lib/whatsappTracking';
 
 export const Header = () => {
   const { langText, language, setLanguage } = useLanguage();
   const { trackContactClick, trackSocialClick } = useTracking();
+  const waLink = getWhatsAppUrl('');
 
   return (
     <header className="relative z-50">
@@ -13,7 +15,7 @@ export const Header = () => {
         <div className="container mx-auto px-4 py-2 flex flex-wrap items-center justify-between font-medium">
           <div className="flex items-center gap-4 md:gap-8">
             <a 
-              href="https://wa.me/51970909088" 
+              href={waLink}
               onClick={() => trackContactClick('phone')}
               className="flex items-center gap-1.5 hover:underline"
             >

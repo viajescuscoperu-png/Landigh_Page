@@ -2,13 +2,13 @@ import { motion } from 'framer-motion';
 import { MessageCircle } from 'lucide-react';
 import { useTracking } from '../hooks/useTracking';
 import { useLanguage } from '../context/LanguageContext';
+import { getWhatsAppUrl } from '../lib/whatsappTracking';
 
 export const FloatingWhatsApp = () => {
   const { trackWhatsAppClick } = useTracking();
   const { langText } = useLanguage();
-  const phone = "51970909088";
   const message = langText('whatsapp_msg');
-  const waLink = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+  const waLink = getWhatsAppUrl(message);
 
   return (
     <motion.a

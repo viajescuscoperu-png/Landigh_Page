@@ -10,7 +10,7 @@ interface TranslationDictionary {
 
 export const t: TranslationDictionary = {
   // Global
-  whatsapp_number: { pt: "+51 970 909 088", es: "+51 970 909 088", en: "+51 970 909 088" },
+  whatsapp_number: { pt: "+51 980 023 248", es: "+51 980 023 248", en: "+51 980 023 248" },
   email: { pt: "viajescuscoperu@gmail.com", es: "viajescuscoperu@gmail.com", en: "viajescuscoperu@gmail.com" },
   location: { pt: "Cusco, Perú", es: "Cusco, Perú", en: "Cusco, Peru" },
   visit_official_site: { pt: "Visite nosso site oficial", es: "Visite nuestro sitio oficial", en: "Visit our official website" },
@@ -66,6 +66,13 @@ export const t: TranslationDictionary = {
   offer_title_2: { pt: "Exclusivas", es: "Exclusivas", en: "Offers" },
   offer_subtitle: { pt: "Preços especiais válidos por tempo limitado", es: "Precios especiales válidos por tiempo limitado", en: "Special prices valid for a limited time" },
   tour_button: { pt: "Quero esta Oferta!", es: "¡Quiero esta Oferta!", en: "I want this Offer!" },
+  audience_national: { pt: "Nacional (Soles)", es: "Nacional (Soles)", en: "National (Soles)" },
+  audience_foreign: { pt: "Estrangeiro (USD)", es: "Extranjero (USD)", en: "Foreigner (USD)" },
+  offer_empty_audience: {
+    pt: "Em breve teremos ofertas para este público. Fale conosco pelo WhatsApp!",
+    es: "Muy pronto tendremos ofertas para este público. ¡Escríbenos por WhatsApp!",
+    en: "We'll have offers for this audience soon. Message us on WhatsApp!"
+  },
 
   // Testimonials
   testi_title: { pt: "O que dizem os viajantes", es: "Lo que dicen los viajeros", en: "What travelers say" },

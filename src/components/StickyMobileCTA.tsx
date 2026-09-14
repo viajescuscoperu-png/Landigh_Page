@@ -3,6 +3,7 @@ import { MessageCircle } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useTracking } from '../hooks/useTracking';
+import { getWhatsAppUrl } from '../lib/whatsappTracking';
 
 export const StickyMobileCTA = () => {
   const { langText } = useLanguage();
@@ -22,7 +23,7 @@ export const StickyMobileCTA = () => {
   const handleClick = () => {
     trackWhatsAppClick('Sticky Mobile CTA', 'sticky_mobile_bar');
     const msg = "Olá! Vi a oferta na landing page e gostaria de mais informações sobre os pacotes VIP.";
-    window.open(`https://wa.me/51970909088?text=${encodeURIComponent(msg)}`, '_blank');
+    window.open(getWhatsAppUrl(msg), '_blank');
   };
 
   return (
