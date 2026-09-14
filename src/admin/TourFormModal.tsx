@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { supabase } from '../lib/supabase';
-import type { LocalizedString, Tour } from '../data/tours';
+import type { Audience, AudiencePricing, LocalizedString, Tour } from '../data/tours';
 import { LANGS } from './constants';
 import { Card, Field, TextInput, TextArea, PrimaryButton, TextButton } from './ui';
 
@@ -45,13 +45,27 @@ const buildOptionalLocalized = (pt: string, es: string, en: string): LocalizedSt
   return { pt: pt.trim(), es: es.trim(), en: en.trim() };
 };
 
+const emptyPricing: AudiencePricing = { oldPrice: '', price: '', message: { pt: '', es: '', en: '' } };
+
+const AUDIENCE_OPTIONS: { value: Audience; label: string }[] = [
+  { value: 'foreign', label: '🌎 Solo Extranjero' },
+  { value: 'national', label: '🇵🇪 Solo Nacional' },
+  { value: 'both', label: '🌎🇵🇪 Ambos (con precio distinto)' },
+];
+
 export const TourFormModal = ({ tour, onClose, onSaved }: TourFormModalProps) => {
   const [name, setName] = useState(tour?.name ?? '');
-  const [price, setPrice] = useState(tour?.price ?? '');
-  const [oldPrice, setOldPrice] = useState(tour?.oldPrice ?? '');
+  const [audience, setAudience] = useState<Audience>(tour?.audience ?? 'foreign');
   const [isGold, setIsGold] = useState(tour?.isGold ?? false);
 
-  const [message, setMessage] = useState(tour?.message ?? { pt: '', es: '', en: '' });
+  const [foreignPrice, setForeignPrice] = useState(tour?.foreign?.price ?? '');
+  const [foreignOldPrice, setForeignOldPrice] = useState(tour?.foreign?.oldPrice ?? '');
+  const [foreignMessage, setForeignMessage] = useState(tour?.foreign?.message ?? emptyPricing.message);
+
+  const [nationalPrice, setNationalPrice] = useState(tour?.national?.price ?? '');
+  const [nationalOldPrice, setNationalOldPrice] = useState(tour?.national?.oldPrice ?? '');
+  const [nationalMessage, setNationalMessage] = useState(tour?.national?.message ?? emptyPricing.message);
+
   const [urgency, setUrgency] = useState(tour?.urgency ?? { pt: '', es: '', en: '' });
   const [curiosity, setCuriosity] = useState(tour?.curiosity ?? { pt: '', es: '', en: '' });
   const [includesText, setIncludesText] = useState({
@@ -63,6 +77,9 @@ export const TourFormModal = ({ tour, onClose, onSaved }: TourFormModalProps) =>
   const [image, setImage] = useState(tour?.image ?? '');
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const showForeign = audience !== 'national';
+  const showNational = audience !== 'foreign';
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -76,14 +93,18 @@ export const TourFormModal = ({ tour, onClose, onSaved }: TourFormModalProps) =>
 
       const payload = {
         name,
-        price,
-        old_price: oldPrice,
         image,
-        message,
         includes: buildIncludes(includesText.pt, includesText.es, includesText.en),
         urgency: buildOptionalLocalized(urgency.pt, urgency.es, urgency.en),
         curiosity: buildOptionalLocalized(curiosity.pt, curiosity.es, curiosity.en),
         is_gold: isGold,
+        audience,
+        price_foreign: showForeign ? foreignPrice : null,
+        old_price_foreign: showForeign ? foreignOldPrice : null,
+        message_foreign: showForeign ? foreignMessage : null,
+        price_national: showNational ? nationalPrice : null,
+        old_price_national: showNational ? nationalOldPrice : null,
+        message_national: showNational ? nationalMessage : null,
       };
 
       const { error: saveError } = tour
@@ -115,20 +136,102 @@ export const TourFormModal = ({ tour, onClose, onSaved }: TourFormModalProps) =>
               <Field label="Nombre del tour">
                 <TextInput required value={name} onChange={(e) => setName(e.target.value)} />
               </Field>
-              <div className="grid grid-cols-2 gap-3">
-                <Field label="Precio anterior">
-                  <TextInput required value={oldPrice} onChange={(e) => setOldPrice(e.target.value)} placeholder="380 USD" />
-                </Field>
-                <Field label="Precio actual">
-                  <TextInput required value={price} onChange={(e) => setPrice(e.target.value)} placeholder="299 USD" />
-                </Field>
-              </div>
               <label className="flex items-center gap-2 text-sm font-bold text-slate-600">
                 <input type="checkbox" checked={isGold} onChange={(e) => setIsGold(e.target.checked)} />
                 Marcar como Premium/Gold
               </label>
             </div>
           </Card>
+
+          <Card title="¿A quién se le muestra este tour?">
+            <div className="space-y-2">
+              {AUDIENCE_OPTIONS.map((opt) => (
+                <label key={opt.value} className="flex items-center gap-2 text-sm font-bold text-slate-600">
+                  <input
+                    type="radio"
+                    name="audience"
+                    checked={audience === opt.value}
+                    onChange={() => setAudience(opt.value)}
+                  />
+                  {opt.label}
+                </label>
+              ))}
+              <p className="text-xs text-slate-400 pt-1">
+                "Solo Extranjero"/"Solo Nacional" hacen que el tour aparezca únicamente en esa pestaña de la landing.
+                "Ambos" lo muestra en las dos, con precio y mensaje de WhatsApp distintos para cada una.
+              </p>
+            </div>
+          </Card>
+
+          {showForeign && (
+            <Card title="🌎 Precio y mensaje — Extranjero (USD)">
+              <div className="space-y-3">
+                <div className="grid grid-cols-2 gap-3">
+                  <Field label="Precio anterior">
+                    <TextInput
+                      required={showForeign}
+                      value={foreignOldPrice}
+                      onChange={(e) => setForeignOldPrice(e.target.value)}
+                      placeholder="380 USD"
+                    />
+                  </Field>
+                  <Field label="Precio actual">
+                    <TextInput
+                      required={showForeign}
+                      value={foreignPrice}
+                      onChange={(e) => setForeignPrice(e.target.value)}
+                      placeholder="299 USD"
+                    />
+                  </Field>
+                </div>
+                {LANGS.map(({ key, flag, label }) => (
+                  <Field key={key} label={`Mensaje de WhatsApp ${flag} ${label}`}>
+                    <TextArea
+                      rows={2}
+                      required={showForeign}
+                      value={foreignMessage[key]}
+                      onChange={(e) => setForeignMessage((prev) => ({ ...prev, [key]: e.target.value }))}
+                    />
+                  </Field>
+                ))}
+              </div>
+            </Card>
+          )}
+
+          {showNational && (
+            <Card title="🇵🇪 Precio y mensaje — Nacional (Soles)">
+              <div className="space-y-3">
+                <div className="grid grid-cols-2 gap-3">
+                  <Field label="Precio anterior">
+                    <TextInput
+                      required={showNational}
+                      value={nationalOldPrice}
+                      onChange={(e) => setNationalOldPrice(e.target.value)}
+                      placeholder="S/. 500"
+                    />
+                  </Field>
+                  <Field label="Precio actual">
+                    <TextInput
+                      required={showNational}
+                      value={nationalPrice}
+                      onChange={(e) => setNationalPrice(e.target.value)}
+                      placeholder="S/. 350"
+                    />
+                  </Field>
+                </div>
+                {LANGS.map(({ key, flag, label }) => (
+                  <Field key={key} label={`Mensaje de WhatsApp ${flag} ${label}`}>
+                    <TextArea
+                      rows={2}
+                      required={showNational}
+                      value={nationalMessage[key]}
+                      onChange={(e) => setNationalMessage((prev) => ({ ...prev, [key]: e.target.value }))}
+                    />
+                  </Field>
+                ))}
+              </div>
+            </Card>
+          )}
 
           <Card title="Imagen">
             <div className="flex items-center gap-4">
@@ -155,21 +258,6 @@ export const TourFormModal = ({ tour, onClose, onSaved }: TourFormModalProps) =>
                   escribe acá el mismo nombre, con "/" adelante.
                 </p>
               </div>
-            </div>
-          </Card>
-
-          <Card title="Mensaje de WhatsApp">
-            <div className="space-y-3">
-              {LANGS.map(({ key, flag, label }) => (
-                <Field key={key} label={`${flag} ${label}`}>
-                  <TextArea
-                    rows={2}
-                    required
-                    value={message[key]}
-                    onChange={(e) => setMessage((prev) => ({ ...prev, [key]: e.target.value }))}
-                  />
-                </Field>
-              ))}
             </div>
           </Card>
 

@@ -10,6 +10,7 @@ import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { StickyMobileCTA } from './components/StickyMobileCTA';
 
 import { LanguageProvider } from './context/LanguageContext';
+import { AudienceProvider } from './context/AudienceContext';
 
 function App() {
   const { trackWhatsAppClick } = useTracking();
@@ -33,22 +34,24 @@ function App() {
 
   return (
     <LanguageProvider>
-      <div className="min-h-screen bg-white flex flex-col">
-        <Header />
-        <main className="flex-grow">
-          <Hero />
-          <div className="container mx-auto px-4 md:px-8 lg:px-16 py-10 max-w-7xl">
-            <OfferGrid onAction={handleOfferClick} />
-          </div>
-          <Testimonials />
-          <div className="container mx-auto px-4 md:px-8 lg:px-16 max-w-7xl">
-            <Faq />
-          </div>
-        </main>
-        <Footer />
-        <FloatingWhatsApp />
-        <StickyMobileCTA />
-      </div>
+      <AudienceProvider>
+        <div className="min-h-screen bg-white flex flex-col">
+          <Header />
+          <main className="flex-grow">
+            <Hero />
+            <div className="container mx-auto px-4 md:px-8 lg:px-16 py-10 max-w-7xl">
+              <OfferGrid onAction={handleOfferClick} />
+            </div>
+            <Testimonials />
+            <div className="container mx-auto px-4 md:px-8 lg:px-16 max-w-7xl">
+              <Faq />
+            </div>
+          </main>
+          <Footer />
+          <FloatingWhatsApp />
+          <StickyMobileCTA />
+        </div>
+      </AudienceProvider>
     </LanguageProvider>
   );
 }

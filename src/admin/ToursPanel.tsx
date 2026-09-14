@@ -45,8 +45,17 @@ export const ToursPanel = () => {
               <img src={tour.image} alt={tour.name} className="w-14 h-14 object-cover rounded-lg shrink-0" />
               <div className="flex-grow min-w-0">
                 <p className="font-bold text-slate-700 text-sm truncate">{tour.name}</p>
-                <p className="text-slate-400 text-xs">
-                  <span className="line-through">{tour.oldPrice}</span> → {tour.price}
+                <p className="text-slate-400 text-xs space-x-3">
+                  {tour.foreign && (
+                    <span>
+                      🌎 <span className="line-through">{tour.foreign.oldPrice}</span> → {tour.foreign.price}
+                    </span>
+                  )}
+                  {tour.national && (
+                    <span>
+                      🇵🇪 <span className="line-through">{tour.national.oldPrice}</span> → {tour.national.price}
+                    </span>
+                  )}
                   {tour.isGold && <span className="ml-2 text-amber-500 font-bold">PREMIUM</span>}
                 </p>
               </div>
