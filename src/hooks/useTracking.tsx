@@ -1,7 +1,23 @@
-import { useEffect, useCallback, useRef } from 'react';
+import { createContext, useContext, useEffect, useCallback, useRef, type ReactNode } from 'react';
 import { supabase } from '../lib/supabase';
 
-export const useTracking = () => {
+// Todo lo de acá vive UNA sola vez por visita real, en un solo Provider en la
+// raíz de la app (ver main.tsx). Antes cada componente que llamaba a
+// useTracking() traía su propia copia de este estado y de este useEffect,
+// así que una sola carga de página generaba varias filas "page_view" en
+// Supabase y varios PageView duplicados a Meta Pixel (uno por componente
+// montado). Con Context, todos comparten el mismo lead_id y el mismo efecto
+// de "acabo de cargar la página" se dispara una sola vez.
+
+interface TrackingContextProps {
+  trackWhatsAppClick: (tourName: string, location?: string) => Promise<void>;
+  trackSocialClick: (platform: string) => Promise<void>;
+  trackContactClick: (type: 'phone' | 'email') => Promise<void>;
+}
+
+const TrackingContext = createContext<TrackingContextProps | undefined>(undefined);
+
+export const TrackingProvider = ({ children }: { children: ReactNode }) => {
   const currentLeadId = useRef<string | null>(null);
   const maxScroll = useRef(0);
 
@@ -18,7 +34,7 @@ export const useTracking = () => {
 
   const updateLeadData = useCallback(async (isFinal: boolean = false) => {
     if (!supabase || !currentLeadId.current) return;
-    
+
     try {
       await supabase.from('leads_raw').update({
         scroll_depth: maxScroll.current,
@@ -65,18 +81,18 @@ export const useTracking = () => {
       });
     }
 
+    // Data Layer Push (para el tag de conversión de Google Ads en GTM)
+    (window as any).dataLayer = (window as any).dataLayer || [];
+    (window as any).dataLayer.push({
+      event: 'whatsapp_conversion',
+      tour_name: tourName,
+      button_location: location,
+      lead_id: currentLeadId.current
+    });
+
     if (!supabase || !currentLeadId.current) return;
 
     try {
-      // Data Layer Push
-      (window as any).dataLayer = (window as any).dataLayer || [];
-      (window as any).dataLayer.push({
-        event: 'whatsapp_conversion',
-        tour_name: tourName,
-        button_location: location,
-        lead_id: currentLeadId.current
-      });
-
       await supabase.from('leads_raw').update({
         event_type: 'whatsapp_click',
         tour_selected: `${tourName} (${location})`,
@@ -90,7 +106,7 @@ export const useTracking = () => {
 
   const trackSocialClick = useCallback(async (platform: string) => {
     if (!supabase || !currentLeadId.current) return;
-    
+
     (window as any).dataLayer = (window as any).dataLayer || [];
     (window as any).dataLayer.push({
       event: 'social_click',
@@ -109,7 +125,7 @@ export const useTracking = () => {
 
   const trackContactClick = useCallback(async (type: 'phone' | 'email') => {
     if (!supabase || !currentLeadId.current) return;
-    
+
     (window as any).dataLayer = (window as any).dataLayer || [];
     (window as any).dataLayer.push({
       event: 'contact_click',
@@ -133,7 +149,7 @@ export const useTracking = () => {
       const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
       const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       const scrolled = Math.round((winScroll / height) * 100);
-      
+
       if (scrolled > maxScroll.current) {
         maxScroll.current = scrolled;
       }
@@ -143,7 +159,7 @@ export const useTracking = () => {
     const syncInterval = setInterval(() => updateLeadData(), 10000);
 
     window.addEventListener('scroll', handleScroll);
-    
+
     // Meta Pixel PageView
     if ((window as any).fbq) {
       (window as any).fbq('track', 'PageView');
@@ -156,5 +172,17 @@ export const useTracking = () => {
     };
   }, [logInitialVisit, updateLeadData]);
 
-  return { trackWhatsAppClick, trackSocialClick, trackContactClick };
+  return (
+    <TrackingContext.Provider value={{ trackWhatsAppClick, trackSocialClick, trackContactClick }}>
+      {children}
+    </TrackingContext.Provider>
+  );
+};
+
+export const useTracking = (): TrackingContextProps => {
+  const context = useContext(TrackingContext);
+  if (!context) {
+    throw new Error('useTracking must be used within a TrackingProvider');
+  }
+  return context;
 };
