@@ -6,6 +6,7 @@ import { useTracking } from '../hooks/useTracking';
 import { useSiteContent } from '../hooks/useSiteContent';
 import { useTours } from '../hooks/useTours';
 import { getWhatsAppUrl } from '../lib/whatsappTracking';
+import { Snowfall } from './Snowfall';
 
 export const Hero = () => {
   const { langText, language } = useLanguage();
@@ -129,6 +130,9 @@ export const Hero = () => {
       <div className="absolute inset-0 opacity-10 pointer-events-none z-1">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" />
       </div>
+
+      {/* Nieve decorativa - promoción de Navidad (diciembre) */}
+      <Snowfall />
 
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-12 p-5 md:p-12 lg:p-20 lg:pt-32 items-center w-full">
         

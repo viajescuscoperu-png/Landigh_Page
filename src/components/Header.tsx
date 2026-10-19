@@ -3,6 +3,19 @@ import { useLanguage } from '../context/LanguageContext';
 import { useTracking } from '../hooks/useTracking';
 import { getWhatsAppUrl } from '../lib/whatsappTracking';
 
+// Gorro de Papá Noel decorativo sobre el logo — promoción de Navidad (diciembre)
+const SantaHat = () => (
+  <svg
+    viewBox="0 0 64 48"
+    className="absolute -top-1.5 -left-2 w-7 h-5 md:w-9 md:h-7 -rotate-[18deg] drop-shadow-md pointer-events-none"
+    aria-hidden="true"
+  >
+    <path d="M8 40 Q4 20 28 6 Q46 -4 56 14 Q60 22 50 24 Q30 16 14 34 Q10 38 8 40 Z" fill="#C8102E" />
+    <rect x="2" y="35" width="54" height="10" rx="5" fill="#ffffff" />
+    <circle cx="58" cy="12" r="7" fill="#ffffff" />
+  </svg>
+);
+
 export const Header = () => {
   const { langText, language, setLanguage } = useLanguage();
   const { trackContactClick, trackSocialClick } = useTracking();
@@ -57,16 +70,17 @@ export const Header = () => {
       {/* Main Nav - Dark bar with HUGE logo and Language Switcher */}
       <div className="bg-[#0b132b] shadow-xl overflow-hidden">
         <div className="w-full px-4 md:px-8 lg:px-12 py-1 flex items-center justify-between h-14 md:h-20">
-          <a 
-            href="https://viajescuscoperu.com/" 
+          <a
+            href="https://viajescuscoperu.com/"
             onClick={() => trackSocialClick('main_website_logo')}
-            target="_blank" 
+            target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center transition-transform hover:scale-105 h-full"
+            className="relative flex items-center transition-transform hover:scale-105 h-full"
           >
-            <img 
-              src="/logo.png" 
-              alt="Viajes Cusco Perú" 
+            <SantaHat />
+            <img
+              src="/logo.png"
+              alt="Viajes Cusco Perú"
               className="h-full w-auto object-contain transform scale-[1.5] md:scale-[1.8] origin-left"
             />
           </a>
@@ -96,6 +110,8 @@ export const Header = () => {
             </button>
           </div>
         </div>
+        {/* Guirnalda decorativa - promoción de Navidad (diciembre) */}
+        <div className="h-[5px] w-full xmas-garland" aria-hidden="true" />
       </div>
     </header>
   );

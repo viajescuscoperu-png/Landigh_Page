@@ -8,8 +8,14 @@ export const Footer = () => {
 
   return (
     <footer className="relative mt-2">
+      {/* Guirnalda decorativa - promoción de Navidad (diciembre) */}
+      <div className="h-[5px] w-full xmas-garland" aria-hidden="true" />
+
       {/* Footer content */}
       <div className="bg-[#080d1e] text-white border-t border-white/5 pb-20 md:pb-0">
+        <p className="text-center text-sm font-bold text-white py-2 bg-xmas-green/90">
+          {langText('footer_xmas_msg')}
+        </p>
         <div className="container mx-auto px-6 py-3 md:py-10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             

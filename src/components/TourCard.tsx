@@ -39,6 +39,9 @@ export const TourCard = ({ tour, onAction }: TourCardProps) => {
           : 'bg-white border-slate-100 hover:border-brand-cyan/40 hover:shadow-brand-cyan/10'
       }`}
     >
+      {/* Franja decorativa - promoción de Navidad (diciembre) */}
+      <div className="h-1 w-full xmas-garland" aria-hidden="true" />
+
       {urgency && (
         <div className={`absolute top-4 right-4 z-10 text-white text-[10px] md:text-xs font-bold px-4 py-1.5 rounded-full shadow-lg animate-pulse uppercase tracking-widest ${
           isGold ? 'bg-gradient-to-r from-amber-500 to-yellow-600' : 'bg-brand-orange'

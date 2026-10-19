@@ -9,6 +9,9 @@
   --color-brand-dark: #020617;
   --color-whatsapp: #25D366;
   --color-whatsapp-hover: #128C7E;
+  --color-xmas-red: #C8102E;
+  --color-xmas-green: #146B3A;
+  --color-xmas-gold: #D4AF37;
 }
 
 @layer base {
@@ -33,5 +36,42 @@
   }
   .text-glow {
     text-shadow: 0 0 20px rgba(0,210,255,0.4);
+  }
+  .xmas-garland {
+    background-image: repeating-linear-gradient(
+      90deg,
+      var(--color-xmas-red) 0 10px,
+      var(--color-xmas-green) 10px 20px,
+      var(--color-xmas-gold) 20px 30px
+    );
+  }
+  .xmas-ribbon-badge {
+    @apply inline-flex items-center gap-2 bg-xmas-red text-white text-xs md:text-sm font-black uppercase tracking-widest px-5 py-2 rounded-full shadow-lg;
+  }
+}
+
+@keyframes snow-fall {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  8% { opacity: 1; }
+  100% { transform: translateY(95vh) translateX(var(--drift, 20px)); opacity: 0.1; }
+}
+
+.snowflake {
+  position: absolute;
+  top: -4vh;
+  color: #ffffff;
+  line-height: 1;
+  user-select: none;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.35);
+  animation-name: snow-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .snowflake {
+    animation: none;
+    display: none;
   }
 }
