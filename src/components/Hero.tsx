@@ -7,6 +7,7 @@ import { useSiteContent } from '../hooks/useSiteContent';
 import { useTours } from '../hooks/useTours';
 import { getWhatsAppUrl } from '../lib/whatsappTracking';
 import { Snowfall } from './Snowfall';
+import { FestiveGlow } from './FestiveGlow';
 
 export const Hero = () => {
   const { langText, language } = useLanguage();
@@ -131,7 +132,8 @@ export const Hero = () => {
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" />
       </div>
 
-      {/* Nieve decorativa - promoción de fin de año (diciembre) */}
+      {/* Luces bokeh + nieve decorativas - promoción de fin de año (diciembre) */}
+      <FestiveGlow />
       <Snowfall count={38} />
 
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-12 p-5 md:p-12 lg:p-20 lg:pt-32 items-center w-full">
@@ -203,43 +205,43 @@ export const Hero = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.3 }}
-          className="bg-white rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-4 border-brand-orange overflow-hidden text-brand-dark relative"
+          className="bg-white rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-4 border-xmas-gold overflow-hidden text-brand-dark relative"
         >
           {/* Subtle Glow behind the form */}
-          <div className="absolute inset-0 bg-brand-orange/5 pointer-events-none" />
-          
-          {/* Header Card / Urgency */}
-          <div className="bg-brand-orange text-white p-4 md:p-6 text-center">
+          <div className="absolute inset-0 bg-xmas-red/5 pointer-events-none" />
+
+          {/* Header Card / Urgency - paleta navideña */}
+          <div className="xmas-announcement text-white p-4 md:p-6 text-center">
             <div className="flex flex-col items-center justify-center gap-2">
               <p className="text-[11px] font-black uppercase tracking-[0.3em] flex items-center gap-2">
                 <Timer size={16} className="animate-spin-slow" />
-                {langText('hero_timer')}
+                🎄 {langText('hero_timer')}
               </p>
-              
+
               <div className="flex justify-center gap-2 mt-1">
                 <div className="flex flex-col items-center">
-                  <div className="bg-white text-brand-orange px-2 py-2 rounded-xl text-xl md:text-2xl font-black shadow-lg">
+                  <div className="bg-white text-xmas-red px-2 py-2 rounded-xl text-xl md:text-2xl font-black shadow-lg">
                     {timeLeft.split(':')[0]}
                   </div>
                   <span className="text-[8px] uppercase mt-1 font-bold">Dias</span>
                 </div>
                 <div className="text-white font-black text-xl pt-2">:</div>
                 <div className="flex flex-col items-center">
-                  <div className="bg-white text-brand-orange px-2 py-2 rounded-xl text-xl md:text-2xl font-black shadow-lg">
+                  <div className="bg-white text-xmas-red px-2 py-2 rounded-xl text-xl md:text-2xl font-black shadow-lg">
                     {timeLeft.split(':')[1]}
                   </div>
                   <span className="text-[8px] uppercase mt-1 font-bold">Horas</span>
                 </div>
                 <div className="text-white font-black text-xl pt-2">:</div>
                 <div className="flex flex-col items-center">
-                  <div className="bg-white text-brand-orange px-2 py-2 rounded-xl text-xl md:text-2xl font-black shadow-lg">
+                  <div className="bg-white text-xmas-red px-2 py-2 rounded-xl text-xl md:text-2xl font-black shadow-lg">
                     {timeLeft.split(':')[2]}
                   </div>
                   <span className="text-[8px] uppercase mt-1 font-bold">Min</span>
                 </div>
                 <div className="text-white font-black text-xl pt-2">:</div>
                 <div className="flex flex-col items-center">
-                  <div className="bg-white text-brand-orange px-2 py-2 rounded-xl text-xl md:text-2xl font-black shadow-lg animate-pulse">
+                  <div className="bg-white text-xmas-red px-2 py-2 rounded-xl text-xl md:text-2xl font-black shadow-lg animate-pulse">
                     {timeLeft.split(':')[3]}
                   </div>
                   <span className="text-[8px] uppercase mt-1 font-bold">Seg</span>

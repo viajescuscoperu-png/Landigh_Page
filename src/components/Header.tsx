@@ -16,6 +16,19 @@ const SantaHat = () => (
   </svg>
 );
 
+// Fila de esferas navideñas colgando - promoción de fin de año (diciembre)
+const XMAS_ORNAMENT_COLORS = ['#C8102E', '#D4AF37', '#146B3A', '#D4AF37', '#C8102E', '#146B3A', '#D4AF37', '#C8102E'];
+const XmasOrnaments = () => (
+  <div className="bg-[#0b132b] flex justify-around px-4 md:px-16 pb-2.5" aria-hidden="true">
+    {XMAS_ORNAMENT_COLORS.map((color, i) => (
+      <span key={i} className="xmas-ornament" style={{ animationDelay: `${i * 0.22}s` }}>
+        <span className="xmas-ornament-string" />
+        <span className="xmas-ornament-ball" style={{ background: color }} />
+      </span>
+    ))}
+  </div>
+);
+
 export const Header = () => {
   const { langText, language, setLanguage } = useLanguage();
   const { trackContactClick, trackSocialClick } = useTracking();
@@ -23,6 +36,15 @@ export const Header = () => {
 
   return (
     <header className="relative z-50">
+      {/* Anuncio navideño - promoción de fin de año (diciembre) */}
+      <div className="xmas-announcement text-white text-center py-2 px-4">
+        <p className="text-[11px] md:text-sm font-black uppercase tracking-wide flex items-center justify-center gap-2 flex-wrap">
+          <span>🎄</span>
+          <span>{langText('xmas_announcement')}</span>
+          <span>🎁</span>
+        </p>
+      </div>
+
       {/* Luces navideñas titilantes - promoción de fin de año (diciembre) */}
       <div className="h-[7px] w-full xmas-lights" aria-hidden="true" />
 
@@ -113,8 +135,9 @@ export const Header = () => {
             </button>
           </div>
         </div>
-        {/* Guirnalda decorativa - promoción de Navidad (diciembre) */}
+        {/* Guirnalda decorativa - promoción de fin de año (diciembre) */}
         <div className="h-[5px] w-full xmas-garland" aria-hidden="true" />
+        <XmasOrnaments />
       </div>
     </header>
   );

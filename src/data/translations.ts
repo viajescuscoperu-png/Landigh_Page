@@ -73,6 +73,11 @@ export const t: TranslationDictionary = {
     es: "Muy pronto tendremos ofertas para este público. ¡Escríbenos por WhatsApp!",
     en: "We'll have offers for this audience soon. Message us on WhatsApp!"
   },
+  xmas_announcement: {
+    pt: "Promoção de Natal e Fim de Ano — garanta sua viagem antes que dezembro acabe!",
+    es: "Promoción de Navidad y Fin de Año — ¡asegura tu viaje antes de que termine diciembre!",
+    en: "Christmas & Year-End Promotion — book your trip before December ends!"
+  },
   xmas_ribbon: { pt: "Promoção de Natal e Fim de Ano", es: "Promoción de Navidad y Fin de Año", en: "Christmas & Year-End Promotion" },
   xmas_ribbon_subtitle: {
     pt: "Garanta sua viagem de fim de ano com condições especiais",

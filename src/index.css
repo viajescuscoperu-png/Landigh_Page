@@ -95,6 +95,51 @@
   animation: xmas-twinkle 1.8s ease-in-out infinite;
 }
 
+.xmas-bokeh {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(20px);
+  opacity: 0.4;
+  animation: xmas-bokeh-float 15s ease-in-out infinite;
+}
+@keyframes xmas-bokeh-float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(24px, -28px) scale(1.18); }
+}
+
+.xmas-ornament {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: top center;
+  animation: xmas-swing 3.6s ease-in-out infinite;
+}
+.xmas-ornament-string {
+  width: 2px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.45);
+}
+.xmas-ornament-ball {
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35), inset -2px -2px 4px rgba(0, 0, 0, 0.25), inset 2px 2px 3px rgba(255, 255, 255, 0.45);
+}
+@keyframes xmas-swing {
+  0%, 100% { transform: rotate(-7deg); }
+  50% { transform: rotate(7deg); }
+}
+
+.xmas-announcement {
+  background: linear-gradient(100deg, var(--color-xmas-red), #9c1230 45%, var(--color-xmas-green));
+  background-size: 200% 100%;
+  animation: xmas-announcement-shift 6s ease-in-out infinite;
+}
+@keyframes xmas-announcement-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .snowflake {
     animation: none;
@@ -102,7 +147,10 @@
   }
   .xmas-garland,
   .xmas-ribbon-badge,
-  .xmas-lights {
+  .xmas-lights,
+  .xmas-bokeh,
+  .xmas-ornament,
+  .xmas-announcement {
     animation: none;
   }
 }
