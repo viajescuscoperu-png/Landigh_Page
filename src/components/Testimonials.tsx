@@ -22,7 +22,7 @@ export const Testimonials = () => {
     <section className="py-4 md:py-20 bg-brand-dark px-6 md:px-12 overflow-hidden border-t border-white/5">
       <div className="max-w-4xl mx-auto">
         <div className="hidden md:block text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{langText('testi_title')}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">🎄 {langText('testi_title')} 🎄</h2>
           <div className="h-1 w-20 bg-brand-cyan mx-auto rounded-full mb-6" />
           <p className="text-slate-400 max-w-lg mx-auto">{langText('testi_subtitle')}</p>
         </div>

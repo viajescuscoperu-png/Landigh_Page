@@ -131,8 +131,8 @@ export const Hero = () => {
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" />
       </div>
 
-      {/* Nieve decorativa - promoción de Navidad (diciembre) */}
-      <Snowfall />
+      {/* Nieve decorativa - promoción de fin de año (diciembre) */}
+      <Snowfall count={38} />
 
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-12 p-5 md:p-12 lg:p-20 lg:pt-32 items-center w-full">
         

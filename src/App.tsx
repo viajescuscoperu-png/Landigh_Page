@@ -11,6 +11,7 @@ import { StickyMobileCTA } from './components/StickyMobileCTA';
 
 import { LanguageProvider } from './context/LanguageContext';
 import { AudienceProvider } from './context/AudienceContext';
+import { Snowfall } from './components/Snowfall';
 
 function App() {
   const { trackWhatsAppClick } = useTracking();
@@ -36,6 +37,8 @@ function App() {
     <LanguageProvider>
       <AudienceProvider>
         <div className="min-h-screen bg-white flex flex-col">
+          {/* Nieve ambiental - promoción de fin de año (diciembre) */}
+          <Snowfall count={20} variant="ambient" />
           <Header />
           <main className="flex-grow">
             <Hero />

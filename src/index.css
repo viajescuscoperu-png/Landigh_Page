@@ -44,9 +44,13 @@
       var(--color-xmas-green) 10px 20px,
       var(--color-xmas-gold) 20px 30px
     );
+    animation: xmas-twinkle 2.4s ease-in-out infinite;
   }
   .xmas-ribbon-badge {
-    @apply inline-flex items-center gap-2 bg-xmas-red text-white text-xs md:text-sm font-black uppercase tracking-widest px-5 py-2 rounded-full shadow-lg;
+    @apply relative inline-flex items-center gap-2 text-white text-xs md:text-base font-black uppercase tracking-widest px-6 py-2.5 rounded-full;
+    background: linear-gradient(100deg, var(--color-xmas-red), #E0173D 45%, var(--color-xmas-green));
+    box-shadow: 0 8px 24px -6px rgba(200, 16, 46, 0.55), 0 0 0 3px rgba(255,255,255,0.65);
+    animation: xmas-ribbon-glow 2.8s ease-in-out infinite;
   }
 }
 
@@ -69,9 +73,36 @@
   will-change: transform, opacity;
 }
 
+@keyframes xmas-twinkle {
+  0%, 100% { filter: brightness(1) saturate(1); }
+  50% { filter: brightness(1.4) saturate(1.35); }
+}
+
+@keyframes xmas-ribbon-glow {
+  0%, 100% { box-shadow: 0 8px 24px -6px rgba(200, 16, 46, 0.55), 0 0 0 3px rgba(255,255,255,0.65); transform: scale(1); }
+  50% { box-shadow: 0 10px 30px -4px rgba(200, 16, 46, 0.75), 0 0 0 3px rgba(255,255,255,0.85); transform: scale(1.025); }
+}
+
+.xmas-lights {
+  background-image: radial-gradient(
+      circle 4px at 15px 3px, var(--color-xmas-red) 97%, transparent 100%
+    ),
+    radial-gradient(circle 4px at 45px 3px, var(--color-xmas-gold) 97%, transparent 100%),
+    radial-gradient(circle 4px at 75px 3px, var(--color-xmas-green) 97%, transparent 100%),
+    radial-gradient(circle 4px at 105px 3px, #22D3EE 97%, transparent 100%);
+  background-size: 120px 100%;
+  background-repeat: repeat-x;
+  animation: xmas-twinkle 1.8s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .snowflake {
     animation: none;
     display: none;
+  }
+  .xmas-garland,
+  .xmas-ribbon-badge,
+  .xmas-lights {
+    animation: none;
   }
 }

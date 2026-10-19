@@ -12,7 +12,7 @@ export const Faq = () => {
     <section className="py-16 max-w-4xl mx-auto px-4">
       <div className="text-center mb-10">
         <HelpCircle className="mx-auto mb-4 text-brand-cyan" size={32} />
-        <h2 className="text-3xl font-bold text-brand-dark mb-2">{langText('faq_title')}</h2>
+        <h2 className="text-3xl font-bold text-brand-dark mb-2">❄️ {langText('faq_title')} ❄️</h2>
         <p className="text-slate-500">{langText('faq_subtitle')}</p>
       </div>
 

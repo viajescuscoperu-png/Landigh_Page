@@ -17,9 +17,10 @@ export const OfferGrid = ({ onAction }: OfferGridProps) => {
   return (
     <section className="mb-8">
       <div className="text-center mb-6">
-        <div className="flex justify-center mb-4">
+        <div className="flex justify-center mb-3">
           <span className="xmas-ribbon-badge">🎄 {langText('xmas_ribbon')} 🎁</span>
         </div>
+        <p className="text-xmas-green font-bold text-sm md:text-base mb-3">❄️ {langText('xmas_ribbon_subtitle')} ❄️</p>
         <h2 className="text-3xl font-bold text-brand-dark mb-2">{langText('offer_title_1')} <span className="text-brand-orange">{langText('offer_title_2')}</span></h2>
         <p className="text-slate-500">{langText('offer_subtitle')}</p>
       </div>

@@ -23,6 +23,9 @@ export const Header = () => {
 
   return (
     <header className="relative z-50">
+      {/* Luces navideñas titilantes - promoción de fin de año (diciembre) */}
+      <div className="h-[7px] w-full xmas-lights" aria-hidden="true" />
+
       {/* Top Bar - Cyan contact strip */}
       <div className="bg-brand-cyan text-white text-xs md:text-sm shadow-md relative z-10">
         <div className="container mx-auto px-4 py-2 flex flex-wrap items-center justify-between font-medium">
